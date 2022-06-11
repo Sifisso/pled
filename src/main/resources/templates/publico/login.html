@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<form style="background: rgba(96, 161, 138, 0.3);" class="card" th:action="@{/login}" method="post">
+
+    <a style="font-size: 15px; text-align: right; padding-right: 15px; padding-top: 7px; cursor: pointer; text-decoration: none" th:href="@{/}" class=" btn-block fechar">x</a>
+    <div class="card-body p-6">
+        <img align="middle" class="mb-4  ml-6" th:src="@{/image/fnds-logo.png}" width="200px"  >
+        <!--               <div class="card-title">Login to your account</div> -->
+        <div class="form-group">
+            <label class="form-label">Utilizador</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter email">
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="form-label">
+                Senha
+
+            </label>
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <div class="text-center" th:if="${param.error}">
+                <b style="color:red">Utilizador ou Senha Errada</b>
+                <br><br>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" />
+                <span class="custom-control-label">Lembrar</span>
+            </label>
+            <a style="font-size: 15px; text-align: right; padding-right: 15px; padding-top: 7px; cursor: pointer; text-decoration: none" th:href="@{/recuperar/senha}" class=" btn-block fechar">Esqueci a senha</a>
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
