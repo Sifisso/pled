@@ -1,53 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Login</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet">
+
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
 </head>
-<body>
 
-<form style="background: rgba(96, 161, 138, 0.3);" class="card" th:action="@{/login}" method="post">
+<body class="gray-bg">
 
-    <a style="font-size: 15px; text-align: right; padding-right: 15px; padding-top: 7px; cursor: pointer; text-decoration: none" th:href="@{/}" class=" btn-block fechar">x</a>
-    <div class="card-body p-6">
-        <img align="middle" class="mb-4  ml-6" th:src="@{/image/fnds-logo.png}" width="200px"  >
-        <!--               <div class="card-title">Login to your account</div> -->
-        <div class="form-group">
-            <label class="form-label">Utilizador</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter email">
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">IN+</h1>
+
         </div>
-
-
-
-        <div class="form-group">
-            <label class="form-label">
-                Senha
-
-            </label>
-            <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-        </div>
-
-        <div class="form-group">
-            <div class="text-center" th:if="${param.error}">
-                <b style="color:red">Utilizador ou Senha Errada</b>
-                <br><br>
+        <h3>Welcome to IN+</h3>
+        <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+        </p>
+        <p>Login in. To see it in action.</p>
+        <form class="m-t" role="form" th:action="@{/login}" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Username" required="">
             </div>
-        </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" required="">
+            </div>
 
+            <div class="form-group">
+                <div class="text-center" th:if="${param.error}">
+                    <b style="color:red">Utilizador ou Senha Errada</b>
+                    <br><br>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" />
-                <span class="custom-control-label">Lembrar</span>
-            </label>
-            <a style="font-size: 15px; text-align: right; padding-right: 15px; padding-top: 7px; cursor: pointer; text-decoration: none" th:href="@{/recuperar/senha}" class=" btn-block fechar">Esqueci a senha</a>
-        </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
-        <div class="form-footer">
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-        </div>
+            <a href="#"><small>Forgot password?</small></a>
+            <p class="text-muted text-center"><small>Do not have an account?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+        </form>
+        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
     </div>
-</form>
+</div>
+
+<!-- Mainly scripts -->
+<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
 
 </body>
+
 </html>

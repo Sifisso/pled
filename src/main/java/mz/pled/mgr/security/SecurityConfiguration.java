@@ -77,7 +77,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
 
         //Ignorar as pastas de css e js na seguranca
-        web.ignoring().antMatchers("/dist/**","/templates/publico/**","/assets/**","/static/**","/js/**","/image/**","/img/**","/font-awesomw/**","/img/**","/fonts/**");
+        web.ignoring().antMatchers("/css/**","/templates/publico/**","/assets/**","/static/**","/js/**","/image/**","/img/**","/font-awesomw/**","/img/**","/fonts/**");
 
     }
 

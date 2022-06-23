@@ -12,4 +12,16 @@ public class IndexController {
         return "publico/login";
     }
 
+    @GetMapping("/")
+    public String leadingPage(){
+
+        return "publico/index";
+    }
+
+    @GetMapping("/dashboard")
+    public String home(){
+
+        return "dashboard/home";
+    }
+
 }
