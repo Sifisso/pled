@@ -17,7 +17,7 @@ public class ActividadeUser extends AbstractEntity{
 	
 	@ManyToOne
 	@JoinColumn(name = "provincia_actividade_id")
-	private ProvinciaActividade provinciaActividade;
+	private ProvinciaProjecto provinciaActividade;
 	
 	@Column(name = "designacao")
 	private String designacao;
@@ -39,11 +39,11 @@ public class ActividadeUser extends AbstractEntity{
 		this.user = user;
 	}
 
-	public ProvinciaActividade getProvinciaActividade() {
+	public ProvinciaProjecto getProvinciaActividade() {
 		return provinciaActividade;
 	}
 
-	public void setProvinciaActividade(ProvinciaActividade provinciaActividade) {
+	public void setProvinciaActividade(ProvinciaProjecto provinciaActividade) {
 		this.provinciaActividade = provinciaActividade;
 	}
 	

@@ -17,7 +17,7 @@ public class Ocorrencia extends AbstractEntity{
 
 	@ManyToOne
 	@JoinColumn(name = "provincia_actividade_id")
-	private ProvinciaActividade provinciaActividade;
+	private ProvinciaProjecto provinciaActividade;
 	
 	@ManyToOne
 	@JoinColumn(name = "canal_entrada_id")
@@ -51,11 +51,11 @@ public class Ocorrencia extends AbstractEntity{
 		this.designacao = designacao;
 	}
 
-	public ProvinciaActividade getProvinciaActividade() {
+	public ProvinciaProjecto getProvinciaActividade() {
 		return provinciaActividade;
 	}
 
-	public void setProvinciaActividade(ProvinciaActividade provinciaActividade) {
+	public void setProvinciaActividade(ProvinciaProjecto provinciaActividade) {
 		this.provinciaActividade = provinciaActividade;
 	}
 

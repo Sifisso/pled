@@ -8,16 +8,16 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "provincia_actividade")
-public class ProvinciaActividade extends AbstractEntity{
+@Table(name = "provincia_projecto")
+public class ProvinciaProjecto extends AbstractEntity{
 	
 	@ManyToOne
 	@JoinColumn(name = "provincia_id")
 	private Provincia provincia;
 	
 	@ManyToOne
-	@JoinColumn(name = "actividade_id")
-	private Actividade actividade;
+	@JoinColumn(name = "projecto_id")
+	private Projecto projecto;
 	
 	@Column(name = "designacao")
 	private String designacao;
@@ -40,13 +40,13 @@ public class ProvinciaActividade extends AbstractEntity{
 		this.provincia = provincia;
 	}
 
-	public Actividade getActividade() {
-		return actividade;
+	public Projecto getProjecto() {
+		return projecto;
 	}
 
-	public void setActividade(Actividade actividade) {
-		this.actividade = actividade;
+	public void setProjecto(Projecto projecto) {
+		this.projecto = projecto;
 	}
-	
+
 	
 }
