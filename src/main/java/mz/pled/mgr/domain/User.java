@@ -11,20 +11,27 @@ import java.util.List;
 @Table(name = "user")
 public class User extends AbstractEntity implements UserDetails {
 
-    @Column(name = "username", nullable = false,length=200,unique=true)
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "password", nullable = true,length=200,unique=true)
+    @Column(name = "password")
     private String password;
 
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "telefone", nullable = true,length=120,unique=true)
+    @Column(name = "alertavbg")
+    private String alertavbg;
+
+    @Column(name = "telefone")
     private String telefone;
 
-    @Column(name = "email", nullable = true,length=120,unique=true)
+    @Column(name = "email")
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "nivel_id")
+    private Responsabilidade nivel;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name="user_role", joinColumns = @JoinColumn(
@@ -33,8 +40,24 @@ public class User extends AbstractEntity implements UserDetails {
                     name = "role_id", referencedColumnName = "id"))
     private List<Role> roles;
 
+    public Responsabilidade getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Responsabilidade nivel) {
+        this.nivel = nivel;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public String getAlertavbg() {
+        return alertavbg;
+    }
+
+    public void setAlertavbg(String alertavbg) {
+        this.alertavbg = alertavbg;
     }
 
     public void setEmail(String email) {

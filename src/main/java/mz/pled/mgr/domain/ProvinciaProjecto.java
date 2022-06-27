@@ -23,7 +23,6 @@ public class ProvinciaProjecto extends AbstractEntity{
 	private String designacao;
 	
 
-
 	public String getDesignacao() {
 		return designacao;
 	}

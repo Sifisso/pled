@@ -15,10 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>INSPINIA | Dashboard</title>
+    <title>MEF - Ministério de Economia e Finanças</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet">
+
+    <link th:href="@{css/plugins/iCheck/custom.css}" rel="stylesheet">
+    <link th:href="@{css/plugins/summernote/summernote-bs4.css}" rel="stylesheet">
 
     <!-- Toastr style -->
     <link th:href="@{/css/plugins/toastr/toastr.min.css}" rel="stylesheet">
@@ -66,7 +69,6 @@
     <script th:src="@{/js/bootstrap.js}"></script>
     <script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
     <script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
-    
 
     <script th:src="@{/js/plugins/dataTables/datatables.min.js}"></script>
 
@@ -102,7 +104,23 @@
 
     <!-- Toastr -->
     <script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
-    
+
+    <!-- iCheck -->
+    <script th:src="@{js/plugins/iCheck/icheck.min.js}"></script>
+
+    <!-- SUMMERNOTE -->
+    <script th:src="@{js/plugins/summernote/summernote-bs4.js}"></script>
+
+
+    <script>
+        $(document).ready(function(){
+
+            $('.summernote').summernote();
+
+        });
+
+    </script>
+
     <script>
 
         // Upgrade button class name
