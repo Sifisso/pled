@@ -24,7 +24,7 @@
                 <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-title">
-                            <h5>Formulário de registo de Categoria</h5>
+                            <h5>Formulário de editagem de Categoria</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -44,7 +44,12 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form th:action="@{/cadastrar/categoria}" th:object="${categoria}" method="POST">
+                        
+                        
+                        
+                            <form th:action="@{/editar/categoria}" th:object="${categoria}" method="POST">
+                            
+                            <input type="hidden" th:field="*{id}" class="form-control" placeholder="Designação..."> 
                                 
                      
                                 <div class="form-group row"><label class="col-sm-2 col-form-label">Designação</label>
@@ -59,7 +64,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4 col-sm-offset-2">
                                         
-                                        <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                                        <button class="btn btn-primary btn-sm" type="submit">Editar</button>
                                     </div>
                                 </div>
                             </form>
