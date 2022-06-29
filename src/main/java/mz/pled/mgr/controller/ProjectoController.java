@@ -59,6 +59,19 @@ public class ProjectoController {
 	  
 	  return "parametrizacao/projecto/editar"; 
 	  }
+	  
+	  
+	  @GetMapping("/actividade/registar/{id}")
+	   public String vistaConfigActividade(@PathVariable("id") Long id, ModelMap model) {
+		  
+		  model.addAttribute("projecto",projectoRepository.findById(id));
+		  
+		  return "parametrizacao/actividade/config";
+		  
+		  
+	  }
+	  
+	  
 
 }
 

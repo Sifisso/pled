@@ -15,11 +15,11 @@
     <div class="col-lg-12">
         <div class="ibox ">
             <div class="ibox-title  mb-1">
-                <h5>Tipo de Alerta</h5>
+                <h5>Tipo de Ocorrência</h5>
                 <div class="ibox-tools">
                     <h5>
-                      <a th:href="@{/view/alerta}">
-                        <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Cadastrar Tipo de Alerta</button>
+                      <a th:href="@{/view/tipoOcorrencia}">
+                        <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Cadastrar Tipo de Ocorrência</button>
                       </a>
                     </h5>
                 </div>
@@ -36,12 +36,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="gradeX"  th:each="p, index : ${tipoAlertas}">
+                        <tr class="gradeX"  th:each="p, index : ${tipoOcorrencias}">
                             <td th:text="${index.count}"></td>
                             <td th:text="${p.designacao}"></td>
                             <td>
                             
-                             <a th:href="@{/editar/tipoAlerta/{id} (id=${p.id})}">
+                             <a th:href="@{/editar/tipoOcorrencia/{id} (id=${p.id})}">
                                 <i style="background: green; color: #fff; width: 90px;" aria-hidden="true" class="fa fa-edit  btn btn-sucess btn-sm"> Editar</i>
                             </a>
 

@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "categoria")
+@Table(name = "actividade")
 public class Actividade extends AbstractEntity{
 	
 	

@@ -16,19 +16,17 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Editar Tipo de Alerta</h5>
+                    <h5>Cadastrar Tipo de Ocorrência</h5>
                     <div class="ibox-tools">
                         <h5>
-                            <a th:href="@{/listar/alerta}">
-                                <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Listar Listar Tipos de Alerta</button>
+                            <a th:href="@{/listar/tipoOcorrencia}">
+                                <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Listar Tipos de Ocorrências</button>
                             </a>
                         </h5>
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form th:object="${tipoAlerta}"  th:action="@{/editar/tipoAlerta}" method="post">
-                    
-                    <input type="hidden" th:field="*{id}" class="form-control" placeholder="Designação...">
+                    <form th:object="${tipoOcorrencia}"  th:action="@{/cadastrar/tipoOcorrencia}" method="post">
 
 
                         <div class="row">
@@ -36,8 +34,8 @@
                             <div class="col">
                                 <label class="col-form-label">Designação</label>
                                 <div class="input-group edit">
-                                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                    <input required type="text" class="form-control" th:field="*{designacao}" placeholder="Descreva a designação do tipo de ocorrência aqui..." >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" th:field="*{designacao}" required placeholder="Descreva a designação do tipo de ocorrência aqui..." >
                                 </div>
                             </div>
 
@@ -52,7 +50,7 @@
                             <div class="col-md-5"></div>
                             <div class="col-md-5">
                                   <button class="btn btn-primary btn-sm" type="submit" >
-                                      <i class="fa fa-save"></i> Editar Tipo de Alerta
+                                      <i class="fa fa-save"></i> Gravar Tipo de Ocorrência
                                   </button>
                             </div>
                         </div>
@@ -66,6 +64,7 @@
 </div>
 
 
-</body>
 
+
+</body>
 </html>

@@ -12,62 +12,56 @@
 
 <div layout:fragment="corpo">
 
-<div class="col-12">
-        <a class="btn btn-primary btn-md mb-3" th:href="@{/listar/alerta}" role="button">
-            <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-            <span>Listar Tipos de Alerta</span>
-        </a>
-    </div>
+
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Cadastrar Tipo de Alerta</h5>
+                    <div class="ibox-tools">
+                        <h5>
+                            <a th:href="@{/listar/alerta}">
+                                <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Listar Tipos de Alerta</button>
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form th:object="${tipoAlerta}"  th:action="@{/cadastrar/tipoAlerta}" method="post">
 
 
-   <div class="row" style="width: 100%">
-                <div class="col-lg-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <h5>Formulário de registo de Tipo de Alerta</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#" class="dropdown-item">Config option 1</a>
-                                    </li>
-                                    <li><a href="#" class="dropdown-item">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
+                        <div class="row">
+
+                            <div class="col">
+                                <label class="col-form-label">Designação</label>
+                                <div class="input-group edit">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" th:field="*{designacao}" required placeholder="Descreva a designação do tipo de alerta aqui..." >
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5">
+                                  <button class="btn btn-primary btn-sm" type="submit" >
+                                      <i class="fa fa-save"></i> Gravar Tipo de Alerta
+                                  </button>
                             </div>
                         </div>
-                        <div class="ibox-content">
-                            <form th:action="@{/cadastrar/tipoAlerta}" th:object="${tipoAlerta}" method="POST">
-                                
-                     
-                                <div class="form-group row"><label class="col-sm-2 col-form-label">Designação</label>
-
-                                    <div class="col-sm-10">
-										<input type="text" th:field="*{designacao}" placeholder="Descreva a designação do tipo de Alerta..." class="form-control form-control-lg m-b">
-                                    </div>
-									
-                                </div>
-                               
-                              
-                                <div class="form-group row">
-                                    <div class="col-sm-4 col-sm-offset-2">
-                                        
-                                        <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+
+
+
+</div>
 
 
 
