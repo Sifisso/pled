@@ -11,5 +11,6 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByUsername(String username);
-
+    @Query(value="select * from User where id=:user", nativeQuery=true)
+    User buscarPorId(Long user);
 }

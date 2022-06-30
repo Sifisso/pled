@@ -6,11 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import mz.pled.mgr.domain.Projecto;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProjectoRepository extends CrudRepository<Projecto, Long> {
 	
 	
-	@Query(value="select * from projecto WHERE id IN (SELECT actividade.projecto_id FROM actividade WHERE actividade.projecto_id=:id) ", nativeQuery=true)
-    List<Projecto> buscarTodosComSelecao(Long id);
+	@Query(value="(select * from projecto WHERE id=:id)", nativeQuery=true)
+    Projecto buscarPorId(Long id);
 
 }

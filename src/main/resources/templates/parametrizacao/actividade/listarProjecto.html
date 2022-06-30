@@ -12,16 +12,16 @@
 <div layout:fragment="corpo">
 
 	<div>
-        <a class="btn btn-primary btn-md mb-3 ml-3" th:href="@{/view/listProjecto}" role="button">
+        <a class="btn btn-primary btn-md mb-3 ml-3" th:href="@{/view/projecto}" role="button">
 		 	<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-		     <span>Nova Actividade</span>
+		     <span>Novo Projecto</span>
 		</a>
 	</div>
 
    <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Actividades</h5>
+                        <h5>Projectos</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -53,14 +53,14 @@
                     </thead>
                     <tbody>
                    <!--  <tr th:each="p : ${categorias}"> -->
-                    <tr th:each="p : ${actividades}">
+                    <tr th:each="p : ${projectos}">
                         <td th:text="${p.id}"><span class="text-muted">01401</span></td>
                          <td th:text="${p.designacao}">Auxiliar Contábil</td>
                         <td>
-                            <a th:href="@{/editar/actividade/{id} (id=${p.id})}">
-                                <i style="color: green; width: 90px;" aria-hidden="true" title="Editar" class="fa fa-edit"></i>
+
+                            <a th:href="@{/actividade/registar/{id} (id=${p.id})}">
+                                <i style="color: green; width: 90px;"  aria-hidden="true" title="Actividade" class="fa fa-cogs"></i>
                             </a>
-                            
                         </td>
                         
                         <!-- <td>

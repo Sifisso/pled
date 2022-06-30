@@ -11,6 +11,7 @@
 	<groupId>mz.pled</groupId>
 	<artifactId>mgr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>mgr</name>
 	<description>Mecanismo de Gestão de Reclamações (MGR)</description>
 	<properties>
