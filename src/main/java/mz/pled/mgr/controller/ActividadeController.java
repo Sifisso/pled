@@ -1,5 +1,6 @@
 package mz.pled.mgr.controller;
 
+import mz.pled.mgr.repository.ProjectoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +17,9 @@ public class ActividadeController {
 	@Autowired
     private ActividadeRepository actividadeRepository;
 
+    @Autowired
+    private ProjectoRepository projectoRepository;
+
     @GetMapping("/view/actividade")
     public String viewActividade(ModelMap model){
     	
@@ -23,7 +27,17 @@ public class ActividadeController {
 
         return "/parametrizacao/actividade/cadastrar";
     }
-    
+
+
+    @GetMapping("/view/listProjecto")
+    public String viewlistProjecto(ModelMap model){
+
+        model.addAttribute("projectos",  projectoRepository.findAll());
+
+        return "/parametrizacao/actividade/listarProjecto";
+    }
+
+
     @PostMapping("cadastrar/actividade")
     public String gravarActividade(Actividade actividade) {
 

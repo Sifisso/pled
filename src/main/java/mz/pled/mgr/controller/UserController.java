@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,6 +21,9 @@ public class UserController {
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    ProjectoRepository projectoRepository;
 
     @Autowired
     ProvinciaProjectoRepository provinciaProjectoRepository;
@@ -41,6 +45,35 @@ public class UserController {
         return "usuarios/listar";
     }
 
+    @GetMapping("/projectos/usuarios/{id}")
+    public String projectosUtilizador(@PathVariable("id") Long id, ModelMap model){
+
+        model.addAttribute("user", userRepository.findById(id));
+        model.addAttribute("userid", id);
+        model.addAttribute("perfils", roleRepository.findAll());
+        model.addAttribute("projectos", projectoRepository.findAll());
+        model.addAttribute("niveis", responsabilidadeRepository.findAll());
+        model.addAttribute("projectosusers", userProvinciaProjectoRepository.buscarUserProjectosProvincias(id));
+
+
+
+        return "usuarios/projectos";
+    }
+
+    @GetMapping("/projectos/provincias/{proj}/{user}")
+    public String projectosProvincia(@PathVariable("proj") Long proj, @PathVariable("user") Long user, ModelMap model){
+
+        model.addAttribute("user", user);
+        model.addAttribute("projecto",projectoRepository.buscarPorId(proj));
+        model.addAttribute("userprojprov", new UserProvinciaProjecto());
+        model.addAttribute("projectosProvincias", provinciaProjectoRepository.buscarTodosPorProjecto(proj));
+
+        System.out.println("User id"+user);
+
+
+        return "usuarios/provinciaProjectos";
+    }
+
     @GetMapping("/view/usuarios")
     public String viewCadastrar(ModelMap model){
 
@@ -58,15 +91,21 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
-        for(long projectoP: provinciaProjectos) {
+        return "redirect:/listar/usuarios";
+    }
+    @PostMapping("/user/projecto/provincia")
+    public String userProjectoProvincia(UserProvinciaProjecto userProvinciaProjecto, @RequestParam("user") long user){
 
-            ProvinciaProjecto projecto1 = provinciaProjectoRepository.buscarPorID(projectoP);
+       // for(long projecto: projectos) {
 
-            userProvinciaProjecto.setProvinciaProjecto(projecto1);
-            userProvinciaProjecto.setUser(user);
+            //ProvinciaProjecto provinciaProjecto = projectoService.buscarPorId(projecto);
+            User user1 = userRepository.buscarPorId(user);
+
+           // userProvinciaProjecto.setProvinciaProjecto(provinciaProjecto);
+            userProvinciaProjecto.setUser(user1);
             userProvinciaProjectoRepository.save(userProvinciaProjecto);
 
-        }
+        //}
 
         return "redirect:/listar/usuarios";
     }

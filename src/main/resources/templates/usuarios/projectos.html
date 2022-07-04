@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout}" Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+</head>
+<body>
+
+<div layout:fragment="corpo">
+
+
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Editar Utilizador</h5>
+                    <div class="ibox-tools">
+                        <h5>
+                            <a th:href="@{/listar/usuarios}">
+                                <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Listar Utilizador</button>
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form th:object="${user}"  th:action="@{/cadastrar/usuarios}" method="post">
+
+                        <input type="hidden" class="form-control" th:field="*{id}" placeholder="" >
+
+                        <div class="row">
+
+                            <div class="col">
+                                <label class="col-form-label">Nome</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <label class="col-form-label">Telefone</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input type="number" class="form-control" name="telefone" th:field="*{telefone}" placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <label class="col-form-label">Utilizador</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                    <input type="text" class="form-control" name="utilizador" th:field="*{username}" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <label class="col-form-label">Email</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
+                                    <input type="email" class="form-control" name="email" th:field="*{email}"  placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row" style="display: none;">
+
+                            <div class="col">
+                                <label class="col-form-label">Senha</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                    <input type="text" class="form-control" name="senha" th:field="*{password}" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <label class="col-form-label">Confirmar Senha</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                    <input type="text" class="form-control" name="confirmaSenha" placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <label class="col-form-label">Nivel de Responsabilidade</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" name="nivel" th:field="*{nivel}"  >
+                                        <option th:each="p : ${niveis}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <label class="col-form-label">Perfil</label>
+                                <select class="form-control m-b" name="nivel" th:field="*{roles}"  >
+                                    <option th:each="p : ${perfils}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <label class="col-form-label">Alocar Projectos</label>
+                                <th:block>
+
+                                    <div class="card mt-2">
+
+                                        <div  class="card-header" >
+
+                                            <div class="form-check-inline" th:each="p: ${projectos}" >
+
+                                              <a th:href="@{/projectos/provincias/{proj}/{user} (proj=${p.id}, user=${userid})}" >
+                                                <button type="button" class="btn btn-block btn-outline btn-primary">
+                                                    <span  th:text="${p.designacao}"></span>
+                                                </button>
+                                              </a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </th:block>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                           <div class="col">
+                               <label class="col-form-label">Projectos Alocados</label>
+                               <table class="table table-striped">
+                                   <thead>
+                                   <tr>
+                                       <th>#</th>
+                                       <th>Projectos</th>
+                                       <th>Provincias</th>
+                                       <th>Acção</th>
+                                   </tr>
+                                   </thead>
+                                   <tbody>
+                                   <tr class="gradeX"  th:each="p, index : ${projectosusers}">
+                                       <td th:text="${index.count}"></td>
+                                       <td th:text="${p.provinciaProjecto.projecto.designacao}"></td>
+                                       <td th:text="${p.provinciaProjecto.provincia.designacao}"></td>
+                                       <td >
+                                           <a th:href="@{/apagar/projectos/{id} (id=${p.id})}" >
+                                               <button style="background: red; color: #fff; width: 90px;" type="button" class="btn btn-sucess btn-sm">
+                                                   <i  aria-hidden="true" class="fa fa-trash-o"></i>Remover
+                                               </button>
+                                           </a>
+
+                                       </td>
+                                   </tr>
+
+                                   </tbody>
+                               </table>
+                           </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5">
+                                  <button class="btn btn-primary btn-sm" type="submit" >
+                                      <i class="fa fa-save"></i> Actualizar Utilizador
+                                  </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+
+</body>
+</html>
