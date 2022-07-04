@@ -40,7 +40,7 @@ public class ProjectoController {
 
     	projectoRepository.save(projecto);
 
-        return "redirect:/adicionar/provincia";
+        return "redirect:/listar/projecto";
     }
 
     
@@ -82,20 +82,32 @@ public class ProjectoController {
 	  }
 	  
 	  @GetMapping("/provincia/registarr/{id}")
-	    public String viewRegistarProjectoDaProvincia(@PathVariable("id") Long id, ModelMap model){
+	    public String viewRegistarProjectoDaProvincia(@PathVariable("id") long id, ModelMap model){
 		  //	model.addAttribute("projecto", new Projecto());
 		  
 		  	model.addAttribute("projecto",projectoRepository.findById(id));
 		  	model.addAttribute("projectoid", id);
 		  	model.addAttribute("provinciaprojectos",provinciaProjectoRepository.buscarPorProjecto(id));
 		  	model.addAttribute("projectoprovincias",new ProvinciaProjecto());
-		  	//model.addAttribute("provincias",provinciaRepository.findAll());
 		  	model.addAttribute("projectoNome",projectoRepository.buscarPorIdProjecto(id));
 		  	
-		  	model.addAttribute("provincias", projectoRepository.buscarTodosSemSelecao(id));
+		  	model.addAttribute("provincias",provinciaRepository.buscarTodosSemSelecao(id));
+		  	//model.addAttribute("provincias", projectoRepository.buscarTodosSemSelecao(id));
 		  	
 	        return "/parametrizacao/projecto/addProjecto";
 	        
+	    }
+	  
+	  @GetMapping("/provincia/apagar/{id}")
+	    public String apagarProjectoProvincia(@PathVariable("id") Long id, ModelMap model) {
+
+	        
+		  ProvinciaProjecto projecto1 = provinciaProjectoRepository.buscarPorID(id);
+	      Projecto projecto2 = projecto1.getProjecto();
+	      provinciaProjectoRepository.deleteById(projecto1.getId());
+	      
+	      return "redirect:/provincia/registarr/"+projecto2.getId();
+
 	    }
 	  
 	 /* @GetMapping("/provincia/registar/{id}")
@@ -119,7 +131,7 @@ public class ProjectoController {
 	      provinciaProjecto.setProjecto(projecto1);
 	      provinciaProjectoRepository.save(provinciaProjecto);
 	      
-	        return "redirect:/provincia/registar/"+projecto1.getId();
+	        return "redirect:/provincia/registarr/"+projecto1.getId();
 	    }
 
 	  
