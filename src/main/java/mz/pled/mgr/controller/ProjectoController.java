@@ -6,9 +6,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mz.pled.mgr.domain.Projecto;
+import mz.pled.mgr.domain.ProvinciaProjecto;
 import mz.pled.mgr.repository.ProjectoRepository;
+import mz.pled.mgr.repository.ProvinciaProjectoRepository;
+import mz.pled.mgr.repository.ProvinciaRepository;
 
 @Controller
 public class ProjectoController {
@@ -16,6 +21,11 @@ public class ProjectoController {
 	@Autowired
     private ProjectoRepository projectoRepository;
 
+	@Autowired
+    private ProvinciaRepository provinciaRepository;
+	
+	@Autowired
+    private ProvinciaProjectoRepository provinciaProjectoRepository;
 
     @GetMapping("/view/projecto")
     public String viewProjecto(ModelMap model){
@@ -25,12 +35,12 @@ public class ProjectoController {
         return "/parametrizacao/projecto/cadastrar";
     }
     
-    @PostMapping("cadastrar/projecto")
+    @PostMapping("/cadastrar/projecto")
     public String gravarProjecto(Projecto projecto) {
 
     	projectoRepository.save(projecto);
 
-        return "redirect:/listar/projecto";
+        return "redirect:/adicionar/provincia";
     }
 
     
@@ -70,6 +80,52 @@ public class ProjectoController {
 		  
 		  
 	  }
+	  
+	  @GetMapping("/provincia/registarr/{id}")
+	    public String viewRegistarProjectoDaProvincia(@PathVariable("id") Long id, ModelMap model){
+		  //	model.addAttribute("projecto", new Projecto());
+		  
+		  	model.addAttribute("projecto",projectoRepository.findById(id));
+		  	model.addAttribute("projectoid", id);
+		  	model.addAttribute("provinciaprojectos",provinciaProjectoRepository.buscarPorProjecto(id));
+		  	model.addAttribute("projectoprovincias",new ProvinciaProjecto());
+		  	//model.addAttribute("provincias",provinciaRepository.findAll());
+		  	model.addAttribute("projectoNome",projectoRepository.buscarPorIdProjecto(id));
+		  	
+		  	model.addAttribute("provincias", projectoRepository.buscarTodosSemSelecao(id));
+		  	
+	        return "/parametrizacao/projecto/addProjecto";
+	        
+	    }
+	  
+	 /* @GetMapping("/provincia/registar/{id}")
+	   public String vistaRegistarProvincia(@PathVariable("id") Long id, ModelMap model) {
+		  
+		  model.addAttribute("projecto",projectoRepository.findById(id));
+		  
+		  model.addAttribute("provinciaprojectos",provinciaProjectoRepository.buscarPorProjecto(id));
+		  model.addAttribute("provinciaProjecto",new ProvinciaProjecto());
+		  model.addAttribute("projectos", projectoRepository.buscarTodosSemSelecao(id));
+		  model.addAttribute("projectoid", id);
+		  
+		  return "redirect:/provincia/registarr/"+id;
+		  
+	  }*/
+	  
+	  @PostMapping("/cadastrarr/provincia")
+	    public String provinciaProjecto (ProvinciaProjecto provinciaProjecto,@RequestParam("projecto") long projecto, RedirectAttributes attr) {
+
+	      Projecto projecto1 = projectoRepository.buscarPorIdProjecto(projecto);
+	      provinciaProjecto.setProjecto(projecto1);
+	      provinciaProjectoRepository.save(provinciaProjecto);
+	      
+	        return "redirect:/provincia/registar/"+projecto1.getId();
+	    }
+
+	  
+	  
+	  
+	 
 	  
 	  
 

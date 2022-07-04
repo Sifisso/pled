@@ -48,7 +48,9 @@
                     <tr>
                         <th class="w-1">No.</th>
                         <th>Designação</th>
-                        <th style="width:10%"></th>
+                        <th style="width:10%">Editar</th>
+                        <th style="width:10%">Actividade</th>
+                        <th style="width:10%">Projecto</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,15 +58,22 @@
                     <tr th:each="p : ${projectos}">
                         <td th:text="${p.id}"><span class="text-muted">01401</span></td>
                          <td th:text="${p.designacao}">Auxiliar Contábil</td>
-                        <td>
-                            <a th:href="@{/editar/projecto/{id} (id=${p.id})}">
-                                <i style="color: green; width: 90px;" aria-hidden="true" title="Editar" class="fa fa-edit"></i>
-                            </a>
+                        	<td align="center">
+	                            <a th:href="@{/editar/projecto/{id} (id=${p.id})}">
+	                                <i style="color: green; width: 90px;" aria-hidden="true" title="Editar" class="fa fa-edit"></i>
+	                            </a>
+                            </td>
                             
-                            <a th:href="@{/actividade/registar/{id} (id=${p.id})}">
-                                <i style="color: green; width: 90px;"  aria-hidden="true" title="Actividade" class="fa fa-cogs"></i>
-                            </a>
-                        </td>
+                            <td align="center">
+	                            <a th:href="@{/actividade/registar/{id} (id=${p.id})}">
+	                                <i style="color: green; width: 120px;"  aria-hidden="true" title="Actividade" class="fa fa-cogs"></i>
+	                            </a>
+                            </td>
+                            <td align="center">
+	                            <a th:href="@{/provincia/registarr/{id} (id=${p.id})}">
+	                                <i style="color: green; width: 90px;"  aria-hidden="true" title="Projecto" class="fa fa-cogs"></i>
+	                            </a>
+                        	</td>
                         
                         <!-- <td>
                             <a class="icon" th:href="${'/postos/excluir/'+p.id}">
@@ -79,6 +88,8 @@
                     <tr>
                         <th class="w-1">No.</th>
                         <th>Designação</th>
+                         <th style="width:10%"></th>
+                         <th style="width:10%"></th>
                          <th style="width:10%"></th>
                     </tr>
                     </tfoot>
