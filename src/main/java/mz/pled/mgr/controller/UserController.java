@@ -55,8 +55,6 @@ public class UserController {
         model.addAttribute("niveis", responsabilidadeRepository.findAll());
         model.addAttribute("projectosusers", userProvinciaProjectoRepository.buscarUserProjectosProvincias(id));
 
-
-
         return "usuarios/projectos";
     }
 
@@ -66,9 +64,7 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("projecto",projectoRepository.buscarPorId(proj));
         model.addAttribute("userprojprov", new UserProvinciaProjecto());
-        model.addAttribute("projectosProvincias", provinciaProjectoRepository.buscarTodosPorProjecto(proj));
-
-        System.out.println("User id"+user);
+        model.addAttribute("projectosProvincias", provinciaProjectoRepository.buscarPorProjecto(proj));
 
 
         return "usuarios/provinciaProjectos";
@@ -86,7 +82,7 @@ public class UserController {
     }
 
     @PostMapping("/cadastrar/usuarios")
-    public String cadastrarUsuarios(User user, UserProvinciaProjecto userProvinciaProjecto, @RequestParam("provinciaProjectos") long provinciaProjectos[]){
+    public String cadastrarUsuarios(User user, UserProvinciaProjecto userProvinciaProjecto){
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
@@ -107,7 +103,18 @@ public class UserController {
 
         //}
 
-        return "redirect:/listar/usuarios";
+        //return "redirect:/listar/usuarios";
+        return "redirect:/projectos/usuarios/"+user;
     }
+
+    @GetMapping("/provincia/projectos/{id}")
+    public String apagarProvinciaProjectos(@PathVariable("id") Long id){
+
+        UserProvinciaProjecto idUserProvProj = userProvinciaProjectoRepository.buscarPorId(id);
+        userProvinciaProjectoRepository.delete(idUserProvProj);
+
+        return "redirect:/projectos/usuarios/"+idUserProvProj.getUser().getId();
+    }
+
 
 }

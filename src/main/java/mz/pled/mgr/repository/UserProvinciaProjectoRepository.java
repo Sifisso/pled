@@ -11,4 +11,6 @@ public interface UserProvinciaProjectoRepository extends CrudRepository<UserProv
 
     @Query(value="(select * from UserProvinciaProjecto WHERE user_id=:id)", nativeQuery=true)
     List<UserProvinciaProjecto> buscarUserProjectosProvincias(Long id);
+    @Query(value="(select * from UserProvinciaProjecto WHERE id=:id)", nativeQuery=true)
+    UserProvinciaProjecto buscarPorId(Long id);
 }
