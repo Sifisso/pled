@@ -46,11 +46,11 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
-                        <th class="w-1">No.</th>
+                        <th style="width:5%">No.</th>
                         <th>Designação</th>
                         <th style="width:10%">Editar</th>
-                        <th style="width:10%">Actividade</th>
-                        <th style="width:10%">Projecto</th>
+                        <th style="width:13%">Actividade</th>
+                        <th style="width:13%">Projecto</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -59,19 +59,26 @@
                         <td th:text="${p.id}"><span class="text-muted">01401</span></td>
                          <td th:text="${p.designacao}">Auxiliar Contábil</td>
                         	<td align="center">
-	                            <a th:href="@{/editar/projecto/{id} (id=${p.id})}">
-	                                <i style="color: green; width: 90px;" aria-hidden="true" title="Editar" class="fa fa-edit"></i>
+	                            <a th:href="@{/editar/projecto/{id} (id=${p.id})}" class="btn btn-primary" role="button" >
+	                                <span class="oi oi-print" title="Cadastro" aria-hidden="true"></span>
+	                                <i class="fa fa-edit"></i>
+	                                Editar
 	                            </a>
+	                            
                             </td>
                             
-                            <td align="center">
-	                            <a th:href="@{/actividade/registar/{id} (id=${p.id})}">
-	                                <i style="color: green; width: 120px;"  aria-hidden="true" title="Actividade" class="fa fa-cogs"></i>
+                            <td>
+	                            <a th:href="@{/actividade/registar/{id} (id=${p.id})}" class="btn btn-primary" role="button">
+	                                <span class="oi oi-print" title="Cadastro" aria-hidden="true"></span>
+	                                <i class="fa fa-cogs"></i>
+	                                Configurar
 	                            </a>
                             </td>
-                            <td align="center">
-	                            <a th:href="@{/provincia/registarr/{id} (id=${p.id})}">
-	                                <i style="color: green; width: 90px;"  aria-hidden="true" title="Projecto" class="fa fa-cogs"></i>
+                            <td>
+	                            <a th:href="@{/provincia/registarr/{id} (id=${p.id})}"  class="btn btn-primary" role="button">
+	                                <span class="oi oi-print" title="Cadastro" aria-hidden="true"></span>
+	                                <i class="fa fa-cogs"></i>
+	                                Configurar
 	                            </a>
                         	</td>
                         
@@ -86,11 +93,11 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <th class="w-1">No.</th>
+                        <th style="width:5%">No.</th>
                         <th>Designação</th>
                          <th style="width:10%"></th>
-                         <th style="width:10%"></th>
-                         <th style="width:10%"></th>
+                         <th style="width:13%"></th>
+                         <th style="width:13%"></th>
                     </tr>
                     </tfoot>
                     </table>
