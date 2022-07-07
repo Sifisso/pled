@@ -1,0 +1,76 @@
+<div th:if="${success} != null">
+<script th:inline="javascript">
+
+/* swal("Parabens!","" + "<strong th:text='${success}'></strong>" +"", "success"); */
+
+
+/*<![CDATA[*/
+
+var messagem = /*[[${ocorrenciaa.grmStamp}]]*/"";
+
+var sucesso = /*[[${success}]]*/"";
+
+/*]]>*/
+
+
+Swal.fire({
+//text: 'Ocorrencia',
+html: sucesso + " <br> "+"<br>"+"<span style=color:red; font-weight:bolder>"+sucesso+"</span>",
+icon: 'success',
+confirmButtonText: 'Ok'
+})
+
+
+</script>
+</div>
+
+<div th:if="${fail} != null">
+
+<script th:inline="javascript">
+
+/* swal("Parabens!","" + "<strong th:text='${success}'></strong>" +"", "success"); */
+
+
+/*<![CDATA[*/
+
+var messagem = /*[[${ocorrenciaa.grmStamp}]]*/"";
+
+var sucesso = /*[[${success}]]*/"";
+
+/*]]>*/
+
+
+Swal.fire({
+//text: 'Preocupacao submetida com sucesso',
+html: sucesso + " <br> "+" NOTA: Anote o seu código para o acompanhamento da sua ocorrência: <br>"+"<span style=color:red; font-weight:bolder>"+messagem+"</span>",
+icon: 'success',
+confirmButtonText: 'Ok'
+})
+
+
+</script>
+
+</div>
+
+
+<div th:if="${exception} != null">
+
+<script th:inline="javascript">
+
+/*<![CDATA[*/
+
+var exception = /*[[${exception}]]*/"";
+var titulo = /*[[${titulo}]]*/"";
+
+/*]]>*/
+
+swal({
+title: ""+titulo,
+text: ""+exception,
+icon: "warning",
+button: "Esta bem!",
+});
+
+</script>
+
+</div>
