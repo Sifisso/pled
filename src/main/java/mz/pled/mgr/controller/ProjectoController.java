@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import mz.pled.mgr.domain.Actividade;
 import mz.pled.mgr.domain.Projecto;
 import mz.pled.mgr.domain.ProvinciaProjecto;
+import mz.pled.mgr.repository.ActividadeRepository;
 import mz.pled.mgr.repository.ProjectoRepository;
 import mz.pled.mgr.repository.ProvinciaProjectoRepository;
 import mz.pled.mgr.repository.ProvinciaRepository;
@@ -20,6 +22,10 @@ public class ProjectoController {
 	
 	@Autowired
     private ProjectoRepository projectoRepository;
+	
+	
+	@Autowired
+    private ActividadeRepository actividadeRepository;
 
 	@Autowired
     private ProvinciaRepository provinciaRepository;
@@ -75,8 +81,15 @@ public class ProjectoController {
 	   public String vistaConfigActividade(@PathVariable("id") Long id, ModelMap model) {
 		  
 		  model.addAttribute("projecto",projectoRepository.findById(id));
+		  model.addAttribute("projectoid", id);
+		  model.addAttribute("actividades",actividadeRepository.bucarPorProjecto(id));
+		  model.addAttribute("actividade", new Actividade());
+		  model.addAttribute("projectoNome",projectoRepository.buscarPorIdProjecto(id));
 		  
-		  return "parametrizacao/actividade/config";
+		  model.addAttribute("projectos",projectoRepository.findAll());
+		  
+		  
+		  return "parametrizacao/projecto/addActividade";
 		  
 		  
 	  }
@@ -132,6 +145,17 @@ public class ProjectoController {
 	      provinciaProjectoRepository.save(provinciaProjecto);
 	      
 	        return "redirect:/provincia/registarr/"+projecto1.getId();
+	    }
+	  
+	  
+	  @PostMapping("/cadastrarr/actividade")
+	    public String actividadeCadastro (Actividade actividade,@RequestParam("projecto") long projecto, RedirectAttributes attr) {
+
+	      Projecto projecto1 = projectoRepository.buscarPorIdProjecto(projecto);
+	      actividade.setProjecto(projecto1);
+	      actividadeRepository.save(actividade);
+	      
+	        return "redirect:/actividade/registar/"+projecto1.getId();
 	    }
 
 	  

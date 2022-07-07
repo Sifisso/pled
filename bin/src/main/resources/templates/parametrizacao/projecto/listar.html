@@ -48,9 +48,9 @@
                     <tr>
                         <th style="width:5%">No.</th>
                         <th>Designação</th>
-                        <th style="width:10%"></th>
-                        <th style="width:13%"></th>
-                        <th style="width:13%"></th>
+                        <th style="width:10%">Editar</th>
+                        <th style="width:13%">Actividade</th>
+                        <th style="width:13%">Projecto</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,14 +71,14 @@
 	                            <a th:href="@{/actividade/registar/{id} (id=${p.id})}" class="btn btn-primary" role="button">
 	                                <span class="oi oi-print" title="Cadastro" aria-hidden="true"></span>
 	                                <i class="fa fa-cogs"></i>
-	                                Actividade
+	                                Configurar
 	                            </a>
                             </td>
                             <td>
 	                            <a th:href="@{/provincia/registarr/{id} (id=${p.id})}"  class="btn btn-primary" role="button">
 	                                <span class="oi oi-print" title="Cadastro" aria-hidden="true"></span>
 	                                <i class="fa fa-cogs"></i>
-	                                Província
+	                                Configurar
 	                            </a>
                         	</td>
                         
@@ -91,7 +91,7 @@
                     
                     
                     </tbody>
-                   <!-- <tfoot>
+                    <tfoot>
                     <tr>
                         <th style="width:5%">No.</th>
                         <th>Designação</th>
@@ -99,7 +99,7 @@
                          <th style="width:13%"></th>
                          <th style="width:13%"></th>
                     </tr>
-                    </tfoot>-->
+                    </tfoot>
                     </table>
                         </div>
 

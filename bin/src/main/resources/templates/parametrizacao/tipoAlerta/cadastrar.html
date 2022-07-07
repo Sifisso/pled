@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout}" Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+<meta charset="utf-8">
+
+</head>
+<body>
+
+<div layout:fragment="corpo">
+
+
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Cadastrar Tipo de Alerta</h5>
+                    <div class="ibox-tools">
+                        <h5>
+                            <a th:href="@{/listar/alerta}">
+                                <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Listar Tipos de Alerta</button>
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form th:object="${tipoAlerta}"  th:action="@{/cadastrar/tipoAlerta}" method="post">
+
+
+                        <div class="row">
+
+                            <div class="col">
+                                <label class="col-form-label">Designação</label>
+                                <div class="input-group edit">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" th:field="*{designacao}" required placeholder="Descreva a designação do tipo de alerta aqui..." >
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5">
+                                  <button class="btn btn-primary btn-sm" type="submit" >
+                                      <i class="fa fa-save"></i> Gravar Tipo de Alerta
+                                  </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>
