@@ -31,7 +31,7 @@ public class MgrApplication extends SpringBootServletInitializer {
 		mailSender.setPort(587);
 
 		mailSender.setUsername("pled.mgr@gmail.com");
-		mailSender.setPassword("bjsbxnezdpkfynaf");
+		mailSender.setPassword("yuhcmmfkejxvvlpw");
 
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.transport.protocol", "smtp");

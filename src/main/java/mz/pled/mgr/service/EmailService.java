@@ -36,7 +36,7 @@ public class EmailService {
         helper.setSubject(assunto);
         helper.setFrom("pled.mgr@gmail.com");
 
-        helper.addInline("logo", new ClassPathResource("/static/image/logoa.png"));
+        helper.addInline("logo", new ClassPathResource("/static/img/Emblem_of_Mozambique.svg.png"));
 
         mailSender.send(message);
     }
