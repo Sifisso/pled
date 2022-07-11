@@ -25,12 +25,20 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "email")
 	private String email;
+	
+	
+	@Column(name = "endereco")
+	private String endereco;
 
 	@Column(name = "assunto")
 	private String assunto;
 
 	@Column(name = "sexo")
 	private String sexo;
+	
+	@Column(name = "data_ocorrencia")
+	private String dataOcorrencia;
+
 
 	@Column(name = "nivel")
 	private int nivel;
@@ -171,5 +179,21 @@ public class Ocorrencia extends AbstractEntity{
 		this.categoria = categoria;
 	}
 
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getDataOcorrencia() {
+		return dataOcorrencia;
+	}
+
+	public void setDataOcorrencia(String dataOcorrencia) {
+		this.dataOcorrencia = dataOcorrencia;
+	}
+	
 
 }

@@ -49,12 +49,45 @@
     <link th:href="@{/css/plugins/touchspin/jquery.bootstrap-touchspin.min.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/dualListbox/bootstrap-duallistbox.min.css}" rel="stylesheet">
+    
+    <link th:href="@{/css/plugins/dropzone/basic.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/dropzone/dropzone.css}" rel="stylesheet">
+    
+<script type="text/javascript">
+
+$(document).ready(function(){
+$('#comboboxProvincias').on('change',function(){
+
+var provinciaId = $(this).val();
+
+alert(provinciaId);
+
+$.ajax({
+type: 'GET',
+
+url: 'http://localhost:8080/projecto/'+provinciaId,
+
+success: function (result){
+var result = JSON.parse(result);
+var s = "<option value=''>Selecione o Distrito... </option>";
+for(var i=0; i< result.length; i++){
+s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+}
+
+
+$('#comoboxProjecto').html(s);
+}
+});
+
+});
+});
+</script>    
   
   
 </head>
 <body class="landing-page no-skin-config">
-<div class="navbar-wrapper">
-  <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+<div style="background-color: #fff;" class="navbar-wrapper">
+  <nav style="background-color: #fff;" class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
     <div class="container">
     
     <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
@@ -89,82 +122,109 @@
                                 Os campos marcados com <strong style="color: red;">*</strong>  são de preenchimento obrigatório
                             </p>
 
-                            <form id="form" th:action="@{/preCadastrar}" th:object="${ocorrencia}" method="POST" action="#" class="wizard-big">
+                            <form id="form" th:action="@{/precadastrar/ocorrencia}" th:object="${ocorrencia}" method="POST" action="#" class="wizard-big">
                                 <h1>Dados da Ocorrência</h1>
                                 <fieldset>
                                     <h2>Dados da Ocorrência</h2>
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                        
-                                            
+                                        <div class="col-6 col-sm-6">
                                             <div class="form-group" id="data_2">
 				                                <label class="font-normal">Data da Ocorrência <strong style="color: red;">*</strong> </label>
 				                                <div class="input-group date">
 				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" >
 				                                </div>
 				                            </div>
+                                        </div>
+                                        
+                                        <div class="col-6 col-sm-6">
 				                            
 				                            <div class="form-group">
-															<label  class="form-label">Província <strong style="color:red">*</strong></label>
-															<select  required="Obrigatorio"  class="form-control custom-select form-select" th:field="*{provinciaActividade}" >
-																<option value="">Selecione a Província...</option>
-																<option th:each="p : ${provincias}"
-																		th:value="${p.provincia.id}" th:text="${p.provincia.designacao}">Maputo</option>
-															</select>
-														</div>
-														
-														<div class="form-group">
-															<label  class="form-label">Projecto <strong style="color:red">*</strong></label>
-															<select  required="Obrigatorio"  class="form-control custom-select form-select" th:field="*{provinciaActividade}" >
-																<option value="">Selecione a Projecto...</option>
-																<option th:each="p : ${projectos}"
-																		th:value="${p.projecto.id}" th:text="${p.projecto.designacao}">Maputo</option>
-															</select>
-														</div>
+												<label id="comboboxProvincias"  class="form-label">Província <strong style="color:red">*</strong></label>
+												<select id="comboboxProvincias"  required="Obrigatorio"  class="form-control custom-select form-select" th:field="*{provinciaProjecto}" >
+													<option value="">Selecione a Província...</option>
+													<option th:each="p : ${provincias}" th:value="${p.provincia.id}" th:text="${p.provincia.designacao}">Maputo</option>
+												</select>
+											</div>
+                                        </div>
+                                        
+                                        
+											<div class="col-12 col-sm-12">
+												<div class="form-group">
+													<label  class="form-label">Projecto <strong style="color:red">*</strong></label>
+													<select id="comoboxProjecto" required class="form-control custom-select form-select" th:field="*{provinciaProjecto}" >
+														<option value="">Selecione a Projecto...</option>
+														<option th:each="p : ${projectos}" th:value="${p.projecto.id}" th:text="${p.projecto.designacao}">Maputo</option>
+													</select>
+												</div>
+											</div>
+											
+											<div class="col-12 col-sm-12">	
+											<div class="form-group">
+					                            <label class="form-label">Assunto <strong style="color:red">*</strong></label>
+					                            <div class="input-icon">
+					                                <span class="input-icon-addon">
+					                                <i class="fe fe-edit-2"></i>
+					                                </span>
+					                                <textarea type="text" th:field="*{designacao}" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
+					                            </div>
+					                        </div>	
+											</div>
                                             
                                            
-                                        </div>
                                     </div>
 
                                 </fieldset>
-                                <h1>Profile</h1>
+                                <h1>Utente</h1>
                                 <fieldset>
-                                    <h2>Profile Information</h2>
+                                    <h2>Dados do Utente</h2>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>First name *</label>
-                                                <input id="name" name="name" type="text" class="form-control required">
+                                                <label>Nome </label>
+                                                <input th:field="*{nome}" id="name" name="name" type="text" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label>Last name *</label>
-                                                <input id="surname" name="surname" type="text" class="form-control required">
+                                                <label>Telemóvel </label>
+                                                <input th:field="*{telefone}" id="surname" name="surname" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>Email *</label>
-                                                <input id="email" name="email" type="text" class="form-control required email">
+                                                <label>Email </label>
+                                                <input th:field="*{email}" id="email" name="email" type="text" class="form-control email">
                                             </div>
                                             <div class="form-group">
-                                                <label>Address *</label>
-                                                <input id="address" name="address" type="text" class="form-control">
+                                                <label>Endereço </label>
+                                                <input  th:field="*{endereco}" id="address" name="address" type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                 </fieldset>
 
-                                <h1>Warning</h1>
+                                <h1>Anexos</h1>
                                 <fieldset>
-                                    <div class="text-center" style="margin-top: 120px">
-                                        <h2>You did it Man :-)</h2>
-                                    </div>
+                                        <h2>Dados dos Anexos</h2>
+                                    <div class="input-group">
+								        <div class="custom-file">
+								            <input id="inputGroupFile02" type="file" multiple class="custom-file-input">
+								            <label class="custom-file-label" for="inputGroupFile02">Anexar</label>
+								        </div>
+								    </div>
+								    
+								    <div class="form-group">
+                                                <label>Descrição </label>
+                                                <input id="address" name="address" type="text" class="form-control">
+                                            </div>
+                                    
                                 </fieldset>
 
-                                <h1>Finish</h1>
+                                <h1>Terminar</h1>
                                 <fieldset>
-                                    <h2>Terms and Conditions</h2>
-                                    <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                                     <div class="text-center">
+                                            <h3>Certifique o preenchimento dos campos antes  de Finalizar.</h3>
+                                            <h3>Após clicar em confirmar, não poderá alterar os dados</h3>
+                                            <h3>Guarde o código que lhe será fornecido, para a consulta da ocorrência após confirmar o registo.</h3>
+                                        </div>
                                 </fieldset>
                             </form>
                         </div>
@@ -241,6 +301,63 @@
 
     <!-- Jquery Validate -->
     <script th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
+    
+    <!-- BS custom file -->
+    <script th:src="@{/js/plugins/bs-custom-file/bs-custom-file-input.min.js}"></script>
+
+    <!-- DROPZONE -->
+    <script th:src="@{/js/plugins/dropzone/dropzone.js}"></script>
+
+    <!-- CodeMirror -->
+    <script th:src="@{/js/plugins/codemirror/codemirror.js}"></script>
+    <script th:src="@{/js/plugins/codemirror/mode/xml/xml.js}"></script>
+    
+    <script>
+    
+    
+    $(document).ready(function () {
+    bsCustomFileInput.init()
+	}) 
+    
+        Dropzone.options.dropzoneForm = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            dictDefaultMessage: "<strong>Drop files here or click to upload. </strong></br> (This is just a demo dropzone. Selected files are not actually uploaded.)"
+        };
+
+        $(document).ready(function(){
+
+            bsCustomFileInput.init()
+
+            CodeMirror.fromTextArea(document.getElementById("code1"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            CodeMirror.fromTextArea(document.getElementById("code2"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            CodeMirror.fromTextArea(document.getElementById("code3"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            CodeMirror.fromTextArea(document.getElementById("code4"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            CodeMirror.fromTextArea(document.getElementById("code5"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+           
+
+       });
+    </script>
    
    
 <script type="text/javascript">

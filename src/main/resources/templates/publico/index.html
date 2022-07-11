@@ -18,8 +18,80 @@
   <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link th:href="@{/css/style.css}" rel="stylesheet">
+  
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
 </head>
 <body id="page-top" class="landing-page no-skin-config">
+
+
+
+
+<div >
+            <div th:if="${sucesso} != null" >
+                <script th:inline="javascript">
+
+                    /*<![CDATA[*/
+
+                    var sucesso = /*[[${sucesso}]]*/"";
+
+                    /*]]>*/
+
+                    swal({
+                      title: "Atencao!",
+                      text: ""+sucesso,
+                      icon: "success",
+                      button: "Esta bem!",
+                    });
+
+                </script>
+
+            </div>
+
+            <div th:if="${erro} != null"  >
+
+                <script th:inline="javascript">
+
+                    /*<![CDATA[*/
+
+                    var erro = /*[[${erro}]]*/"";
+
+                    /*]]>*/
+
+                    swal({
+                      title: "Atencao!",
+                      text: ""+erro,
+                      icon: "danger",
+                      button: "Esta bem!",
+                    });
+
+                </script>
+
+            </div>
+
+            <div th:if="${excessao} != null"  >
+
+                <script th:inline="javascript">
+
+                    /*<![CDATA[*/
+
+                    var excessao = /*[[${excessao}]]*/"";
+
+                    /*]]>*/
+
+                    swal({
+                      title: "Atencao!",
+                      text: ""+excessao,
+                      icon: "warning",
+                      button: "Esta bem!",
+                    });
+
+                </script>
+
+            </div>
+        </div>
+
+
 <div class="navbar-wrapper">
   <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
     <div class="container">
