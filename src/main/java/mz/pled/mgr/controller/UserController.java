@@ -112,8 +112,6 @@ public class UserController {
 
             if(userRepository.save(user)!=null){
 
-                model.addAttribute("sucesso","Utilizador Cadastrado com sucesso!");
-                attr.addAttribute("sucesso","Utilizador Cadastrado com sucesso!");
                 System.out.println("Utilizador Cadastrado com sucesso!");
 
                 String descricao = "Caro(a) "+user.getNome()+" foi registado com utilizador "+user.getUsername()+" a sua senha é: "+codigo;
@@ -121,22 +119,22 @@ public class UserController {
                 String destino = user.getEmail();
                 String assunto = "Usuario Cadastrado";
 
-                emailService.enviarEmail(descricao, nome, destino, assunto);
+                attr.addFlashAttribute("sucesso", "Utilizador Cadastrado com sucesso! ");
+
+               // emailService.enviarEmail(descricao, nome, destino, assunto);
 
             }else{
-                model.addAttribute("erro","Erro ao Cadastrar!");
-                attr.addAttribute("erro","Erro ao Cadastrar!");
+                attr.addFlashAttribute("erro", "Erro ao Cadastrar! ");
                 System.out.println("Erro ao Cadastrar!");
             }
 
         }catch(Exception ex){
-               model.addAttribute("excessao","Ocorreu o seguinte erro: "+ex.getMessage());
-               attr.addAttribute("excessao","Ocorreu o seguinte erro: "+ex.getMessage());
+               attr.addFlashAttribute("excessao", "Ocorreu o seguinte erro: "+ex.getMessage());
                System.out.println("Ocorreu o seguinte erro: "+ex.getMessage());
         }
 
-        //return "redirect:/listar/usuarios";
-        return "usuarios/cadastrar";
+        return "redirect:/listar/usuarios";
+        //return "usuarios/listar";
     }
     @PostMapping("/user/projecto/provincia")
     public String userProjectoProvincia(UserProvinciaProjecto userProvinciaProjecto, RedirectAttributes attr, @RequestParam("user") long user){
@@ -144,31 +142,65 @@ public class UserController {
        // for(long projecto: projectos) {
 
             //ProvinciaProjecto provinciaProjecto = projectoService.buscarPorId(projecto);
-            User user1 = userRepository.buscarPorId(user);
+            //User user1 = userRepository.buscarPorId(user);
 
            // userProvinciaProjecto.setProvinciaProjecto(provinciaProjecto);
-            userProvinciaProjecto.setUser(user1);
-            userProvinciaProjectoRepository.save(userProvinciaProjecto);
+           // userProvinciaProjecto.setUser(user1);
+           // userProvinciaProjectoRepository.save(userProvinciaProjecto);
 
         //}
+
+        try {
+
+            User user1 = userRepository.buscarPorId(user);
+            userProvinciaProjecto.setUser(user1);
+            userProvinciaProjectoRepository.save(userProvinciaProjecto);
+            attr.addFlashAttribute("sucesso", "Provincia Removido com Sucesso! ");
+
+        }catch (Exception ex){
+
+            attr.addFlashAttribute("excessao", "Ocorreu o seguinte erro: "+ex.getMessage());
+        }
+
+
 
         //return "redirect:/listar/usuarios";
         return "redirect:/projectos/usuarios/"+user;
     }
 
     @GetMapping("/provincia/projectos/{id}")
-    public String apagarProvinciaProjectos(@PathVariable("id") Long id){
+    public String apagarProvinciaProjectos(@PathVariable("id") Long id, RedirectAttributes attr){
 
         UserProvinciaProjecto idUserProvProj = userProvinciaProjectoRepository.buscarPorId(id);
-        userProvinciaProjectoRepository.delete(idUserProvProj);
+
+        try {
+
+            userProvinciaProjectoRepository.delete(idUserProvProj);
+            attr.addFlashAttribute("sucesso", "Projecto Removido com Sucesso! ");
+
+        }catch (Exception ex){
+
+            attr.addFlashAttribute("excessao", "Ocorreu o seguinte erro: "+ex.getMessage());
+        }
+
+
 
         return "redirect:/projectos/usuarios/"+idUserProvProj.getUser().getId();
     }
     @GetMapping("/apagar/usuarios/{id}")
-    public String apagarUtilizador(@PathVariable("id") Long id){
+    public String apagarUtilizador(@PathVariable("id") Long id, RedirectAttributes attr){
 
         User user1 = userRepository.buscarPorId(id);
-        userRepository.delete(user1);
+
+        try{
+
+            userRepository.delete(user1);
+            attr.addFlashAttribute("sucesso", "Utilizador Removido com Sucesso! ");
+
+        }catch (Exception ex){
+
+            System.out.println("Ocorreu o seguinte erro: "+ex.getMessage());
+        }
 
         return "redirect:/listar/usuarios";
     }

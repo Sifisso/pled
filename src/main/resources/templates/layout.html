@@ -58,80 +58,73 @@
         </div>
             <footer th:replace="/fragmentos/footer"></footer>
 
-            <div >
-                <div th:if="${sucesso} != null" >
-                    <script th:inline="javascript">
+        </div>
 
-/*<![CDATA[*/
+        <div >
+            <div th:if="${sucesso} != null" >
+                <script th:inline="javascript">
 
-var sucesso = /*[[${sucesso}]]*/"";
+                    /*<![CDATA[*/
 
-/*]]>*/
+                    var sucesso = /*[[${sucesso}]]*/"";
 
+                    /*]]>*/
 
+                    swal({
+                      title: "Atencao!",
+                      text: ""+sucesso,
+                      icon: "success",
+                      button: "Esta bem!",
+                    });
 
-swal({
-  title: "Atencao!",
-  text: ""+excessao,
-  icon: "success",
-  button: "Esta bem!",
-});
+                </script>
 
-
-</script>
-                </div>
-
-                <div th:if="${erro} != null"  >
-
-                    <script th:inline="javascript">
-
-/*<![CDATA[*/
-
-var erro = /*[[${erro}]]*/"";
-
-/*]]>*/
-
-swal({
-  title: "Atencao!",
-  text: ""+erro,
-  icon: "danger",
-  button: "Esta bem!",
-});
-
-
-</script>
-
-                </div>
-
-                <div th:if="${excessao} != null"  >
-
-                    <script th:inline="javascript">
-
-/*<![CDATA[*/
-
-var excessao = /*[[${excessao}]]*/"";
-
-/*]]>*/
-
-swal({
-  title: "Atencao!",
-  text: ""+excessao,
-  icon: "warning",
-  button: "Esta bem!",
-});
-
-</script>
-
-                </div>
             </div>
 
+            <div th:if="${erro} != null"  >
+
+                <script th:inline="javascript">
+
+                    /*<![CDATA[*/
+
+                    var erro = /*[[${erro}]]*/"";
+
+                    /*]]>*/
+
+                    swal({
+                      title: "Atencao!",
+                      text: ""+erro,
+                      icon: "danger",
+                      button: "Esta bem!",
+                    });
+
+                </script>
+
+            </div>
+
+            <div th:if="${excessao} != null"  >
+
+                <script th:inline="javascript">
+
+                    /*<![CDATA[*/
+
+                    var excessao = /*[[${excessao}]]*/"";
+
+                    /*]]>*/
+
+                    swal({
+                      title: "Atencao!",
+                      text: ""+excessao,
+                      icon: "warning",
+                      button: "Esta bem!",
+                    });
+
+                </script>
+
+            </div>
         </div>
         
-        
-        
     </div>
-
-    
 
     <!-- Mainly scripts -->
     <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
@@ -182,7 +175,13 @@ swal({
     <script th:src="@{js/plugins/summernote/summernote-bs4.js}"></script>
     
     <!-- Jquery Validate -->
-    <script th:src="@{js/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
+
+    <script th:src="@{pp/js/jquery.validate.js}"></script>
+
+    <div class="row" layout:fragment="js">
+
+    </div>
 
 
     <script>
@@ -192,7 +191,6 @@ swal({
         });
     </script>
 
-    <script>
 
         // Upgrade button class name
         $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-white btn-sm';
