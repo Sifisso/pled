@@ -10,10 +10,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ocorrencia")
 public class Ocorrencia extends AbstractEntity{
-	
-	
+
 	@Column(name = "designacao")
 	private String designacao;
+
+	@Column(name = "nome")
+	private String nome;
+
+	@Column(name = "codigo")
+	private String codigo;
+
+	@Column(name = "telefone")
+	private String telefone;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "assunto")
+	private String assunto;
+
+	@Column(name = "sexo")
+	private String sexo;
+
+	@Column(name = "nivel")
+	private int nivel;
 
 	@ManyToOne
 	@JoinColumn(name = "provincia_actividade_id")
@@ -34,14 +54,62 @@ public class Ocorrencia extends AbstractEntity{
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
-	
-	@ManyToOne
-	@JoinColumn(name = "anexo_id")
-	private AnexoOcorrencia anexo;
-	
-	@ManyToOne
-	@JoinColumn(name = "resolucao_id")
-	private Resolucao resolucao;
+
+	public int getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAssunto() {
+		return assunto;
+	}
+
+	public void setAssunto(String assunto) {
+		this.assunto = assunto;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
 	public String getDesignacao() {
 		return designacao;
@@ -91,19 +159,4 @@ public class Ocorrencia extends AbstractEntity{
 		this.categoria = categoria;
 	}
 
-	public AnexoOcorrencia getAnexo() {
-		return anexo;
-	}
-
-	public void setAnexo(AnexoOcorrencia anexo) {
-		this.anexo = anexo;
-	}
-
-	public Resolucao getResolucao() {
-		return resolucao;
-	}
-
-	public void setResolucao(Resolucao resolucao) {
-		this.resolucao = resolucao;
-	}
 }
