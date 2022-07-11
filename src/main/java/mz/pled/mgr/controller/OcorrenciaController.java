@@ -57,7 +57,6 @@ public class OcorrenciaController {
         model.addAttribute("provincias", provinciaProjectoRepository.findAll());
         model.addAttribute("tipoOcorrencias", tipoOcorrenciaRepository.findAll());
         model.addAttribute("tipoAlertas", tipoAlertaRepository.findAll());
-        model.addAttribute("tipoOcorrencias", tipoAlertaRepository.findAll());
         model.addAttribute("nivelResolucoes", responsabilidadeRepository.findAll());
         model.addAttribute("canaisEntradas", canalEntradaRepository.findAll());
         model.addAttribute("categorias", categoriaRepository.findAll());
