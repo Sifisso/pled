@@ -75,8 +75,8 @@
                                 <label class="col-form-label">Projecto</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{nivel}"  >
-                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    <select class="form-control m-b" style="width:90%" name="projecto" th:field="*{projecto}"  >
+                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.projecto.designacao}"></option>
                                     </select>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                             <div class="col-md-6">
                                 <label class="col-form-label">Provincia</label>
                                 <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{provinciaActividade}"  >
-                                    <option th:each="p : ${Provincias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    <option th:each="p : ${Provincias}" th:value="${p.id}" th:text="${p.provinciaActividade.provincia.designacao}"></option>
                                 </select>
 
                             </div>
@@ -97,8 +97,8 @@
                                 <label class="col-form-label">Canal de Entrada</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{nivel}"  >
-                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{canalEntrada}"  >
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.canalEntrada.designacao}"></option>
                                     </select>
                                 </div>
                             </div>

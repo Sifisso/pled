@@ -8,12 +8,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "canal_entrada")
 public class CanalEntrada extends AbstractEntity{
-	
-	
+
 	@Column(name = "designacao")
 	private String designacao;
-	
-
 
 	public String getDesignacao() {
 		return designacao;

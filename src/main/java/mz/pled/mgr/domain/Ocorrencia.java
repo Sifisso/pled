@@ -55,6 +55,18 @@ public class Ocorrencia extends AbstractEntity{
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
+	@ManyToOne
+	@JoinColumn(name = "projecto_id")
+	private Projecto projecto;
+
+	public Projecto getProjecto() {
+		return projecto;
+	}
+
+	public void setProjecto(Projecto projecto) {
+		this.projecto = projecto;
+	}
+
 	public int getNivel() {
 		return nivel;
 	}
