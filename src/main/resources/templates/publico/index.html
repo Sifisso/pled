@@ -12,12 +12,12 @@
   <title>MEF - Ministério de Economia e Finanças</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
   <!-- Animation CSS -->
-  <link href="css/animate.css" rel="stylesheet">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link th:href="@{/css/animate.css}" rel="stylesheet">
+  <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet">
+  <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body id="page-top" class="landing-page no-skin-config">
 <div class="navbar-wrapper">
@@ -36,8 +36,8 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="nav-link page-scroll" href="#page-top">Página principal</a></li>
-          <li><a class="nav-link page-scroll" href="#features">Apresentar preocupação</a></li>
+          <li><a class="nav-link page-scroll" th:href="@{/}">Página principal</a></li>
+          <li><a class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}">Apresentar preocupação</a></li>
           <li><a class="nav-link page-scroll" href="#team">Acompanhar preocupação</a></li>
           <li><a class="nav-link page-scroll" href="#testimonials">Estatísticas</a></li>
           <li style="padding-left: 50px;"><a class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
@@ -66,7 +66,7 @@
           </p>
         </div>
         <div class="carousel-image wow zoomIn">
-          <img src="img/landing/laptop.png" alt="laptop"/>
+          <img src="img/landing/image1.jpeg" alt="laptop"/>
         </div>
       </div>
       <!-- Set background for slide in css -->
@@ -629,16 +629,16 @@
 </section>
 
 <!-- Mainly scripts -->
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script th:src="@{js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{js/popper.min.js}"></script>
+<script th:src="@{js/bootstrap.js}"></script>
+<script th:src="@{js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 
 <!-- Custom and plugin javascript -->
-<script src="js/inspinia.js"></script>
-<script src="js/plugins/pace/pace.min.js"></script>
-<script src="js/plugins/wow/wow.min.js"></script>
+<script th:src="@{js/inspinia.js}"></script>
+<script th:src="@{js/plugins/pace/pace.min.js}"></script>
+<script th:src="@{/js/plugins/wow/wow.min.js}"></script>
 
 
 <script>

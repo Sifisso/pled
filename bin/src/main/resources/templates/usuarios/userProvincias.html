@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout}" Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+</head>
+<body>
+
+<div layout:fragment="corpo">
+
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Provincias Alocados no Projecto: <span th:text="${projecto.designacao}"></span></h5>
+            </div>
+            <div class="ibox-content">
+
+
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Provincias</th>
+                                <th>Remover</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX"  th:each="p, index : ${projectosusers}">
+                                <td th:text="${index.count}"></td>
+                                <td th:text="${p.provinciaProjecto.provincia.designacao}"></td>
+                                <td >
+                                    <a th:href="@{/provincia/projectos/{id} (id=${p.id})}" >
+                                        <button style="background: red; color: #fff; width: 90px;" type="button" class="btn btn-sucess btn-sm">
+                                            <i  aria-hidden="true" class="fa fa-trash"></i>Remover
+                                        </button>
+                                    </a>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>

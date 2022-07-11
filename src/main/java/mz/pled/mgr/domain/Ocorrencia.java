@@ -106,4 +106,6 @@ public class Ocorrencia extends AbstractEntity{
 	public void setResolucao(Resolucao resolucao) {
 		this.resolucao = resolucao;
 	}
+	
+	
 }

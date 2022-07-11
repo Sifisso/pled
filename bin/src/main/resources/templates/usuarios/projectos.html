@@ -148,21 +148,18 @@
                                        <th>#</th>
                                        <th>Projectos</th>
                                        <th>Provincias</th>
-                                       <th>Acção</th>
                                    </tr>
                                    </thead>
                                    <tbody>
                                    <tr class="gradeX"  th:each="p, index : ${projectosusers}">
                                        <td th:text="${index.count}"></td>
                                        <td th:text="${p.provinciaProjecto.projecto.designacao}"></td>
-                                       <td th:text="${p.provinciaProjecto.provincia.designacao}"></td>
                                        <td >
-                                           <a th:href="@{/provincia/projectos/{id} (id=${p.id})}" >
-                                               <button style="background: red; color: #fff; width: 90px;" type="button" class="btn btn-sucess btn-sm">
-                                                   <i  aria-hidden="true" class="fa fa-trash-o"></i>Remover
+                                           <a th:href="@{/user/provincias/{proj}/{user} (proj=${p.provinciaProjecto.projecto.id}, user=${userid})}" >
+                                               <button style="background: blue; color: #fff; width: 90px;" type="button" class="btn btn-sucess btn-sm">
+                                                   <i  aria-hidden="true" class="fa fa-eyes"></i>Visualizar
                                                </button>
                                            </a>
-
                                        </td>
                                    </tr>
 
