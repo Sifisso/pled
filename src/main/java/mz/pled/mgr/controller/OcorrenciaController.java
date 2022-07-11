@@ -37,6 +37,9 @@ public class OcorrenciaController {
     @Autowired
     TipoAlertaRepository tipoAlertaRepository;
 
+    @Autowired
+    TipoOcorrenciaRepository tipoOcorrenciaRepository;
+
 
     @GetMapping("/listar/ocorrencias")
     public String listarOcorrencias(ModelMap model){
@@ -51,7 +54,9 @@ public class OcorrenciaController {
 
         model.addAttribute("ocorrencia", new Ocorrencia());
         model.addAttribute("projectos", projectoRepository.findAll());
-        model.addAttribute("Provincias", provinciaProjectoRepository.findAll());
+        model.addAttribute("provincias", provinciaProjectoRepository.findAll());
+        model.addAttribute("tipoOcorrencias", tipoOcorrenciaRepository.findAll());
+        model.addAttribute("tipoAlertas", tipoAlertaRepository.findAll());
         model.addAttribute("tipoOcorrencias", tipoAlertaRepository.findAll());
         model.addAttribute("nivelResolucoes", responsabilidadeRepository.findAll());
         model.addAttribute("canaisEntradas", canalEntradaRepository.findAll());

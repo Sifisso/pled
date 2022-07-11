@@ -36,8 +36,8 @@ public class Ocorrencia extends AbstractEntity{
 	private int nivel;
 
 	@ManyToOne
-	@JoinColumn(name = "provincia_actividade_id")
-	private ProvinciaProjecto provinciaActividade;
+	@JoinColumn(name = "provincia_projecto_id")
+	private ProvinciaProjecto provinciaProjecto;
 	
 	@ManyToOne
 	@JoinColumn(name = "canal_entrada_id")
@@ -131,12 +131,12 @@ public class Ocorrencia extends AbstractEntity{
 		this.designacao = designacao;
 	}
 
-	public ProvinciaProjecto getProvinciaActividade() {
-		return provinciaActividade;
+	public ProvinciaProjecto getProvinciaProjecto() {
+		return provinciaProjecto;
 	}
 
-	public void setProvinciaActividade(ProvinciaProjecto provinciaActividade) {
-		this.provinciaActividade = provinciaActividade;
+	public void setProvinciaProjecto(ProvinciaProjecto provinciaProjecto) {
+		this.provinciaProjecto = provinciaProjecto;
 	}
 
 	public CanalEntrada getCanalEntrada() {
@@ -171,24 +171,5 @@ public class Ocorrencia extends AbstractEntity{
 		this.categoria = categoria;
 	}
 
-<<<<<<< HEAD
-	public AnexoOcorrencia getAnexo() {
-		return anexo;
-	}
 
-	public void setAnexo(AnexoOcorrencia anexo) {
-		this.anexo = anexo;
-	}
-
-	public Resolucao getResolucao() {
-		return resolucao;
-	}
-
-	public void setResolucao(Resolucao resolucao) {
-		this.resolucao = resolucao;
-	}
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/Sifisso/pled.git
 }

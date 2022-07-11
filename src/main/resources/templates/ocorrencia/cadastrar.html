@@ -76,15 +76,15 @@
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
                                     <select class="form-control m-b" style="width:90%" name="projecto" th:field="*{projecto}"  >
-                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.projecto.designacao}"></option>
+                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}" ></option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="col-form-label">Provincia</label>
-                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{provinciaActividade}"  >
-                                    <option th:each="p : ${Provincias}" th:value="${p.id}" th:text="${p.provinciaActividade.provincia.designacao}"></option>
+                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{provinciaProjecto}"  >
+                                    <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
                                 </select>
 
                             </div>
@@ -98,13 +98,35 @@
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
                                     <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{canalEntrada}"  >
-                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.canalEntrada.designacao}"></option>
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="col-form-label">Tipo de Alerta</label>
+                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoAlerta}"  >
+                                    <option th:each="p : ${tipoAlertas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Categoria</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:90%" name="categoria" th:field="*{categoria}"  >
+                                        <option th:each="p : ${categorias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Tipo de Ocorrencia</label>
                                 <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoOcorrencia}"  >
                                     <option th:each="p : ${tipoOcorrencias}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                 </select>
