@@ -35,10 +35,24 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "sexo")
 	private String sexo;
+
+	@Column(name = "origem")
+	private String origem;
+
+	@Column(name = "nomeUtente")
+	private String nomeUtente;
 	
 	@Column(name = "data_ocorrencia")
 	private String dataOcorrencia;
 
+	@Column(name = "nomedorepresentantedogrupo")
+	private String nomeDoRepresentanteDoGrupo;
+
+	@Column(name = "moradaUtente")
+	private String moradaUtente;
+
+	@Column(name = "faixaEtaria")
+	private String faixaEtaria;
 
 	@Column(name = "nivel")
 	private int nivel;
@@ -67,6 +81,14 @@ public class Ocorrencia extends AbstractEntity{
 	@JoinColumn(name = "projecto_id")
 	private Projecto projecto;
 
+	public String getNomeUtente() {
+		return nomeUtente;
+	}
+
+	public void setNomeUtente(String nomeUtente) {
+		this.nomeUtente = nomeUtente;
+	}
+
 	public Projecto getProjecto() {
 		return projecto;
 	}
@@ -81,6 +103,38 @@ public class Ocorrencia extends AbstractEntity{
 
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
+	}
+
+	public String getNomeDoRepresentanteDoGrupo() {
+		return nomeDoRepresentanteDoGrupo;
+	}
+
+	public void setNomeDoRepresentanteDoGrupo(String nomeDoRepresentanteDoGrupo) {
+		this.nomeDoRepresentanteDoGrupo = nomeDoRepresentanteDoGrupo;
+	}
+
+	public String getMoradaUtente() {
+		return moradaUtente;
+	}
+
+	public void setMoradaUtente(String moradaUtente) {
+		this.moradaUtente = moradaUtente;
+	}
+
+	public String getFaixaEtaria() {
+		return faixaEtaria;
+	}
+
+	public void setFaixaEtaria(String faixaEtaria) {
+		this.faixaEtaria = faixaEtaria;
+	}
+
+	public String getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(String origem) {
+		this.origem = origem;
 	}
 
 	public String getNome() {

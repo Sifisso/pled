@@ -15,16 +15,8 @@ public class ApiOcorrenciaController {
 	
 	@Autowired
     private ProvinciaProjectoRepository provinciaProjectoRepository;
-	
-	@ResponseBody
-    @GetMapping("/projecto/{id}")
-    public String listarProjecto(@PathVariable("id") Long id){
 
-        Gson gson=new Gson();
 
-        return gson.toJson(provinciaProjectoRepository.buscarPorProjecto(id));
-    }
-    
 
 
 }

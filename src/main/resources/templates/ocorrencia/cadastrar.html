@@ -5,6 +5,263 @@
 
 <head>
 
+    <script type="text/javascript">
+function onChangeStatus(){
+var status = document.getElementById("origem");
+
+if(status.value=="individual"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+
+
+
+
+}else if(status.value=="grupo"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+document.getElementById("nrHomens").style.display="block";
+document.getElementById("nrMulheres").style.display="block";
+document.getElementById("nomeGrupo").style.display="block";
+
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("genero").style.display="none";
+
+
+}else if(status.value=="anonimo"){
+
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+}else{
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+document.getElementById("genero").style.display="none";
+document.getElementById("comunicacao").style.display="none";
+document.getElementById("contacto").style.display="none";
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("endereco").style.display="none";
+document.getElementById("email").style.display="none";
+
+}
+}
+
+
+function onChangeProjecto(){
+var estado = document.getElementById("radioProjecto");
+
+
+if(estado.value=="projecto"){
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("empreiteiroo").style.display="none";
+
+}else{
+document.getElementById("projectoo").style.display="none";
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+}
+
+function onChangeOperacao(){
+var estado = document.getElementById("radioOperacao");
+
+
+if(estado.value=="operacao"){
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("projectoo").style.display="block";
+}else{
+document.getElementById("empreiteiroo").style.display="none";
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+
+}
+
+</script>
+
+<script type="text/javascript">
+function onChangeStatus(){
+var status = document.getElementById("origem");
+
+if(status.value=="individual"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+
+
+
+
+}else if(status.value=="grupo"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+document.getElementById("nrHomens").style.display="block";
+document.getElementById("nrMulheres").style.display="block";
+document.getElementById("nomeGrupo").style.display="block";
+
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("genero").style.display="none";
+
+
+}else if(status.value=="anonimo"){
+
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+}else{
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+document.getElementById("genero").style.display="none";
+document.getElementById("comunicacao").style.display="none";
+document.getElementById("contacto").style.display="none";
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("endereco").style.display="none";
+document.getElementById("email").style.display="none";
+
+}
+}
+
+
+function onChangeProjecto(){
+var estado = document.getElementById("radioProjecto");
+
+
+if(estado.value=="projecto"){
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("empreiteiroo").style.display="none";
+
+}else{
+document.getElementById("projectoo").style.display="none";
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+}
+
+function onChangeOperacao(){
+var estado = document.getElementById("radioOperacao");
+
+
+if(estado.value=="operacao"){
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("projectoo").style.display="block";
+}else{
+document.getElementById("empreiteiroo").style.display="none";
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+
+}
+
+</script>
+
+<script type="text/javascript">
+
+
+	function onChangeIndividual(){
+		var estado = document.getElementById("individual");
+
+
+		if(estado.value=="Individual"){
+
+  			document.getElementById("nome").style.display="block";
+  			document.getElementById("faixaEtaria").style.display="block";
+  			document.getElementById("genero").style.display="block";
+
+  			document.getElementById("nomeGrupo").style.display="none";
+
+  			document.getElementById("nomereplabel").style.display="none";
+  			document.getElementById("nomelabel").style.display="block";
+
+  		}
+	}
+
+	function onChangeGrupo(){
+		var estado = document.getElementById("grupo");
+
+		if(estado.value=="Grupo/Comunidade"){
+
+			document.getElementById("faixaEtaria").style.display="block";
+  			document.getElementById("nomeGrupo").style.display="block";
+  			document.getElementById("nome").style.display="block";
+  			document.getElementById("genero").style.display="block";
+
+  			document.getElementById("nomelabel").style.display="none";
+  			document.getElementById("nomereplabel").style.display="block";
+
+
+  		}
+	}
+
+	function onChangeAnonimo(){
+
+		var estado = document.getElementById("anonimo");
+
+		if(estado.value=="Anónimo"){
+
+  			document.getElementById("genero").style.display="block";
+  			document.getElementById("faixaEtaria").style.display="block";
+
+  			document.getElementById("nome").style.display="none";
+  			document.getElementById("nomeGrupo").style.display="none";
+  		}
+
+	}
+</script>
+
+
+
+
 </head>
 <body>
 
@@ -27,122 +284,293 @@
                     <form th:object="${ocorrencia}" id="form"  th:action="@{/cadastrar/ocorrencia}" method="post">
 
 
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <label class="col-form-label">Nome</label>
-                                <div class="input-group user" >
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" style="width:90%" name="nome" th:field="*{nome}" placeholder="Nome" >
-                                </div>
-                            </div>
-
-                            <div class="col-md-6" >
-                                <label class="col-form-label">Telefone</label>
-                                <div class="input-group user" >
-                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                    <input type="number" class="form-control" style="width:90%" name="telefone" th:field="*{telefone}" placeholder="" >
-                                </div>
-                            </div>
-
+                        <div style="background: #60a18a; color: white">
+                            <h2 style=" padding: 10px; margin: 0px;" class="card-title" >Dados da Ocorrência</h2>
                         </div>
 
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <label class="col-form-label">Nivel de Resolucao</label>
-                                <div class="input-group user">
-                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{nivel}"  >
-                                        <option th:each="p : ${nivelResolucoes}" th:value="${p.id}" th:text="${p.designacao}"></option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6"  >
-                                <label class="col-form-label">Email</label>
-                                <div class="input-group user" >
-                                    <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
-                                    <input type="email" class="form-control" style="width:90%" name="email"  th:field="*{email}"  placeholder="" >
-                                </div>
-                            </div>
-
-                        </div>
 
                         <div class="row">
 
-                            <div class="col-md-6">
-                                <label class="col-form-label">Projecto</label>
-                                <div class="input-group user">
-                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:90%" name="projecto" th:field="*{projecto}"  >
-                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}" ></option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="col-form-label">Provincia</label>
-                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{provinciaProjecto}"  >
-                                    <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <label class="col-form-label">Canal de Entrada</label>
-                                <div class="input-group user">
-                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{canalEntrada}"  >
-                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="col-form-label">Tipo de Alerta</label>
-                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoAlerta}"  >
+                                <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{tipoAlerta}"  >
                                     <option th:each="p : ${tipoAlertas}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                 </select>
 
                             </div>
 
+                            <div class="col-md-4">
+                                <label class="col-form-label">Projecto</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="projecto" th:field="*{projecto}"  >
+                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}" ></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Actividades</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="projecto" th:field="*{projecto}"  >
+                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}" ></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Provincia</label>
+                                <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{provinciaProjecto}"  >
+                                    <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Distrito</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="distrito" th:field="*{canalEntrada}"  >
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Posto Administrativo</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{canalEntrada}"  >
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
                         </div>
 
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label class="col-form-label">Comunidade</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
                                 <label class="col-form-label">Categoria</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:90%" name="categoria" th:field="*{categoria}"  >
+                                    <select class="form-control m-b" style="width:70%" name="categoria" th:field="*{categoria}"  >
                                         <option th:each="p : ${categorias}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label class="col-form-label">Data da Ocorrencia</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Canal de Utilizado</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{canalEntrada}"  >
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
                                 <label class="col-form-label">Tipo de Ocorrencia</label>
-                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoOcorrencia}"  >
+                                <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{tipoOcorrencia}"  >
                                     <option th:each="p : ${tipoOcorrencias}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                 </select>
 
                             </div>
+
+                            <div class="col-md-4" >
+                                <label class="col-form-label">Telefone</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input type="number" class="form-control" style="width:70%" name="telefone" th:field="*{telefone}" placeholder="" >
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-4"  >
+                                <label class="col-form-label">Email</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
+                                    <input type="email" class="form-control" style="width:70%" name="email"  th:field="*{email}"  placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Nivel de Resolucao</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{nivel}"  >
+                                        <option th:each="p : ${nivelResolucoes}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Nome</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                </div>
+                            </div>
+
 
                         </div>
 
                         <div class="row">
 
                             <div class="col-md-12">
-                                <label class="col-form-label">Assunto</label>
+                                <label class="col-form-label">Descrição do Problema</label>
                                 <div class="input-group user">
-                                    <input type="text" class="form-control" style="width:90%" name="nome" th:field="*{assunto}" placeholder="Assunto..." >
+                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{assunto}" placeholder="Assunto..." >
                                 </div>
                             </div>
+
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div style="background: #60a18a; color: white">
+                            <h2 style=" padding: 10px; margin: 0px;" class="card-title" >Dados do Utente</h2>
+                        </div>
+                        <br>
+
+                        <input  onclick="onChangeIndividual()" id="individual" type="radio" th:field="*{origem}" value="Individual">
+                        <label for="individual"><span></span>Individual</label>
+
+                        <input onclick="onChangeGrupo()" id="grupo" type="radio" th:field="*{origem}" value="Grupo/Comunidade">
+                        <label for="grupo"><span></span>Grupo/Comunidade</label>
+
+                        <input onclick="onChangeAnonimo()" id="anonimo" type="radio" th:field="*{origem}" value="Anónimo">
+                        <label for="anonimo"><span></span>Anónimo</label>
+
+                        <br>
+
+                        <div class="row">
+                            <div style="display: none" id="nome" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Nome</label>
+                                    <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                        <input type="text" th:field="*{nomeUtente}" class="form-control" placeholder="Designação...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: none" id="nomeGrupo" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Nome Do Grupo</label>
+                                    <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                        <input type="text" th:field="*{nomeDoRepresentanteDoGrupo}" class="form-control" placeholder="Designação...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: none" id="endereco" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Morada</label>
+                                    <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                        <input type="text" th:field="*{moradaUtente}" class="form-control" placeholder="Designação...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div  style="display: none" id="genero" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Sexo</label>
+                                    <select class="form-control custom-select" th:field="*{sexo}" >
+                                        <option value=" ">Selecione...</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Feminino</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="display: none" id="faixaEtaria" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Faixa Etária</label>
+                                    <select class="form-control custom-select" th:field="*{faixaEtaria}" >
+                                        <option value=" ">Selecione...</option>
+                                        <option value="20 a 30">20 a 30</option>
+                                        <option value="30 a 40">31 a 60</option>
+                                        <option value="30 a 40">Outra</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div style="background: #60a18a; color: white">
+                            <h2 style=" padding: 10px; margin: 0px;" class="card-title" >Dados dos Anexos</h2>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+
+                                <div class="col-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                            <input type="file" name="files" class="form-control" multiple>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-icon">
+                                            <input type="text" onchange="preview()" name="descricaoAnx" placeholder="Descricao de Anexos" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
 
                         </div>
 
