@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import mz.pled.mgr.domain.CanalEntrada;
 import mz.pled.mgr.domain.Ocorrencia;
+import mz.pled.mgr.domain.TipoAlerta;
 import mz.pled.mgr.repository.OcorrenciaRepository;
 import mz.pled.mgr.repository.ProvinciaProjectoRepository;
 
@@ -53,18 +56,26 @@ public class IndexController {
     
     
     @PostMapping("/precadastrar/ocorrencia")
-    public String cadastrarUsuarios(Ocorrencia ocorrencia, RedirectAttributes attr){
+    public String cadastrarUsuarios(Ocorrencia ocorrencia, CanalEntrada canalEntrada, @RequestParam("descricaoAnx") String descricaoNexo, RedirectAttributes attr){
 
         try{
 
             int codigo = ThreadLocalRandom.current().nextInt(999, 10000);
+            
+            
+            int nivel = ocorrencia.getNivel();
+            
+            
+           if(nivel==0) {
+        	   ocorrencia.setNivel(1);
+           }
 
 
             if(ocorrenciaRepository.save(ocorrencia)!=null){
 
-                System.out.println("Utilizador Cadastrado com sucesso!");
+                System.out.println("Preocupação cadastrada com sucesso!");
 
-                attr.addFlashAttribute("sucesso", "Utilizador Cadastrado com sucesso! ");
+                attr.addFlashAttribute("sucesso", "Preocupação cadastrada com sucesso! ");
 
             }else{
                 attr.addFlashAttribute("erro", "Erro ao Cadastrar! ");

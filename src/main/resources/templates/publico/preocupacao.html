@@ -106,6 +106,7 @@ $('#comoboxProjecto').html(s);
           <li><a style="color: black;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}">Apresentar preocupação</a></li>
           <li><a style="color: black;" class="nav-link page-scroll" href="#team">Acompanhar preocupação</a></li>
           <li><a style="color: black;" class="nav-link page-scroll" href="#testimonials">Estatísticas</a></li>
+          <li><a style="color: black;" class="nav-link page-scroll" href="#testimonials">Ajuda</a></li>
           <li style="padding-left: 50px;"><a class="navbar-brand nav-link page-scroll"  role="button" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
@@ -113,121 +114,191 @@ $('#comoboxProjecto').html(s);
   </nav>
 </div>
 
-
-					<div style="margin-top: 7%; width: 80%; margin-left: auto; margin-right: auto;" class="ibox-content">
-                            <h2>
+                            
+						<div style="margin-top: 7%; width: 80%; margin-left: auto; margin-right: auto;" class="ibox-content">
+						
+						<h2>
                                 Reclamações/Sugestões de Projecto
                             </h2>
                             <p>
                                 Os campos marcados com <strong style="color: red;">*</strong>  são de preenchimento obrigatório
                             </p>
+						
+                    <form th:action="@{/precadastrar/ocorrencia}" th:object="${ocorrencia}" method="post">
 
-                            <form id="form" th:action="@{/precadastrar/ocorrencia}" th:object="${ocorrencia}" method="POST" action="#" class="wizard-big">
-                                <h1>Dados da Ocorrência</h1>
-                                <fieldset>
-                                    <h2>Dados da Ocorrência</h2>
-                                    <div class="row">
-                                        <div class="col-6 col-sm-6">
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Nome</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" style="width:90%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" >
+                                <label class="col-form-label">Telefone</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input type="number" class="form-control" style="width:90%" name="telefone" th:field="*{telefone}" placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <!--<div class="col-md-6">
+                                <label class="col-form-label">Nivel de Resolucao</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{nivel}"  >
+                                        <option th:each="p : ${nivelResolucoes}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>-->
+
+                            <div class="col-md-6"  >
+                                <label class="col-form-label">Email</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
+                                    <input type="email" class="form-control"  name="email"  th:field="*{email}"  placeholder="" >
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-sm-6">
                                             <div class="form-group" id="data_2">
 				                                <label class="font-normal">Data da Ocorrência <strong style="color: red;">*</strong> </label>
 				                                <div class="input-group date">
-				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" >
+				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" th:field="*{dataOcorrencia}" value="13/07/2022" class="form-control" >
 				                                </div>
 				                            </div>
                                         </div>
-                                        
-                                        <div class="col-6 col-sm-6">
-				                            
-				                            <div class="form-group">
-												<label id="comboboxProvincias"  class="form-label">Província <strong style="color:red">*</strong></label>
-												<select id="comboboxProvincias"  required="Obrigatorio"  class="form-control custom-select form-select" th:field="*{provinciaProjecto}" >
-													<option value="">Selecione a Província...</option>
-													<option th:each="p : ${provincias}" th:value="${p.provincia.id}" th:text="${p.provincia.designacao}">Maputo</option>
-												</select>
-											</div>
-                                        </div>
-                                        
-                                        
-											<div class="col-12 col-sm-12">
-												<div class="form-group">
-													<label  class="form-label">Projecto <strong style="color:red">*</strong></label>
-													<select id="comoboxProjecto" required class="form-control custom-select form-select" th:field="*{provinciaProjecto}" >
-														<option value="">Selecione a Projecto...</option>
-														<option th:each="p : ${projectos}" th:value="${p.projecto.id}" th:text="${p.projecto.designacao}">Maputo</option>
-													</select>
-												</div>
-											</div>
-											
-											<div class="col-12 col-sm-12">	
-											<div class="form-group">
-					                            <label class="form-label">Assunto <strong style="color:red">*</strong></label>
-					                            <div class="input-icon">
-					                                <span class="input-icon-addon">
-					                                <i class="fe fe-edit-2"></i>
-					                                </span>
-					                                <textarea type="text" th:field="*{designacao}" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
-					                            </div>
-					                        </div>	
-											</div>
-                                            
-                                           
-                                    </div>
+                            
+                            
+                            
 
-                                </fieldset>
-                                <h1>Utente</h1>
-                                <fieldset>
-                                    <h2>Dados do Utente</h2>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Nome </label>
-                                                <input th:field="*{nome}" id="name" name="name" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Telemóvel </label>
-                                                <input th:field="*{telefone}" id="surname" name="surname" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Email </label>
-                                                <input th:field="*{email}" id="email" name="email" type="text" class="form-control email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Endereço </label>
-                                                <input  th:field="*{endereco}" id="address" name="address" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-
-                                <h1>Anexos</h1>
-                                <fieldset>
-                                        <h2>Dados dos Anexos</h2>
-                                    <div class="input-group">
-								        <div class="custom-file">
-								            <input id="inputGroupFile02" type="file" multiple class="custom-file-input">
-								            <label class="custom-file-label" for="inputGroupFile02">Anexar</label>
-								        </div>
-								    </div>
-								    
-								    <div class="form-group">
-                                                <label>Descrição </label>
-                                                <input id="address" name="address" type="text" class="form-control">
-                                            </div>
-                                    
-                                </fieldset>
-
-                                <h1>Terminar</h1>
-                                <fieldset>
-                                     <div class="text-center">
-                                            <h3>Certifique o preenchimento dos campos antes  de Finalizar.</h3>
-                                            <h3>Após clicar em confirmar, não poderá alterar os dados</h3>
-                                            <h3>Guarde o código que lhe será fornecido, para a consulta da ocorrência após confirmar o registo.</h3>
-                                        </div>
-                                </fieldset>
-                            </form>
                         </div>
+                        
+
+                        <div class="row">
+                        
+                        <div class="col-md-6">
+                                <label class="col-form-label">Projecto  <strong style="color:red">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" name="projecto" th:field="*{provinciaProjecto}"  >
+                                        <option th:each="p : ${projectos}" th:value="${p.projecto.id}" th:text="${p.projecto.designacao}" ></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Provincia  <strong style="color:red">*</strong></label>
+                                <select class="form-control m-b" name="nivel" th:field="*{provinciaProjecto}"  >
+                                    <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <!--<div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Canal de Entrada</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{canalEntrada}"  >
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Tipo de Alerta</label>
+                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoAlerta}"  >
+                                    <option th:each="p : ${tipoAlertas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>-->
+
+                       <!-- <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Categoria</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:90%" name="categoria" th:field="*{categoria}"  >
+                                        <option th:each="p : ${categorias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Tipo de Ocorrencia</label>
+                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoOcorrencia}"  >
+                                    <option th:each="p : ${tipoOcorrencias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>-->
+                        
+                        <div class="row">
+                    <div class="col-md-6">
+					<label class="col-form-label">Adicionar documentos ou fotos</label>
+                        <div class="form-group">
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input type="file" name="files" class="form-control" multiple>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-sm-6">
+                    <label class="col-form-label">Descrição do anexo</label>
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <input type="text" onchange="preview()" name="descricaoAnx" placeholder="Descreva o anexo" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+
+				</div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <label class="col-form-label">Assunto  <strong style="color:red">*</strong></label>
+                                <div class="input-group user">
+                                    <textarea type="text" th:field="*{designacao}" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5">
+                                  <button class="btn btn-primary btn-sm" type="submit" >
+                                      <i class="fa fa-save"></i> Gravar Ocorrencia
+                                  </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
 
 
@@ -301,6 +372,8 @@ $('#comoboxProjecto').html(s);
 
     <!-- Jquery Validate -->
     <script th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
+    
+    <script th:src="@{pp/js/jquery.validate.js}"></script>
     
     <!-- BS custom file -->
     <script th:src="@{/js/plugins/bs-custom-file/bs-custom-file-input.min.js}"></script>
@@ -527,6 +600,39 @@ $('#comboboxPosto').html(s);
                         }
                     });
        });
+    </script>
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#form').validate({
+
+                rules:{
+
+                    nome:{
+                        required: true,
+                        maxlength: 200,
+                        minlength: 2
+                    },
+                    telefone:{
+                        required: true,
+                        maxlength: 9,
+                        minlength: 9
+                    },
+                    username:{
+                        required: true
+                    },
+                    email:{
+                        required: true,
+                        email: true
+                    }
+
+
+                }
+
+            });
+        });
     </script>
     
     <script>

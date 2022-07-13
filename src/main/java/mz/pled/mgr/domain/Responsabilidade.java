@@ -14,6 +14,10 @@ public class Responsabilidade extends AbstractEntity{
 
     @Column(name = "designacao")
     private String designacao;
+    
+    
+    @Column(name = "tipo")
+    private String tipo;
 
     public String getNivel() {
         return nivel;
@@ -30,4 +34,14 @@ public class Responsabilidade extends AbstractEntity{
     public void setDesignacao(String designacao) {
         this.designacao = designacao;
     }
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+    
+    
 }

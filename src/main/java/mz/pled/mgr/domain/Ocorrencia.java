@@ -16,7 +16,7 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "nome")
 	private String nome;
-
+	
 	@Column(name = "codigo")
 	private String codigo;
 
@@ -49,11 +49,11 @@ public class Ocorrencia extends AbstractEntity{
 	
 	@ManyToOne
 	@JoinColumn(name = "canal_entrada_id")
-	private CanalEntrada canalEntrada;
+	private CanalEntrada canalEntrada=null;
 	
 	@ManyToOne
 	@JoinColumn(name = "tipo_alerta_id")
-	private TipoAlerta tipoAlerta;
+	private TipoAlerta tipoAlerta=null;
 	
 	@ManyToOne
 	@JoinColumn(name = "tipo_ocorrencia_id")
