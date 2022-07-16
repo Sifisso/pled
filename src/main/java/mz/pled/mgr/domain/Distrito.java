@@ -10,8 +10,6 @@ import javax.persistence.Table;
 @Table(name = "distrito")
 public class Distrito extends AbstractEntity{
 
-	private static final long serialVersionUID = 1L;
-
 	@Column(name = "designacao")
 	private String designacao;	
 	

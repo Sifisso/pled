@@ -20,4 +20,11 @@ public interface ProvinciaProjectoRepository extends CrudRepository<ProvinciaPro
     @Query(value="select * from provincia_projecto where projecto_id=:id", nativeQuery=true)
     List<ProvinciaProjecto> buscarPorProjecto(Long id);
 
+    @Query(value="select * from provincia_projecto where projecto_id=:id", nativeQuery=true)
+    List<ProvinciaProjecto> buscarPorIdProjecto(long id);
+
+
+    @Query(value="select * projecto_id from provincia_projecto;", nativeQuery=true)
+    List<ProvinciaProjecto> buscarTodosProjectos();
+
 }

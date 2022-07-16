@@ -126,13 +126,8 @@ public class IndexController {
             
             String codigoo = String.valueOf(codigo);
             
-            int nivel = ocorrencia.getNivel();
-            
-            
-           if(nivel==0) {
-        	   ocorrencia.setNivel(1);
-           }
-           ocorrencia.setStamp(codigoo);
+
+            ocorrencia.setStamp(codigoo);
 
 
             if(ocorrenciaRepository.save(ocorrencia)!=null){

@@ -26,10 +26,16 @@ public class OcorrenciaController {
     ProvinciaProjectoRepository provinciaProjectoRepository;
 
     @Autowired
+    DistritoRepository distritoRepository;
+
+    @Autowired
     ResponsabilidadeRepository responsabilidadeRepository;
 
     @Autowired
     CategoriaRepository categoriaRepository;
+
+    @Autowired
+    PostoAdminitrativoRepository postoAdminitrativoRepository;
 
     @Autowired
     CanalEntradaRepository  canalEntradaRepository;
@@ -39,6 +45,9 @@ public class OcorrenciaController {
 
     @Autowired
     TipoOcorrenciaRepository tipoOcorrenciaRepository;
+
+    @Autowired
+    ActividadeRepository actividadeRepository;
 
 
     @GetMapping("/listar/ocorrencias")
@@ -56,7 +65,10 @@ public class OcorrenciaController {
         model.addAttribute("projectos", projectoRepository.findAll());
         model.addAttribute("provincias", provinciaProjectoRepository.findAll());
         model.addAttribute("tipoOcorrencias", tipoOcorrenciaRepository.findAll());
+        model.addAttribute("actividades", actividadeRepository.findAll());
         model.addAttribute("tipoAlertas", tipoAlertaRepository.findAll());
+        model.addAttribute("distritos", distritoRepository.findAll());
+        model.addAttribute("postos", postoAdminitrativoRepository.findAll());
         model.addAttribute("nivelResolucoes", responsabilidadeRepository.findAll());
         model.addAttribute("canaisEntradas", canalEntradaRepository.findAll());
         model.addAttribute("categorias", categoriaRepository.findAll());
@@ -71,6 +83,7 @@ public class OcorrenciaController {
 
             int codigo = ThreadLocalRandom.current().nextInt(999, 10000);
 
+            ocorrencia.setGrmStamp(""+codigo);
 
             if(ocorrenciaRepository.save(ocorrencia)!=null){
 

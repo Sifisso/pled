@@ -26,7 +26,7 @@
     <link th:href="@{/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
     
     
-    <linkth:href="@{/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/colorpicker/bootstrap-colorpicker.min.css}" rel="stylesheet">
 
@@ -34,13 +34,13 @@
 
     <link th:href="@{/css/plugins/switchery/switchery.css}" rel="stylesheet">
 
-    <linkth:href="@{/css/plugins/nouslider/jquery.nouislider.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/nouslider/jquery.nouislider.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/datapicker/datepicker3.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/ionRangeSlider/ion.rangeSlider.css}" rel="stylesheet">
 
-    <linkth:href="@{/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/clockpicker/clockpicker.css}" rel="stylesheet">
 
@@ -55,37 +55,39 @@
     
     <link th:href="@{/css/plugins/dropzone/basic.css}" rel="stylesheet">
     <link th:href="@{/css/plugins/dropzone/dropzone.css}" rel="stylesheet">
-    
-<script type="text/javascript">
 
-$(document).ready(function(){
-$('#comboboxProvincias').on('change',function(){
+    <script type="text/javascript">
 
-var provinciaId = $(this).val();
+    $(document).ready(function(){
+    $('#comboboxProjectos').on('change',function(){
 
-alert(provinciaId);
+    var provinciaId = $(this).val();
 
-$.ajax({
-type: 'GET',
+    // alert(provinciaId);
 
-url: 'http://localhost:8080/projecto/'+provinciaId,
+    $.ajax({
+    type: 'GET',
 
-success: function (result){
-var result = JSON.parse(result);
-var s = "<option value=''>Selecione o Distrito... </option>";
-for(var i=0; i< result.length; i++){
-s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
-}
+    //url: 'http://196.22.53.245:8080/fnds/distrito/'+provinciaId,
+     url: 'http://localhost:8080/api/provincias/'+provinciaId,
 
+    success: function (result){
+    var result = JSON.parse(result);
+    var s = "<option value=''>Selecione o Distrito... </option>";
+    for(var i=0; i< result.length; i++){
+    s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+    }
 
-$('#comoboxProjecto').html(s);
-}
-});
+    var s1 = "<option value=''>Selecione o Posto Administrativo... </option>";
+    $('#comboboxPosto').html(s1);
 
-});
-});
-</script>    
-  
+    $('#comoboxProvincias').html(s);
+    }
+    });
+
+    });
+    });
+    </script>
   
 </head>
 <body class="landing-page no-skin-config">
@@ -150,7 +152,7 @@ $('#comoboxProjecto').html(s);
                                 <label class="col-form-label">Projecto  <strong style="color:red">*</strong></label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" name="projecto" th:field="*{provinciaProjecto}"  >
+                                    <select class="form-control m-b" id="comboboxProjectos" name="projecto" th:field="*{provinciaProjecto}"  >
                                         <option th:each="p : ${projectos}" th:value="${p.projecto.id}" th:text="${p.projecto.designacao}" ></option>
                                     </select>
                                 </div>
@@ -167,7 +169,7 @@ $('#comoboxProjecto').html(s);
 
                             <div class="col-md-6">
                                 <label class="col-form-label">Provincia  <strong style="color:red">*</strong></label>
-                                <select class="form-control m-b" name="nivel" th:field="*{provinciaProjecto}"  >
+                                <select class="form-control m-b" id="comoboxProvincias" name="nivel" th:field="*{provinciaProjecto}"  >
                                     <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
                                 </select>
 

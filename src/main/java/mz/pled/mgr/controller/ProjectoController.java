@@ -82,7 +82,6 @@ public class ProjectoController {
 		  
 		  model.addAttribute("projecto",projectoRepository.findById(id));
 		  model.addAttribute("projectoid", id);
-		  model.addAttribute("actividades",actividadeRepository.bucarPorProjecto(id));
 		  model.addAttribute("actividade", new Actividade());
 		  model.addAttribute("projectoNome",projectoRepository.buscarPorIdProjecto(id));
 		  

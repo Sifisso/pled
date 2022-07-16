@@ -14,7 +14,7 @@ import mz.pled.mgr.domain.Distrito;
 public interface DistritoRepository extends CrudRepository<Distrito, Long> {
 
     @Query(value="select id,designacao from distrito where provincia_id=:id", nativeQuery=true)
-    public List<Distrito> findAllById(@Param("id") Long id);
+    public List<Distrito> buscarPorIdProvincia(@Param("id") Long id);
 
 
 }

@@ -1,10 +1,9 @@
 package mz.pled.mgr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 @Entity
@@ -14,14 +13,14 @@ public class Ocorrencia extends AbstractEntity{
 	@Column(name = "stamp")
 	private String stamp;
 
-	@Column(name = "designacao")
-	private String designacao;
+	@Column(name = "grm_stamp")
+	private String grmStamp;
 
-	@Column(name = "nome")
-	private String nome;
-	
-	@Column(name = "codigo")
-	private String codigo;
+	@Column(name = "resolucao")
+	private String resolucao="P";
+
+	@Column(name = "procedencia")
+	private String procedencia;
 
 	@Column(name = "telefone")
 	private String telefone;
@@ -44,9 +43,9 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "nomeUtente")
 	private String nomeUtente;
-	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name = "data_ocorrencia")
-	private String dataOcorrencia;
+	private Date dataOcorrencia;
 
 	@Column(name = "nomedorepresentantedogrupo")
 	private String nomeDoRepresentanteDoGrupo;
@@ -58,7 +57,19 @@ public class Ocorrencia extends AbstractEntity{
 	private String faixaEtaria;
 
 	@Column(name = "nivel")
-	private int nivel;
+	private long nivelresolucao=1;
+
+	@Column(name = "validado")
+	private boolean validado;
+
+	@Column(name = "temporario")
+	private boolean temporario;
+
+	@Column(name = "comunidade")
+	private String comunidade;
+
+	@Column(name = "estado")
+	private String estado="Registado";
 	
 	@ManyToOne
 	@JoinColumn(name="posto_id")
@@ -90,8 +101,75 @@ public class Ocorrencia extends AbstractEntity{
 	private Categoria categoria;
 
 	@ManyToOne
+	@JoinColumn(name = "actividade_id")
+	private Actividade actividade;
+
+	@ManyToOne
+	@JoinColumn(name = "distrito_id")
+	private Distrito distrito;
+
+	@ManyToOne
+	@JoinColumn(name = "provincia_id")
+	private Provincia provincia;
+
+	@ManyToOne
+	@JoinColumn(name = "posto_id")
+	private PostoAdministrativo posto;
+
+	@ManyToOne
+	@JoinColumn(name = "responsavel_id")
+	private User responsavel;
+
+	@ManyToOne
 	@JoinColumn(name = "projecto_id")
 	private Projecto projecto;
+
+	public String getComunidade() {
+		return comunidade;
+	}
+	public void setComunidade(String comunidade) {
+		this.comunidade = comunidade;
+	}
+
+	public Distrito getDistrito() {
+		return distrito;
+	}
+
+	public void setDistrito(Distrito distrito) {
+		this.distrito = distrito;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+
+	public PostoAdministrativo getPosto() {
+		return posto;
+	}
+
+	public void setPosto(PostoAdministrativo posto) {
+		this.posto = posto;
+	}
+
+	public Actividade getActividade() {
+		return actividade;
+	}
+
+	public void setActividade(Actividade actividade) {
+		this.actividade = actividade;
+	}
 
 	public String getNomeUtente() {
 		return nomeUtente;
@@ -107,14 +185,6 @@ public class Ocorrencia extends AbstractEntity{
 
 	public void setProjecto(Projecto projecto) {
 		this.projecto = projecto;
-	}
-
-	public int getNivel() {
-		return nivel;
-	}
-
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
 	}
 
 	public String getNomeDoRepresentanteDoGrupo() {
@@ -149,22 +219,6 @@ public class Ocorrencia extends AbstractEntity{
 		this.origem = origem;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
 	public String getTelefone() {
 		return telefone;
 	}
@@ -197,12 +251,60 @@ public class Ocorrencia extends AbstractEntity{
 		this.sexo = sexo;
 	}
 
-	public String getDesignacao() {
-		return designacao;
+	public String getGrmStamp() {
+		return grmStamp;
 	}
 
-	public void setDesignacao(String designacao) {
-		this.designacao = designacao;
+	public void setGrmStamp(String grmStamp) {
+		this.grmStamp = grmStamp;
+	}
+
+	public String getResolucao() {
+		return resolucao;
+	}
+
+	public void setResolucao(String resolucao) {
+		this.resolucao = resolucao;
+	}
+
+	public String getProcedencia() {
+		return procedencia;
+	}
+
+	public void setProcedencia(String procedencia) {
+		this.procedencia = procedencia;
+	}
+
+	public long getNivelresolucao() {
+		return nivelresolucao;
+	}
+
+	public void setNivelresolucao(long nivelresolucao) {
+		this.nivelresolucao = nivelresolucao;
+	}
+
+	public boolean isValidado() {
+		return validado;
+	}
+
+	public void setValidado(boolean validado) {
+		this.validado = validado;
+	}
+
+	public boolean isTemporario() {
+		return temporario;
+	}
+
+	public void setTemporario(boolean temporario) {
+		this.temporario = temporario;
+	}
+
+	public User getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(User responsavel) {
+		this.responsavel = responsavel;
 	}
 
 	public ProvinciaProjecto getProvinciaProjecto() {
@@ -253,11 +355,11 @@ public class Ocorrencia extends AbstractEntity{
 		this.endereco = endereco;
 	}
 
-	public String getDataOcorrencia() {
+	public Date getDataOcorrencia() {
 		return dataOcorrencia;
 	}
 
-	public void setDataOcorrencia(String dataOcorrencia) {
+	public void setDataOcorrencia(Date dataOcorrencia) {
 		this.dataOcorrencia = dataOcorrencia;
 	}
 
@@ -284,6 +386,4 @@ public class Ocorrencia extends AbstractEntity{
 	public void setStamp(String stamp) {
 		this.stamp = stamp;
 	}
-	
-
 }

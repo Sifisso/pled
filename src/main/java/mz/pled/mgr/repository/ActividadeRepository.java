@@ -9,8 +9,7 @@ import mz.pled.mgr.domain.Actividade;
 
 public interface ActividadeRepository extends CrudRepository<Actividade, Long> {
 
-
     @Query(value="(select * from actividade WHERE projecto_id=:id)", nativeQuery=true)
-    List<Actividade> bucarPorProjecto(Long id);
-    
+    List<Actividade> buscarPorIdProjecto(long id);
+
 }

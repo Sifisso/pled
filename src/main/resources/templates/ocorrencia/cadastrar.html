@@ -293,7 +293,7 @@ document.getElementById("cidadee").style.display="none";
 
                             <div class="col-md-4">
                                 <label class="col-form-label">Tipo de Alerta</label>
-                                <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{tipoAlerta}"  >
+                                <select class="form-control m-b" style="width:100%" name="nivel" th:field="*{tipoAlerta}"  >
                                     <option th:each="p : ${tipoAlertas}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                 </select>
 
@@ -313,8 +313,8 @@ document.getElementById("cidadee").style.display="none";
                                 <label class="col-form-label">Actividades</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:70%" name="projecto" th:field="*{projecto}"  >
-                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}" ></option>
+                                    <select class="form-control m-b" style="width:70%" name="actividade" th:field="*{actividade}"  >
+                                        <option th:each="p : ${actividades}" th:value="${p.id}" th:text="${p.designacao}" ></option>
                                     </select>
                                 </div>
                             </div>
@@ -326,18 +326,18 @@ document.getElementById("cidadee").style.display="none";
 
                             <div class="col-md-4">
                                 <label class="col-form-label">Provincia</label>
-                                <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{provinciaProjecto}"  >
+                                <select class="form-control m-b" style="width:100%" name="nivel" th:field="*{provinciaProjecto}"  >
                                     <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
                                 </select>
 
                             </div>
 
                             <div class="col-md-4">
-                                <label class="col-form-label">Distrito</label>
+                                <label class="col-form-label">Distritos</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:70%" name="distrito" th:field="*{canalEntrada}"  >
-                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    <select class="form-control m-b" style="width:70%" name="distrito" th:field="*{distrito}"  >
+                                        <option th:each="p : ${distritos}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                     </select>
                                 </div>
                             </div>
@@ -346,8 +346,8 @@ document.getElementById("cidadee").style.display="none";
                                 <label class="col-form-label">Posto Administrativo</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{canalEntrada}"  >
-                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    <select class="form-control m-b" style="width:70%" name="posto" th:field="*{posto}"  >
+                                        <option th:each="p : ${postos}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                     </select>
                                 </div>
                             </div>
@@ -362,7 +362,7 @@ document.getElementById("cidadee").style.display="none";
                                 <label class="col-form-label">Comunidade</label>
                                 <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                    <input type="text" class="form-control" style="width:70%" name="comunidade" th:field="*{comunidade}" placeholder="Comunidade" >
                                 </div>
                             </div>
 
@@ -380,7 +380,7 @@ document.getElementById("cidadee").style.display="none";
                                 <label class="col-form-label">Data da Ocorrencia</label>
                                 <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                    <input type="date" class="form-control" style="width:70%" name="dataOcorrencia" th:field="*{dataOcorrencia}" placeholder="dataOcorrencia" >
                                 </div>
                             </div>
 
@@ -394,7 +394,7 @@ document.getElementById("cidadee").style.display="none";
                                 <label class="col-form-label">Canal de Utilizado</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{canalEntrada}"  >
+                                    <select class="form-control m-b" style="width:70%" name="canalEntrada" th:field="*{canalEntrada}"  >
                                         <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                     </select>
                                 </div>
@@ -402,7 +402,7 @@ document.getElementById("cidadee").style.display="none";
 
                             <div class="col-md-4">
                                 <label class="col-form-label">Tipo de Ocorrencia</label>
-                                <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{tipoOcorrencia}"  >
+                                <select class="form-control m-b" style="width:100%" name="nivel" th:field="*{tipoOcorrencia}"  >
                                     <option th:each="p : ${tipoOcorrencias}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                 </select>
 
@@ -412,7 +412,7 @@ document.getElementById("cidadee").style.display="none";
                                 <label class="col-form-label">Telefone</label>
                                 <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                    <input type="number" class="form-control" style="width:70%" name="telefone" th:field="*{telefone}" placeholder="" >
+                                    <input type="number" class="form-control" style="width:70%" name="telefone" th:field="*{telefone}" placeholder="Telefone" >
                                 </div>
                             </div>
 
@@ -435,7 +435,7 @@ document.getElementById("cidadee").style.display="none";
                                 <label class="col-form-label">Nivel de Resolucao</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" style="width:70%" name="nivel" th:field="*{nivel}"  >
+                                    <select class="form-control m-b" style="width:70%" name="nivelresolucao" th:field="*{nivelresolucao}"  >
                                         <option th:each="p : ${nivelResolucoes}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                     </select>
                                 </div>
@@ -443,10 +443,10 @@ document.getElementById("cidadee").style.display="none";
 
 
                             <div class="col-md-4">
-                                <label class="col-form-label">Nome</label>
+                                <label class="col-form-label">Nome Utente</label>
                                 <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                    <input type="text" class="form-control" style="width:70%" name="nomeUtente" th:field="*{nomeUtente}" placeholder="Nome" >
                                 </div>
                             </div>
 
@@ -458,7 +458,7 @@ document.getElementById("cidadee").style.display="none";
                             <div class="col-md-12">
                                 <label class="col-form-label">Descrição do Problema</label>
                                 <div class="input-group user">
-                                    <input type="text" class="form-control" style="width:70%" name="nome" th:field="*{assunto}" placeholder="Assunto..." >
+                                    <textarea type="text" class="form-control" style="width:70%" name="assunto" th:field="*{assunto}" placeholder="Assunto..." />
                                 </div>
                             </div>
 
@@ -580,7 +580,7 @@ document.getElementById("cidadee").style.display="none";
                             <div class="col-md-5"></div>
                             <div class="col-md-5">
                                   <button class="btn btn-primary btn-sm" type="submit" >
-                                      <i class="fa fa-save"></i> Gravar Ocorrencia
+                                      <i class="fa fa-save"></i> Gravar  Ocorrência
                                   </button>
                             </div>
                         </div>
