@@ -9,9 +9,6 @@ import java.util.Date;
 @Entity
 @Table(name = "ocorrencia")
 public class Ocorrencia extends AbstractEntity{
-	
-	@Column(name = "stamp")
-	private String stamp;
 
 	@Column(name = "grm_stamp")
 	private String grmStamp;
@@ -21,6 +18,9 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "procedencia")
 	private String procedencia;
+
+	@Column(name = "nome")
+	private String nome;
 
 	@Column(name = "telefone")
 	private String telefone;
@@ -74,11 +74,6 @@ public class Ocorrencia extends AbstractEntity{
 	@ManyToOne
 	@JoinColumn(name="posto_id")
 	private PostoAdministrativo postoAdministrativo;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="distrito_id")
-	private Distrito distrito;
 
 	@ManyToOne
 	@JoinColumn(name = "provincia_projecto_id")
@@ -113,10 +108,6 @@ public class Ocorrencia extends AbstractEntity{
 	private Provincia provincia;
 
 	@ManyToOne
-	@JoinColumn(name = "posto_id")
-	private PostoAdministrativo posto;
-
-	@ManyToOne
 	@JoinColumn(name = "responsavel_id")
 	private User responsavel;
 
@@ -131,12 +122,12 @@ public class Ocorrencia extends AbstractEntity{
 		this.comunidade = comunidade;
 	}
 
-	public Distrito getDistrito() {
-		return distrito;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDistrito(Distrito distrito) {
-		this.distrito = distrito;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEstado() {
@@ -153,14 +144,6 @@ public class Ocorrencia extends AbstractEntity{
 
 	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
-	}
-
-	public PostoAdministrativo getPosto() {
-		return posto;
-	}
-
-	public void setPosto(PostoAdministrativo posto) {
-		this.posto = posto;
 	}
 
 	public Actividade getActividade() {
@@ -379,11 +362,4 @@ public class Ocorrencia extends AbstractEntity{
 		this.distrito = distrito;
 	}
 
-	public String getStamp() {
-		return stamp;
-	}
-
-	public void setStamp(String stamp) {
-		this.stamp = stamp;
-	}
 }

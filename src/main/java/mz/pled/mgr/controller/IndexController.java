@@ -125,9 +125,8 @@ public class IndexController {
             int codigo = ThreadLocalRandom.current().nextInt(999, 10000);
             
             String codigoo = String.valueOf(codigo);
-            
 
-            ocorrencia.setStamp(codigoo);
+            ocorrencia.setGrmStamp(codigoo);
 
 
             if(ocorrenciaRepository.save(ocorrencia)!=null){
@@ -136,10 +135,10 @@ public class IndexController {
 
                 //attr.addFlashAttribute("sucesso", "Preocupação cadastrada com sucesso! ");
                 
-                model.addAttribute("ocorrenciaa", ocorrencia.getStamp());
+                model.addAttribute("ocorrenciaa", ocorrencia.getGrmStamp());
                 
                 attr.addFlashAttribute("sucesso", "Preocupação submetida com sucesso." +" Anote "
-                		+ "o código asseguir para o acompnhamento: "+ocorrencia.getStamp());
+                		+ "o código asseguir para o acompnhamento: "+ocorrencia.getGrmStamp());
 
     			attr.addFlashAttribute("ocorrenciaa", ocorrenciaRepository.buscarPorId(ocorrencia.getId()));
 
