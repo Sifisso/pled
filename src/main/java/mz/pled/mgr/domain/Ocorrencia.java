@@ -10,6 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ocorrencia")
 public class Ocorrencia extends AbstractEntity{
+	
+	@Column(name = "stamp")
+	private String stamp;
 
 	@Column(name = "designacao")
 	private String designacao;
@@ -56,6 +59,15 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "nivel")
 	private int nivel;
+	
+	@ManyToOne
+	@JoinColumn(name="posto_id")
+	private PostoAdministrativo postoAdministrativo;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="distrito_id")
+	private Distrito distrito;
 
 	@ManyToOne
 	@JoinColumn(name = "provincia_projecto_id")
@@ -247,6 +259,30 @@ public class Ocorrencia extends AbstractEntity{
 
 	public void setDataOcorrencia(String dataOcorrencia) {
 		this.dataOcorrencia = dataOcorrencia;
+	}
+
+	public PostoAdministrativo getPostoAdministrativo() {
+		return postoAdministrativo;
+	}
+
+	public void setPostoAdministrativo(PostoAdministrativo postoAdministrativo) {
+		this.postoAdministrativo = postoAdministrativo;
+	}
+
+	public Distrito getDistrito() {
+		return distrito;
+	}
+
+	public void setDistrito(Distrito distrito) {
+		this.distrito = distrito;
+	}
+
+	public String getStamp() {
+		return stamp;
+	}
+
+	public void setStamp(String stamp) {
+		this.stamp = stamp;
 	}
 	
 

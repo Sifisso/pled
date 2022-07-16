@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/preCadastrar").permitAll()
                 .antMatchers("/registar/usuarios").permitAll()
                 .antMatchers("/cadastrar/usuarios").permitAll()
-                .antMatchers("/buscar/preocupacao").permitAll()
+                .antMatchers("/acompanhar/preocupacao").permitAll()
                 .antMatchers("/estatistica").permitAll()
                 .antMatchers("/publico/apresentarPreocupacao").permitAll()
                 .antMatchers("/apresentar/preocupacao").permitAll()
