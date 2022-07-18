@@ -88,6 +88,21 @@ public class IndexController {
     	
 	}
     
+    @GetMapping("/ajuda")
+	public String ajuda(){
+
+    		return "publico/ajuda";
+    	
+	}
+    
+    
+    @GetMapping("/estatistica")
+	public String estatistica(){
+
+    		return "publico/estatistica";
+    	
+	}
+    
     
     @PostMapping("/pesquisar/ocorrencia")
 	public String pesquisarOcorrencia(Ocorrencia ocorrencia, @RequestParam long codigo, ModelMap model ) {
