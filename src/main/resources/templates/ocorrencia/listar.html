@@ -44,8 +44,8 @@
                         <tbody>
                         <tr class="gradeX"  th:each="p, index : ${ocorrencias}">
                             <td th:text="${p.id}"></td>
-                            <td th:text="${#dates.format(p.created, 'dd-MM-yyyy')}" ></td>
-                            <td th:text="${#dates.format(p.dataOcorrencia, 'dd-MM-yyyy')}" ></td>
+                            <td th:text="${#dates.format(p.created, 'dd/MM/yyyy')}" ></td>
+                            <td th:text="${p.dataOcorrencia}" ></td>
                             <td th:text="${p.provinciaProjecto.provincia.designacao}" ></td>
                             <td th:text="${p.provinciaProjecto.projecto.designacao}" > </td>
                             <td th:text="${p.canalEntrada.designacao}"></td>

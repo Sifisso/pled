@@ -1,6 +1,9 @@
 package mz.pled.mgr.controller;
 
+import java.awt.Font;
 import java.util.concurrent.ThreadLocalRandom;
+
+import javax.swing.AbstractButton;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -170,6 +173,10 @@ public class IndexController {
         return "redirect:/";
 
     }
+    
+    
+    
+    
     
     
     
