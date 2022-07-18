@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/precadastrar/ocorrencia").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/concurso").permitAll()
+                .antMatchers("/ajuda").permitAll()
                 .antMatchers("/preCadastrar").permitAll()
                 .antMatchers("/registar/usuarios").permitAll()
                 .antMatchers("/cadastrar/usuarios").permitAll()

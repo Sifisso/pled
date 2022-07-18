@@ -1,9 +1,12 @@
 package mz.pled.mgr.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @SuppressWarnings("serial")
 @Entity
@@ -43,9 +46,10 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "nomeUtente")
 	private String nomeUtente;
+	
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name = "data_ocorrencia")
-	private Date dataOcorrencia;
+	private String dataOcorrencia;
 
 	@Column(name = "nomedorepresentantedogrupo")
 	private String nomeDoRepresentanteDoGrupo;
@@ -337,15 +341,13 @@ public class Ocorrencia extends AbstractEntity{
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
-	public Date getDataOcorrencia() {
+	
+	public String getDataOcorrencia() {
 		return dataOcorrencia;
 	}
-
-	public void setDataOcorrencia(Date dataOcorrencia) {
+	public void setDataOcorrencia(String dataOcorrencia) {
 		this.dataOcorrencia = dataOcorrencia;
 	}
-
 	public PostoAdministrativo getPostoAdministrativo() {
 		return postoAdministrativo;
 	}

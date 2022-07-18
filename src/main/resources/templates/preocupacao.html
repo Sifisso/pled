@@ -4,6 +4,9 @@
       Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
 
 <head>
+
+
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,16 +15,85 @@
   <title>MEF - Ministério de Economia e Finanças</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
   <!-- Animation CSS -->
-  <link href="css/animate.css" rel="stylesheet">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link th:href="@{/css/animate.css}" rel="stylesheet">
+  <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet">
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+  
+    <link th:href="@{/css/plugins/iCheck/custom.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
+    
+    
+    <linkth:href="@{/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/colorpicker/bootstrap-colorpicker.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/cropper/cropper.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/switchery/switchery.css}" rel="stylesheet">
+
+    <linkth:href="@{/css/plugins/nouslider/jquery.nouislider.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/datapicker/datepicker3.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/ionRangeSlider/ion.rangeSlider.css}" rel="stylesheet">
+
+    <linkth:href="@{/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/clockpicker/clockpicker.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/daterangepicker/daterangepicker-bs3.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/select2/select2.min.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/select2/select2-bootstrap4.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/touchspin/jquery.bootstrap-touchspin.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/plugins/dualListbox/bootstrap-duallistbox.min.css}" rel="stylesheet">
+    
+    <link th:href="@{/css/plugins/dropzone/basic.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/dropzone/dropzone.css}" rel="stylesheet">
+    
+<script type="text/javascript">
+
+$(document).ready(function(){
+$('#comboboxProvincias').on('change',function(){
+
+var provinciaId = $(this).val();
+
+alert(provinciaId);
+
+$.ajax({
+type: 'GET',
+
+url: 'http://localhost:8080/projecto/'+provinciaId,
+
+success: function (result){
+var result = JSON.parse(result);
+var s = "<option value=''>Selecione o Distrito... </option>";
+for(var i=0; i< result.length; i++){
+s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+}
+
+
+$('#comoboxProjecto').html(s);
+}
+});
+
+});
+});
+</script>    
+  
+  
 </head>
-<body id="page-top" class="landing-page no-skin-config">
-<div class="navbar-wrapper">
-  <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+<body class="landing-page no-skin-config">
+<div style="background-color: #fff;" class="navbar-wrapper">
+  <nav style="background-color: #fff";  class="navbar navbar-default navbar-expand-md" role="navigation">
     <div class="container">
     
     <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
@@ -36,388 +108,910 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="nav-link page-scroll" href="#page-top">Página principal</a></li>
-          <li><a class="nav-link page-scroll" href="#features">Apresentar preocupação</a></li>
-          <li><a class="nav-link page-scroll" href="#team">Acompanhar preocupação</a></li>
-          <li><a class="nav-link page-scroll" href="#testimonials">Estatísticas</a></li>
-          <li style="padding-left: 50px;"><a class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}"><i style="font-size: 15pt; color: #899d1b; " class="fas fa-home"></i>Home</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-comments"></i>Apresentar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-search-location"></i>Acompanhar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/estatistica}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-chart-bar"></i>Estatísticas</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/ajuda}"><i style="font-size: 15pt; color: #899d1b;" class="far fa-info-circle"></i>Ajuda</a></li>
+          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
     </div>
   </nav>
+  
+  
+  
+  <div style="border: 2px solid #ff0500;">
+  
+  </div>
 </div>
 
+                            
+						<div style="margin-top: 7%; width: 80%; margin-left: auto; margin-right: auto;" class="ibox-content">
+						
+						<h2>
+                                Reclamações/Sugestões de Projecto
+                            </h2>
+                            <p>
+                                Os campos marcados com <strong style="color: red;">*</strong>  são de preenchimento obrigatório
+                            </p>
+						
+                    <form th:action="@{/precadastrar/ocorrencia}" th:object="${ocorrencia}" method="post">
+                    <div style="background: #899d1b; color: white">
+                    <!-- <h3 style=" padding: 2px; margin: 0px;" class="card-title" >Dados do Projecto</h3> -->
+                </div>
+                
+                
+                <div class="row">
+
+                            <div class="col-sm-6">
+                                            <div class="form-group" id="data_2">
+				                                <label class="font-normal">Data da Ocorrência <strong style="color: red;">*</strong> </label>
+				                                <div class="input-group date">
+				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" th:field="*{dataOcorrencia}" value="13/07/2022" class="form-control" >
+				                                </div>
+				                            </div>
+                                        </div>
+                                        
+                                        
+									<div class="col-md-6">
+                                <label class="col-form-label">Projecto  <strong style="color:red">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" name="projecto" th:field="*{provinciaProjecto}"  >
+                                        <option th:each="p : ${projectos}" th:value="${p.projecto.id}" th:text="${p.projecto.designacao}" ></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="background: #899d1b; color: white">
+                    <!-- <h3 style=" padding: 2px; margin: 0px;" class="card-title" >Dados do Local</h3> -->
+                     <h3 class="card-title" style=" padding-left: 5px;" > Localização</h3>
+                </div>
+                
+                
+                <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Provincia  <strong style="color:red">*</strong></label>
+                                <select class="form-control m-b" name="nivel" th:field="*{provinciaProjecto}"  >
+                                    <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                    <div class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Distrito <strong style="color:red">*</strong></label>
+                            <select class="form-control custom-select form-select" id="comoboxDistrito" th:field="*{distrito}" >
+                                <option value="">Selecione o Distrito...</option>
+                                <option th:each="p : ${distritos}"
+                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                        </div>
+                        
+                        
+                        <div class="row">
+
+                            <div class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="comboboxPosto" class="form-label">Posto Administrativo</label>
+                            <select class="form-control custom-select form-select" id="comboboxPosto" th:field="*{postoAdministrativo}" >
+                                <option value="">Selecione o Posto Administrativo...</option>
+                                <option th:each="p : ${postos}"
+                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
 
 
 
+                    <div class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Comunidade <strong style="color:red">*</strong></label>
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                    <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input required="required" type="text" th:field="*{endereco}" class="form-control" placeholder="Comunidade ">
+                            </div>
+                        </div>
+                    </div>
+
+                        </div>
+                        
+                  <div style="background: #899d1b; color: white">
+                    <!-- <h3 style=" padding: 2px; margin: 0px;" class="card-title" >Dados Pessoais</h3> -->
+                    <h3 style=" padding-left: 5px;" class="card-title" > Contacto</h3>
+                </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Nome</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" style="width:90%" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" >
+                                <label class="col-form-label">Telefone</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input type="number" class="form-control" style="width:90%" name="telefone" th:field="*{telefone}" placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <!--<div class="col-md-6">
+                                <label class="col-form-label">Nivel de Resolucao</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{nivel}"  >
+                                        <option th:each="p : ${nivelResolucoes}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>-->
+
+                            <div class="col-md-6"  >
+                                <label class="col-form-label">Email</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
+                                    <input type="email" class="form-control"  name="email"  th:field="*{email}"  placeholder="" >
+                                </div>
+                            </div>
+                            
+                            
+                           
+                            
+                            
+                            
+
+                        </div>
+                        
+
+                        <!--<div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Canal de Entrada</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{canalEntrada}"  >
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Tipo de Alerta</label>
+                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoAlerta}"  >
+                                    <option th:each="p : ${tipoAlertas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>-->
+
+                       <!-- <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Categoria</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:90%" name="categoria" th:field="*{categoria}"  >
+                                        <option th:each="p : ${categorias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="col-form-label">Tipo de Ocorrencia</label>
+                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{tipoOcorrencia}"  >
+                                    <option th:each="p : ${tipoOcorrencias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>-->
+                        
+                        <div class="row">
+                    <div class="col-md-6">
+					<label class="col-form-label">Adicionar documentos ou fotos</label>
+                        <div class="form-group">
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input type="file" name="files" class="form-control" multiple>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-sm-6">
+                    <label class="col-form-label">Descrição do anexo</label>
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <input type="text" onchange="preview()" name="descricaoAnx" placeholder="Descreva o anexo" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+
+				</div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <label class="col-form-label">Assunto  <strong style="color:red">*</strong></label>
+                                <div class="input-group user">
+                                    <textarea type="text" th:field="*{designacao}" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5">
+                                  <button style="background-color: #899d1b;" class="btn btn-primary btn-sm" type="submit" >
+                                      <i class="fa fa-save"></i> Gravar Ocorrencia
+                                  </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
 
 
-
-
-
-<section id="testimonials" class="navy-section testimonials" style="margin-top: 0">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center wow zoomIn">
-        <i class="fa fa-comment big-icon"></i>
-        <h1>
-          What our users say
-        </h1>
-        <div class="testimonials-text">
-          <i>"Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."</i>
-        </div>
-        <small>
-          <strong>12.02.2014 - Andy Smith</strong>
-        </small>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section class="comments gray-section" style="margin-top: 0">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="navy-line"></div>
-        <h1>What our partners say</h1>
-        <p>Donec sed odio dui. Etiam porta sem malesuada. </p>
-      </div>
-    </div>
-    <div class="row features-block">
-      <div class="col-lg-4">
-        <div class="bubble">
-          "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-        </div>
-        <div class="comments-avatar">
-          <a href="#" class="float-left">
-            <img alt="image" src="img/landing/avatar3.jpg">
-          </a>
-          <div class="media-body">
-            <div class="commens-name">
-              Andrew Williams
-            </div>
-            <small class="text-muted">Company X from California</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="bubble">
-          "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-        </div>
-        <div class="comments-avatar">
-          <a href="#" class="float-left">
-            <img alt="image" src="img/landing/avatar1.jpg">
-          </a>
-          <div class="media-body">
-            <div class="commens-name">
-              Andrew Williams
-            </div>
-            <small class="text-muted">Company X from California</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="bubble">
-          "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-        </div>
-        <div class="comments-avatar">
-          <a href="#" class="float-left">
-            <img alt="image" src="img/landing/avatar2.jpg">
-          </a>
-          <div class="media-body">
-            <div class="commens-name">
-              Andrew Williams
-            </div>
-            <small class="text-muted">Company X from California</small>
-          </div>
-        </div>
-      </div>
-
-
-
-    </div>
-  </div>
-
-</section>
-
-<section class="features">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="navy-line"></div>
-        <h1>More and more extra great feautres</h1>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-5 col-lg-offset-1 features-text">
-        <small>INSPINIA</small>
-        <h2>Perfectly designed </h2>
-        <i class="fa fa-bar-chart big-icon float-right"></i>
-        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-      </div>
-      <div class="col-lg-5 features-text">
-        <small>INSPINIA</small>
-        <h2>Perfectly designed </h2>
-        <i class="fa fa-bolt big-icon float-right"></i>
-        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-5 col-lg-offset-1 features-text">
-        <small>INSPINIA</small>
-        <h2>Perfectly designed </h2>
-        <i class="fa fa-clock-o big-icon float-right"></i>
-        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-      </div>
-      <div class="col-lg-5 features-text">
-        <small>INSPINIA</small>
-        <h2>Perfectly designed </h2>
-        <i class="fa fa-users big-icon float-right"></i>
-        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-      </div>
-    </div>
-  </div>
-
-</section>
-<section id="pricing" class="pricing">
-  <div class="container">
-    <div class="row m-b-lg">
-      <div class="col-lg-12 text-center">
-        <div class="navy-line"></div>
-        <h1>App Pricing</h1>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4 wow zoomIn">
-        <ul class="pricing-plan list-unstyled">
-          <li class="pricing-title">
-            Basic
-          </li>
-          <li class="pricing-desc">
-            Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-          </li>
-          <li class="pricing-price">
-            <span>$16</span> / month
-          </li>
-          <li>
-            Dashboards
-          </li>
-          <li>
-            Projects view
-          </li>
-          <li>
-            Contacts
-          </li>
-          <li>
-            Calendar
-          </li>
-          <li>
-            AngularJs
-          </li>
-          <li>
-            <a class="btn btn-primary btn-xs" href="#">Signup</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-lg-4 wow zoomIn">
-        <ul class="pricing-plan list-unstyled selected">
-          <li class="pricing-title">
-            Standard
-          </li>
-          <li class="pricing-desc">
-            Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-          </li>
-          <li class="pricing-price">
-            <span>$22</span> / month
-          </li>
-          <li>
-            Dashboards
-          </li>
-          <li>
-            Projects view
-          </li>
-          <li>
-            Contacts
-          </li>
-          <li>
-            Calendar
-          </li>
-          <li>
-            AngularJs
-          </li>
-          <li>
-            <strong>Support platform</strong>
-          </li>
-          <li class="plan-action">
-            <a class="btn btn-primary btn-xs" href="#">Signup</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-lg-4 wow zoomIn">
-        <ul class="pricing-plan list-unstyled">
-          <li class="pricing-title">
-            Premium
-          </li>
-          <li class="pricing-desc">
-            Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-          </li>
-          <li class="pricing-price">
-            <span>$160</span> / month
-          </li>
-          <li>
-            Dashboards
-          </li>
-          <li>
-            Projects view
-          </li>
-          <li>
-            Contacts
-          </li>
-          <li>
-            Calendar
-          </li>
-          <li>
-            AngularJs
-          </li>
-          <li>
-            <a class="btn btn-primary btn-xs" href="#">Signup</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="row m-t-lg">
-      <div class="col-lg-12 text-center m-t-lg">
-        <p>*Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. <span class="navy">Various versions</span>  have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section id="contact" class="gray-section contact">
-  <div class="container">
-    <div class="row m-b-lg">
-      <div class="col-lg-12 text-center">
-        <div class="navy-line"></div>
-        <h1>Contact Us</h1>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-      </div>
-    </div>
-    <div class="row m-b-lg justify-content-center">
-      <div class="col-lg-3 ">
-        <address>
-          <strong><span class="navy">Company name, Inc.</span></strong><br/>
-          795 Folsom Ave, Suite 600<br/>
-          San Francisco, CA 94107<br/>
-          <abbr title="Phone">P:</abbr> (123) 456-7890
-        </address>
-      </div>
-      <div class="col-lg-4">
-        <p class="text-color">
-          Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <a href="mailto:test@email.com" class="btn btn-primary">Send us mail</a>
-        <p class="m-t-sm">
-          Or follow us on social platform
-        </p>
-        <ul class="list-inline social-icon">
-          <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 text-center m-t-lg m-b-lg">
-        <p><strong>&copy; 2015 Company Name</strong><br/> consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Mainly scripts -->
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 
 <!-- Custom and plugin javascript -->
-<script src="js/inspinia.js"></script>
-<script src="js/plugins/pace/pace.min.js"></script>
-<script src="js/plugins/wow/wow.min.js"></script>
+<script th:src="@{/js/inspinia.js}"></script>
+<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+
+<!-- JSKnob -->
+   <script th:src="@{/js/plugins/jsKnob/jquery.knob.js}"></script>
+
+   <!-- Input Mask-->
+    <script th:src="@{/js/plugins/jqueryMask/jquery.mask.min.js}"></script>
+
+   <!-- Data picker -->
+   <script th:src="@{/js/plugins/datapicker/bootstrap-datepicker.js}"></script>
+
+   <!-- NouSlider -->
+   <script th:src="@{/js/plugins/nouslider/jquery.nouislider.min.js}"></script>
+
+   <!-- Switchery -->
+   <script th:src="@{/js/plugins/switchery/switchery.js}"></script>
+
+    <!-- IonRangeSlider -->
+    <script th:src="@{/js/plugins/ionRangeSlider/ion.rangeSlider.min.js}"></script>
+
+    <!-- iCheck -->
+    <script th:src="@{/js/plugins/iCheck/icheck.min.js}"></script>
+
+    <!-- MENU -->
+    <script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+    <!-- Color picker -->
+    <script sth:src="@{/js/plugins/colorpicker/bootstrap-colorpicker.min.js}"></script>
+
+    <!-- Clock picker -->
+    <script th:src="@{/js/plugins/clockpicker/clockpicker.js}"></script>
+
+    <!-- Image cropper -->
+    <script th:src="@{/js/plugins/cropper/cropper.min.js}"></script>
+
+    <!-- Date range use moment.js same as full calendar plugin -->
+    <script th:src="@{/js/plugins/fullcalendar/moment.min.js}"></script>
+
+    <!-- Date range picker -->
+    <script th:src="@{/js/plugins/daterangepicker/daterangepicker.js}"></script>
+
+    <!-- Select2 -->
+    <script th:src="@{/js/plugins/select2/select2.full.min.js}"></script>
+
+    <!-- TouchSpin -->
+    <script th:src="@{/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js}"></script>
+
+    <!-- Tags Input -->
+    <script th:src="@{/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js}"></script>
+
+    <!-- Dual Listbox -->
+    <script sth:src="@{/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js}"></script>
 
 
-<script>
 
+    <!-- Steps -->
+    <script th:src="@{/js/plugins/steps/jquery.steps.min.js}"></script>
+
+    <!-- Jquery Validate -->
+    <script th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
+    
+    <script th:src="@{pp/js/jquery.validate.js}"></script>
+    
+    <!-- BS custom file -->
+    <script th:src="@{/js/plugins/bs-custom-file/bs-custom-file-input.min.js}"></script>
+
+    <!-- DROPZONE -->
+    <script th:src="@{/js/plugins/dropzone/dropzone.js}"></script>
+
+    <!-- CodeMirror -->
+    <script th:src="@{/js/plugins/codemirror/codemirror.js}"></script>
+    <script th:src="@{/js/plugins/codemirror/mode/xml/xml.js}"></script>
+    
+    <script>
+    
+    
     $(document).ready(function () {
+    bsCustomFileInput.init()
+	}) 
+    
+        Dropzone.options.dropzoneForm = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            dictDefaultMessage: "<strong>Drop files here or click to upload. </strong></br> (This is just a demo dropzone. Selected files are not actually uploaded.)"
+        };
 
-        $('body').scrollspy({
-            target: '#navbar',
-            offset: 80
-        });
+        $(document).ready(function(){
 
-        // Page scrolling feature
-        $('a.page-scroll').bind('click', function(event) {
-            var link = $(this);
-            $('html, body').stop().animate({
-                scrollTop: $(link.attr('href')).offset().top - 50
-            }, 500);
-            event.preventDefault();
-            $("#navbar").collapse('hide');
-        });
-    });
+            bsCustomFileInput.init()
 
-    var cbpAnimatedHeader = (function() {
-        var docElem = document.documentElement,
-                header = document.querySelector( '.navbar-default' ),
-                didScroll = false,
-                changeHeaderOn = 200;
-        function init() {
-            window.addEventListener( 'scroll', function( event ) {
-                if( !didScroll ) {
-                    didScroll = true;
-                    setTimeout( scrollPage, 250 );
-                }
-            }, false );
-        }
-        function scrollPage() {
-            var sy = scrollY();
-            if ( sy >= changeHeaderOn ) {
-                $(header).addClass('navbar-scroll')
-            }
-            else {
-                $(header).removeClass('navbar-scroll')
-            }
-            didScroll = false;
-        }
-        function scrollY() {
-            return window.pageYOffset || docElem.scrollTop;
-        }
-        init();
+            CodeMirror.fromTextArea(document.getElementById("code1"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
 
-    })();
+            CodeMirror.fromTextArea(document.getElementById("code2"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
 
-    // Activate WOW.js plugin for animation on scrol
-    new WOW().init();
+            CodeMirror.fromTextArea(document.getElementById("code3"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
 
+            CodeMirror.fromTextArea(document.getElementById("code4"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            CodeMirror.fromTextArea(document.getElementById("code5"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+           
+
+       });
+    </script>
+   
+   
+<script type="text/javascript">
+
+	$(document).ready(function(){
+	$('#comboboxProvincias').on('change',function(){
+	
+	var provinciaId = $(this).val();
+	
+	// alert(provinciaId);
+	
+	$.ajax({
+	type: 'GET',
+	
+	url: 'http://localhost:8080/distrito/'+provinciaId,
+	
+	success: function (result){
+	var result = JSON.parse(result);
+	var s = '';
+	for(var i=0; i< result.length; i++){
+	s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+	}
+	$('#comoboxDistrito').html(s);
+	}
+	});
+	
+	});
+	});
 </script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+$('#comoboxDistrito').on('change',function(){
+
+var distritoId = $(this).val();
+
+// alert(distritoId);
+
+$.ajax({
+type: 'GET',
+
+url: 'http://localhost:8080/posto/'+distritoId,
+
+
+success: function (result){
+var result = JSON.parse(result);
+var s = '';
+for(var i=0; i< result.length; i++){
+s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+}
+$('#comboboxPosto').html(s);
+}
+});
+
+
+});
+});
+</script>
+
+<script type="text/javascript">
+
+	    $(document).ready(function(){
+	        $('#comoboxDistrito').on('change',function(){
+	
+	          var distritoId = $(this).val();
+	
+	         // alert(distritoId);
+	
+	          $.ajax({
+	          type: 'GET',
+	        url: 'http://localhost:9090/posto/'+distritoId,
+	          
+	           success: function (result){
+	           var result = JSON.parse(result);
+	           var s = '';
+	          for(var i=0; i< result.length; i++){
+	              s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+	          }
+	        $('#comboboxPosto').html(s);
+	    }
+	});
+	
+	          
+	        });
+	    });
+    
+    </script>
+
+
+    <script>
+        $(document).ready(function(){
+            $("#wizard").steps();
+            $("#form").steps({
+                bodyTag: "fieldset",
+                onStepChanging: function (event, currentIndex, newIndex)
+                {
+                    // Always allow going backward even if the current step contains invalid fields!
+                    if (currentIndex > newIndex)
+                    {
+                        return true;
+                    }
+
+                    // Forbid suppressing "Warning" step if the user is to young
+                    if (newIndex === 3 && Number($("#age").val()) < 18)
+                    {
+                        return false;
+                    }
+
+                    var form = $(this);
+
+                    // Clean up if user went backward before
+                    if (currentIndex < newIndex)
+                    {
+                        // To remove error styles
+                        $(".body:eq(" + newIndex + ") label.error", form).remove();
+                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                    }
+
+                    // Disable validation on fields that are disabled or hidden.
+                    form.validate().settings.ignore = ":disabled,:hidden";
+
+                    // Start validation; Prevent going forward if false
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex)
+                {
+                    // Suppress (skip) "Warning" step if the user is old enough.
+                    if (currentIndex === 2 && Number($("#age").val()) >= 18)
+                    {
+                        $(this).steps("next");
+                    }
+
+                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                    if (currentIndex === 2 && priorIndex === 3)
+                    {
+                        $(this).steps("previous");
+                    }
+                },
+                onFinishing: function (event, currentIndex)
+                {
+                    var form = $(this);
+
+                    // Disable validation on fields that are disabled.
+                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                    form.validate().settings.ignore = ":disabled";
+
+                    // Start validation; Prevent form submission if false
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex)
+                {
+                    var form = $(this);
+
+                    // Submit form input
+                    form.submit();
+                }
+            }).validate({
+                        errorPlacement: function (error, element)
+                        {
+                            element.before(error);
+                        },
+                        rules: {
+                            confirm: {
+                                equalTo: "#password"
+                            }
+                        }
+                    });
+       });
+    </script>
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#form').validate({
+
+                rules:{
+
+                    nome:{
+                        required: true,
+                        maxlength: 200,
+                        minlength: 2
+                    },
+                    telefone:{
+                        required: true,
+                        maxlength: 9,
+                        minlength: 9
+                    },
+                    username:{
+                        required: true
+                    },
+                    email:{
+                        required: true,
+                        email: true
+                    }
+
+
+                }
+
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+
+            $('.tagsinput').tagsinput({
+                tagClass: 'label label-primary'
+            });
+
+            var $image = $(".image-crop > img")
+            var $cropped = $($image).cropper({
+                aspectRatio: 1.618,
+                preview: ".img-preview",
+                done: function(data) {
+                    // Output the result data for cropping image.
+                }
+            });
+
+            var $inputImage = $("#inputImage");
+            if (window.FileReader) {
+                $inputImage.change(function() {
+                    var fileReader = new FileReader(),
+                            files = this.files,
+                            file;
+
+                    if (!files.length) {
+                        return;
+                    }
+
+                    file = files[0];
+
+                    if (/^image\/\w+$/.test(file.type)) {
+                        fileReader.readAsDataURL(file);
+                        fileReader.onload = function () {
+                            $inputImage.val("");
+                            $image.cropper("reset", true).cropper("replace", this.result);
+                        };
+                    } else {
+                        showMessage("Please choose an image file.");
+                    }
+                });
+            } else {
+                $inputImage.addClass("hide");
+            }
+
+            $("#download").click(function (link) {
+                link.target.href = $cropped.cropper('getCroppedCanvas', { width: 620, height: 520 }).toDataURL("image/png").replace("image/png", "application/octet-stream");
+                link.target.download = 'cropped.png';
+            });
+
+
+            $("#zoomIn").click(function() {
+                $image.cropper("zoom", 0.1);
+            });
+
+            $("#zoomOut").click(function() {
+                $image.cropper("zoom", -0.1);
+            });
+
+            $("#rotateLeft").click(function() {
+                $image.cropper("rotate", 45);
+            });
+
+            $("#rotateRight").click(function() {
+                $image.cropper("rotate", -45);
+            });
+
+            $("#setDrag").click(function() {
+                $image.cropper("setDragMode", "crop");
+            });
+
+            var mem = $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            var yearsAgo = new Date();
+            yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
+
+            $('#selector').datepicker('setDate', yearsAgo );
+
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                format: "dd/mm/yyyy"
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            var elem = document.querySelector('.js-switch');
+            var switchery = new Switchery(elem, { color: '#1AB394' });
+
+            var elem_2 = document.querySelector('.js-switch_2');
+            var switchery_2 = new Switchery(elem_2, { color: '#ED5565' });
+
+            var elem_3 = document.querySelector('.js-switch_3');
+            var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
+
+            var elem_4 = document.querySelector('.js-switch_4');
+            var switchery_4 = new Switchery(elem_4, { color: '#f8ac59' });
+                switchery_4.disable();
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            $('.demo1').colorpicker();
+
+            var divStyle = $('.back-change')[0].style;
+            $('#demo_apidemo').colorpicker({
+                color: divStyle.backgroundColor
+            }).on('changeColor', function(ev) {
+                        divStyle.backgroundColor = ev.color.toHex();
+                    });
+
+            $('.clockpicker').clockpicker();
+
+            $('input[name="daterange"]').daterangepicker();
+
+            $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+
+            $('#reportrange').daterangepicker({
+                format: 'MM/DD/YYYY',
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment(),
+                minDate: '01/01/2012',
+                maxDate: '12/31/2015',
+                dateLimit: { days: 60 },
+                showDropdowns: true,
+                showWeekNumbers: true,
+                timePicker: false,
+                timePickerIncrement: 1,
+                timePicker12Hour: true,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                opens: 'right',
+                drops: 'down',
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-primary',
+                cancelClass: 'btn-default',
+                separator: ' to ',
+                locale: {
+                    applyLabel: 'Submit',
+                    cancelLabel: 'Cancel',
+                    fromLabel: 'From',
+                    toLabel: 'To',
+                    customRangeLabel: 'Custom',
+                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+                    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    firstDay: 1
+                }
+            }, function(start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            });
+
+            $(".select2_demo_1").select2({
+                theme: 'bootstrap4',
+            });
+            $(".select2_demo_2").select2({
+                theme: 'bootstrap4',
+            });
+            $(".select2_demo_3").select2({
+                theme: 'bootstrap4',
+                placeholder: "Select a state",
+                allowClear: true
+            });
+
+
+            $(".touchspin1").TouchSpin({
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white'
+            });
+
+            $(".touchspin2").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 0.1,
+                decimals: 2,
+                boostat: 5,
+                maxboostedstep: 10,
+                postfix: '%',
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white'
+            });
+
+            $(".touchspin3").TouchSpin({
+                verticalbuttons: true,
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white'
+            });
+
+            $('.dual_select').bootstrapDualListbox({
+                selectorMinimalHeight: 160
+            });
+
+
+        });
+
+
+
+        $("#ionrange_1").ionRangeSlider({
+            skin: "flat",
+            min: 0,
+            max: 5000,
+            type: 'double',
+            prefix: "$",
+            maxPostfix: "+",
+            grid: true
+        });
+
+        $("#ionrange_2").ionRangeSlider({
+            skin: "flat",
+            min: 0,
+            max: 10,
+            type: 'single',
+            step: 0.1,
+            postfix: " carats",
+            grid: true
+        });
+
+        $("#ionrange_3").ionRangeSlider({
+            skin: "flat",
+            min: -50,
+            max: 50,
+            from: 0,
+            postfix: "°",
+            grid: true
+        });
+
+        $(".dial").knob();
+
+        var basic_slider = document.getElementById('basic_slider');
+
+        noUiSlider.create(basic_slider, {
+            start: 40,
+            behaviour: 'tap',
+            connect: 'upper',
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+
+        var range_slider = document.getElementById('range_slider');
+
+        noUiSlider.create(range_slider, {
+            start: [ 40, 60 ],
+            behaviour: 'drag',
+            connect: true,
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+
+        var drag_fixed = document.getElementById('drag-fixed');
+
+        noUiSlider.create(drag_fixed, {
+            start: [ 40, 60 ],
+            behaviour: 'drag-fixed',
+            connect: true,
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+
+
+    </script>
+
+
 
 </body>
 </html>

@@ -19,6 +19,9 @@
   <!-- Animation CSS -->
   <link th:href="@{/css/animate.css}" rel="stylesheet">
   <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
   <!-- Custom styles for this template -->
   <link th:href="@{/css/style.css}" rel="stylesheet">
   
@@ -26,7 +29,7 @@
     <link th:href="@{/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
     
     
-    <link th:href="@{/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
+    <linkth:href="@{/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/colorpicker/bootstrap-colorpicker.min.css}" rel="stylesheet">
 
@@ -34,13 +37,13 @@
 
     <link th:href="@{/css/plugins/switchery/switchery.css}" rel="stylesheet">
 
-    <link th:href="@{/css/plugins/nouslider/jquery.nouislider.css}" rel="stylesheet">
+    <linkth:href="@{/css/plugins/nouslider/jquery.nouislider.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/datapicker/datepicker3.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/ionRangeSlider/ion.rangeSlider.css}" rel="stylesheet">
 
-    <link th:href="@{/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
+    <linkth:href="@{/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/clockpicker/clockpicker.css}" rel="stylesheet">
 
@@ -55,44 +58,42 @@
     
     <link th:href="@{/css/plugins/dropzone/basic.css}" rel="stylesheet">
     <link th:href="@{/css/plugins/dropzone/dropzone.css}" rel="stylesheet">
+    
+<script type="text/javascript">
 
-    <script type="text/javascript">
+$(document).ready(function(){
+$('#comboboxProvincias').on('change',function(){
 
-    $(document).ready(function(){
-    $('#comboboxProjectos').on('change',function(){
+var provinciaId = $(this).val();
 
-    var provinciaId = $(this).val();
+alert(provinciaId);
 
-    // alert(provinciaId);
+$.ajax({
+type: 'GET',
 
-    $.ajax({
-    type: 'GET',
+url: 'http://localhost:8080/projecto/'+provinciaId,
 
-    //url: 'http://196.22.53.245:8080/fnds/distrito/'+provinciaId,
-     url: 'http://localhost:8080/api/provincias/'+provinciaId,
+success: function (result){
+var result = JSON.parse(result);
+var s = "<option value=''>Selecione o Distrito... </option>";
+for(var i=0; i< result.length; i++){
+s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+}
 
-    success: function (result){
-    var result = JSON.parse(result);
-    var s = "<option value=''>Selecione o Distrito... </option>";
-    for(var i=0; i< result.length; i++){
-    s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
-    }
 
-    var s1 = "<option value=''>Selecione o Posto Administrativo... </option>";
-    $('#comboboxPosto').html(s1);
+$('#comoboxProjecto').html(s);
+}
+});
 
-    $('#comoboxProvincias').html(s);
-    }
-    });
-
-    });
-    });
-    </script>
+});
+});
+</script>    
+  
   
 </head>
 <body class="landing-page no-skin-config">
 <div style="background-color: #fff;" class="navbar-wrapper">
-  <nav style="background-color: #fff;" class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+  <nav style="background-color: #fff";  class="navbar navbar-default navbar-expand-md" role="navigation">
     <div class="container">
     
     <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
@@ -107,17 +108,22 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}">Página principal</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}">Apresentar preocupação</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}">Acompanhar preocupação</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" href="#testimonials">Estatísticas</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" href="#testimonials">Ajuda</a></li>
-          
-          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}"><i style="font-size: 15pt; color: #899d1b; " class="fas fa-home"></i>Home</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-comments"></i>Apresentar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-search-location"></i>Acompanhar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/estatistica}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-chart-bar"></i>Estatísticas</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/ajuda}"><i style="font-size: 15pt; color: #899d1b;" class="far fa-info-circle"></i>Ajuda</a></li>
+          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
     </div>
   </nav>
+  
+  
+  
+  <div style="border: 2px solid #ff0500;">
+  
+  </div>
 </div>
 
                             
@@ -131,7 +137,7 @@
                             </p>
 						
                     <form th:action="@{/precadastrar/ocorrencia}" th:object="${ocorrencia}" method="post">
-                    <div style="background: #60a18a; color: white">
+                    <div style="background: #899d1b; color: white">
                     <!-- <h3 style=" padding: 2px; margin: 0px;" class="card-title" >Dados do Projecto</h3> -->
                 </div>
                 
@@ -152,14 +158,14 @@
                                 <label class="col-form-label">Projecto  <strong style="color:red">*</strong></label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" id="comboboxProjectos" name="projecto" th:field="*{provinciaProjecto}"  >
+                                    <select class="form-control m-b" name="projecto" th:field="*{provinciaProjecto}"  >
                                         <option th:each="p : ${projectos}" th:value="${p.projecto.id}" th:text="${p.projecto.designacao}" ></option>
                                     </select>
                                 </div>
                             </div>
 
                         </div>
-                        <div style="background: #60a18a; color: white">
+                        <div style="background: #899d1b; color: white">
                     <!-- <h3 style=" padding: 2px; margin: 0px;" class="card-title" >Dados do Local</h3> -->
                      <h3 class="card-title" style=" padding-left: 5px;" > Localização</h3>
                 </div>
@@ -169,7 +175,7 @@
 
                             <div class="col-md-6">
                                 <label class="col-form-label">Provincia  <strong style="color:red">*</strong></label>
-                                <select class="form-control m-b" id="comoboxProvincias" name="nivel" th:field="*{provinciaProjecto}"  >
+                                <select class="form-control m-b" name="nivel" th:field="*{provinciaProjecto}"  >
                                     <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
                                 </select>
 
@@ -218,7 +224,7 @@
 
                         </div>
                         
-                  <div style="background: #60a18a; color: white">
+                  <div style="background: #899d1b; color: white">
                     <!-- <h3 style=" padding: 2px; margin: 0px;" class="card-title" >Dados Pessoais</h3> -->
                     <h3 style=" padding-left: 5px;" class="card-title" > Contacto</h3>
                 </div>
@@ -347,7 +353,7 @@
                             <div class="col-md-12">
                                 <label class="col-form-label">Assunto  <strong style="color:red">*</strong></label>
                                 <div class="input-group user">
-                                    <textarea type="text" th:field="*{designacao}" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
+                                    <textarea type="text" th:field="*{assunto}" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
                                 </div>
                             </div>
 
@@ -358,7 +364,7 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-5">
-                                  <button class="btn btn-primary btn-sm" type="submit" >
+                                  <button style="background-color: #899d1b;" class="btn btn-primary btn-sm" type="submit" >
                                       <i class="fa fa-save"></i> Gravar Ocorrencia
                                   </button>
                             </div>

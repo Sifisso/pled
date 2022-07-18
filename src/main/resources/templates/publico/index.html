@@ -16,6 +16,8 @@
   <!-- Animation CSS -->
   <link th:href="@{/css/animate.css}" rel="stylesheet">
   <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
   <!-- Custom styles for this template -->
   <link th:href="@{/css/style.css}" rel="stylesheet">
   
@@ -25,6 +27,9 @@
 <body id="page-top" class="landing-page no-skin-config">
 
 
+<style>
+
+</style>
 
 
 <div >
@@ -108,13 +113,12 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}">Página principal</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}">Apresentar preocupação</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}">Acompanhar preocupação</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" href="#testimonials">Estatísticas</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" href="#testimonials">Ajuda</a></li>
-          
-          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}"><i style="font-size: 15pt; color: #899d1b; " class="fas fa-home"></i>Home</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-comments"></i>Apresentar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-search-location"></i>Acompanhar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/estatistica}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-chart-bar"></i>Estatísticas</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/ajuda}"><i style="font-size: 15pt; color: #899d1b;" class="far fa-info-circle"></i>Ajuda</a></li>
+          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
     </div>
@@ -259,18 +263,28 @@
 
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-6">
 	    
-	      <ul style="padding-left: 30%;" class="list-inline list-inline-dots mb-0">
+	      <ul style="padding-left: 20%;" class="list-inline list-inline-dots mb-0">
                    <strong style="color: #fff;">  <li class="list-inline-item">
                        Copyright &copy; 2022
-                        <a href="https://www.fnds.gov.mz/index.php/pt/" class="link-secondary">MEF</a>.
+                        <a href="https://www.mef.gov.mz/" class="link-secondary" target="_blank">MEF</a>.
                         Todos direitos reservados.
                     </li>
                     <li class="list-inline-item">
-                        <a href="./changelog.html" class="link-secondary" rel="noopener">v1.0.0</a>
+                        <a href="#" class="link-secondary" rel="noopener">v1.0.0</a>
                     </li></strongs>
                 </ul>
+	      
+	      
+	    </div>
+	    
+	    <div style="margin-left: auto; margin-right: -100%;" class="col-6">
+		    <div class="rodape">
+		     
+		     <div class="rodape">
+		     <img alt="image"th:src="@{/img/bank1.png}" width="135" />
+		     </div>
 	      
 	      
 	    </div>
@@ -360,7 +374,7 @@
 
 			/*<![CDATA[*/
 
-			var messagem = /*[[${ocorrenciaa.stamp}]]*/"";
+			var messagem = /*[[${ocorrenciaa}]]*/"";
 
 			var sucesso = /*[[${success}]]*/"";
 

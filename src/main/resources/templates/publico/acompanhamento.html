@@ -50,6 +50,9 @@
     <link th:href="@{/css/plugins/select2/select2-bootstrap4.min.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/touchspin/jquery.bootstrap-touchspin.min.css}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 
     <link th:href="@{/css/plugins/dualListbox/bootstrap-duallistbox.min.css}" rel="stylesheet">
     
@@ -90,7 +93,7 @@ $('#comoboxProjecto').html(s);
 </head>
 <body class="landing-page no-skin-config">
 <div style="background-color: #fff;" class="navbar-wrapper">
-  <nav style="background-color: #fff;" class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+  <nav style="background-color: #fff";  class="navbar navbar-default navbar-expand-md" role="navigation">
     <div class="container">
     
     <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
@@ -105,17 +108,18 @@ $('#comoboxProjecto').html(s);
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}">Página principal</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}">Apresentar preocupação</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}">Acompanhar preocupação</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" href="#testimonials">Estatísticas</a></li>
-          <li><a style="color: #808080;" class="nav-link page-scroll" href="#testimonials">Ajuda</a></li>
-          
-          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}"><i style="font-size: 15pt; color: #899d1b; " class="fas fa-home"></i>Home</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-comments"></i>Apresentar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-search-location"></i>Acompanhar preocupação</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/estatistica}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-chart-bar"></i>Estatísticas</a></li>
+          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/ajuda}"><i style="font-size: 15pt; color: #899d1b;" class="far fa-info-circle"></i>Ajuda</a></li>
+          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
     </div>
   </nav>
+  
+  
   
   <div style="border: 2px solid #ff0500;">
   
@@ -156,7 +160,7 @@ $('#comoboxProjecto').html(s);
                                         </div>
                                         <div class="modal-footer">
                                             <!--<button type="button" class="btn btn-white" data-dismiss="modal">Fechar</button>-->
-                                            <button type="submit" class="btn btn-primary">Pesquisar</button>
+                                            <button type="submit" style="background-color: #899d1b;" class="btn btn-primary">Pesquisar</button>
                                         </div>
                                     </div>
                                 </div>

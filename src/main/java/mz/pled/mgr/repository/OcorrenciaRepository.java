@@ -13,7 +13,7 @@ public interface OcorrenciaRepository extends CrudRepository<Ocorrencia, Long> {
 	@Query(value="select * from ocorrencia where id=:id", nativeQuery=true)
 	Ocorrencia buscarPorId(Long id);
 
-	@Query(value="select * from Ocorrencia where stamp=:codigo", nativeQuery=true)
+	@Query(value="select * from ocorrencia where grm_stamp=:codigo", nativeQuery=true)
 	public Ocorrencia findAllByCodigo(@Param("codigo") Long codigo);
 
 
