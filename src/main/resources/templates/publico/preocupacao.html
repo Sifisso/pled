@@ -3,7 +3,7 @@
       xmlns:Xmlns="http://www.w3.org/1999/xhtml"
       Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
 
-<head>
+<link>
 
 
 
@@ -22,6 +22,17 @@
   
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ar-kw.min.js">
+
+
+
+
+
   <!-- Custom styles for this template -->
   <link th:href="@{/css/style.css}" rel="stylesheet">
   
@@ -29,7 +40,7 @@
     <link th:href="@{/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
     
     
-    <linkth:href="@{/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/colorpicker/bootstrap-colorpicker.min.css}" rel="stylesheet">
 
@@ -37,13 +48,13 @@
 
     <link th:href="@{/css/plugins/switchery/switchery.css}" rel="stylesheet">
 
-    <linkth:href="@{/css/plugins/nouslider/jquery.nouislider.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/nouslider/jquery.nouislider.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/datapicker/datepicker3.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/ionRangeSlider/ion.rangeSlider.css}" rel="stylesheet">
 
-    <linkth:href="@{/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
 
     <link th:href="@{/css/plugins/clockpicker/clockpicker.css}" rel="stylesheet">
 
@@ -96,8 +107,10 @@ $('#comoboxProjecto').html(s);
   <nav style="background-color: #fff";  class="navbar navbar-default navbar-expand-md" role="navigation">
     <div class="container">
     
-    <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
+    <a th:href="@{/}">
     
+    <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
+    </a>
     
       <!--<a class="navbar-brand" th:href="@{/login}">Login</a>-->
       
@@ -107,13 +120,12 @@ $('#comoboxProjecto').html(s);
         </button>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}"><i style="font-size: 15pt; color: #899d1b; " class="fas fa-home"></i>Home</a></li>
+        <ul class="nav navbar-nav navbar-left">
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-comments"></i>Apresentar preocupação</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-search-location"></i>Acompanhar preocupação</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/estatistica}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-chart-bar"></i>Estatísticas</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/ajuda}"><i style="font-size: 15pt; color: #899d1b;" class="far fa-info-circle"></i>Ajuda</a></li>
-          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
+          <li style="padding-left: 70px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
     </div>
@@ -130,13 +142,13 @@ $('#comoboxProjecto').html(s);
 						<div style="margin-top: 7%; width: 80%; margin-left: auto; margin-right: auto;" class="ibox-content">
 						
 						<h2>
-                                Reclamações/Sugestões de Projecto
+                                Apresentar Preocupação
                             </h2>
                             <p>
                                 Os campos marcados com <strong style="color: red;">*</strong>  são de preenchimento obrigatório
                             </p>
 						
-                    <form th:action="@{/precadastrar/ocorrencia}" th:object="${ocorrencia}" method="post">
+                    <form id="form1" th:action="@{/precadastrar/ocorrencia}" th:object="${ocorrencia}" method="post">
                     <div style="background: #899d1b; color: white">
                     <!-- <h3 style=" padding: 2px; margin: 0px;" class="card-title" >Dados do Projecto</h3> -->
                 </div>
@@ -148,21 +160,24 @@ $('#comoboxProjecto').html(s);
                                             <div class="form-group" id="data_2">
 				                                <label class="font-normal">Data da Ocorrência <strong style="color: red;">*</strong> </label>
 				                                <div class="input-group date">
-				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" th:field="*{dataOcorrencia}" value="13/07/2022" class="form-control" >
+				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				                                    
+				                                    <input type="text" style="width:90%" name="dataOcorrencia" th:field="*{dataOcorrencia}" value="13/07/2022" class="form-control" >
 				                                </div>
 				                            </div>
                                         </div>
                                         
                                         
-									<div class="col-md-6">
-                                <label class="col-form-label">Projecto  <strong style="color:red">*</strong></label>
-                                <div class="input-group user">
-                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" name="projecto" th:field="*{provinciaProjecto}"  >
-                                        <option th:each="p : ${projectos}" th:value="${p.projecto.id}" th:text="${p.projecto.designacao}" ></option>
-                                    </select>
-                                </div>
-                            </div>
+									<div class="col-6 col-sm-6">
+				                        <div class="form-group">
+				                            <label class="form-label">Projecto <strong style="color:red">*</strong></label>
+				                            <select class="form-control custom-select form-select" style="width:90%" name="projecto" id="comoboxProjecto" th:field="*{projecto}" >
+				                                <option value="">Selecione o Projecto...</option>
+				                                <option th:each="p : ${projectos}"
+				                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+				                            </select>
+				                        </div>
+                    				</div>
 
                         </div>
                         <div style="background: #899d1b; color: white">
@@ -173,18 +188,32 @@ $('#comoboxProjecto').html(s);
                 
                 <div class="row">
 
-                            <div class="col-md-6">
+                            <!--<div class="col-md-6">
+                            <div class="form-group">
                                 <label class="col-form-label">Provincia  <strong style="color:red">*</strong></label>
-                                <select class="form-control m-b" name="nivel" th:field="*{provinciaProjecto}"  >
-                                    <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
+                                <select class="form-control custom-select form-select" name="provincia" th:field="*{provinciaProjecto}"  >
+                                    <option th:each="p : ${provincias}" 
+                                    		th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
                                 </select>
-
                             </div>
+                            </div>-->
+                            
+                            
+                        <div class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Provincia <strong style="color:red">*</strong></label>
+                            <select class="form-control custom-select form-select" style="width:90%" name="provincia" id="comoboxProvincia" th:field="*{provinciaProjecto}" >
+                                <option value="">Selecione o Provincia...</option>
+                                <option th:each="p : ${provincias}"
+                                        th:value="${p.provincia.id}" th:text="${p.provincia.designacao}">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="col-6 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Distrito <strong style="color:red">*</strong></label>
-                            <select class="form-control custom-select form-select" id="comoboxDistrito" th:field="*{distrito}" >
+                            <select class="form-control custom-select form-select" name="distrito" id="comoboxDistrito" th:field="*{distrito}" >
                                 <option value="">Selecione o Distrito...</option>
                                 <option th:each="p : ${distritos}"
                                         th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
@@ -217,7 +246,7 @@ $('#comoboxProjecto').html(s);
                                     <span class="input-icon-addon">
                                     <i class="fe fe-edit-2"></i>
                                     </span>
-                                <input required="required" type="text" th:field="*{endereco}" class="form-control" placeholder="Comunidade ">
+                                <input type="text" name="comunidade" th:field="*{endereco}" class="form-control" placeholder="Comunidade ">
                             </div>
                         </div>
                     </div>
@@ -239,6 +268,7 @@ $('#comoboxProjecto').html(s);
                                     <input type="text" class="form-control" style="width:90%" name="nome" th:field="*{nome}" placeholder="Nome" >
                                 </div>
                             </div>
+
 
                             <div class="col-md-6" >
                                 <label class="col-form-label">Telefone</label>
@@ -353,7 +383,7 @@ $('#comoboxProjecto').html(s);
                             <div class="col-md-12">
                                 <label class="col-form-label">Assunto  <strong style="color:red">*</strong></label>
                                 <div class="input-group user">
-                                    <textarea type="text" th:field="*{assunto}" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
+                                    <textarea type="text" th:field="*{assunto}" style="width:90%" data-bs-toggle="autosize" class="form-control required" placeholder="Descreva o Assunto..."></textarea>
                                 </div>
                             </div>
 
@@ -678,17 +708,15 @@ $('#comboboxPosto').html(s);
     <script type="text/javascript">
         $(document).ready(function(){
 
-            $('#form').validate({
+            $('#form1').validate({
 
                 rules:{
 
                     nome:{
-                        required: true,
                         maxlength: 200,
                         minlength: 2
                     },
                     telefone:{
-                        required: true,
                         maxlength: 9,
                         minlength: 9
                     },
@@ -696,9 +724,24 @@ $('#comboboxPosto').html(s);
                         required: true
                     },
                     email:{
-                        required: true,
                         email: true
-                    }
+                    },
+                    dataOcorrencia:{
+                        required: true
+                    },
+                    projecto:{
+                        required: true
+                    },
+                    provincia:{
+                        required: true
+                    },
+                    distrito:{
+                        required: true
+                    },
+                    comunidade:{
+                        required: true
+                    },
+                    
 
 
                 }
@@ -796,6 +839,7 @@ $('#comboboxPosto').html(s);
                 keyboardNavigation: false,
                 forceParse: false,
                 autoclose: true,
+                locale:'pt-br',
                 format: "dd/mm/yyyy"
             });
 

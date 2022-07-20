@@ -96,8 +96,10 @@ $('#comoboxProjecto').html(s);
   <nav style="background-color: #fff";  class="navbar navbar-default navbar-expand-md" role="navigation">
     <div class="container">
     
-    <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
+   <a th:href="@{/}">
     
+    <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
+    </a>
     
       <!--<a class="navbar-brand" th:href="@{/login}">Login</a>-->
       
@@ -107,13 +109,12 @@ $('#comoboxProjecto').html(s);
         </button>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}"><i style="font-size: 15pt; color: #899d1b; " class="fas fa-home"></i>Home</a></li>
+        <ul class="nav navbar-nav navbar-left">
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-comments"></i>Apresentar preocupação</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-search-location"></i>Acompanhar preocupação</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/estatistica}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-chart-bar"></i>Estatísticas</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/ajuda}"><i style="font-size: 15pt; color: #899d1b;" class="far fa-info-circle"></i>Ajuda</a></li>
-          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
+          <li style="padding-left: 70px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
     </div>

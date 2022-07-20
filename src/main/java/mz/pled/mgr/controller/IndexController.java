@@ -19,6 +19,7 @@ import mz.pled.mgr.domain.Ocorrencia;
 import mz.pled.mgr.domain.Provincia;
 import mz.pled.mgr.repository.OcorrenciaRepository;
 import mz.pled.mgr.repository.PostoAdminitrativoRepository;
+import mz.pled.mgr.repository.ProjectoRepository;
 import mz.pled.mgr.repository.ProvinciaProjectoRepository;
 
 @Controller
@@ -29,6 +30,10 @@ public class IndexController {
 	
 	@Autowired
     private PostoAdminitrativoRepository PostoadminitrativoRepository;
+	
+	@Autowired
+    private ProjectoRepository projectoRepository;
+	
 	
 
     @Autowired
@@ -58,7 +63,7 @@ public class IndexController {
     	
     	 model.addAttribute("ocorrencia", new Ocorrencia());
     	 model.addAttribute("provincias", provinciaProjectoRepository.findAll());
-    	 model.addAttribute("projectos", provinciaProjectoRepository.findAll());
+    	 model.addAttribute("projectos", projectoRepository.findAll());
     	 model.addAttribute("postos", PostoadminitrativoRepository.findAll());
 
         return "publico/preocupacao";

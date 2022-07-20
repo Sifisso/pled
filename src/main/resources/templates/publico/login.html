@@ -20,18 +20,18 @@
 <body class="gray-bg">
 
 
-    <div class="middle-box text-center loginscreen animated fadeInDown" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-top: 5%;margin-bottom: 5%;">
+    <div class="middle-box text-center loginscreen animated fadeInDown" style=" width: 30%; margin-left: auto; margin-right: auto; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-top: 5%;margin-bottom: 5%;">
         <div>
             <div>
 
-                <h1 style="margin: 0; padding: 0;"><img alt="image" class="rounded-circle" width="80" height="80" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/></h1>
+                <h1 style="margin: 0; padding: 0;"><img alt="image" class="rounded-circle no-margin" width="80" height="80" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/></h1>
 
             </div>
             <h3>REPÚBLICA DE MOÇAMBIQUE</h3>
             <h3>MINISTÉRIO DA ECONOMIA E FINANÇAS</h3>
             <!--<p>Direcção Nacional do Tesouro e Cooperação Económica e Financeira</p>
             <p>PROJECTO DE LIGAÇÕES ECONÓMICAS PARA DIVERSIFICAÇÃO (PLED)</p>-->
-            <form role="form" th:action="@{/login}" method="post">
+            <form lass="m-t" role="form" th:action="@{/login}" method="post" >
                 <div class="form-group">
                     <input type="text" class="form-control" name="username" placeholder="Username" required="">
                 </div>

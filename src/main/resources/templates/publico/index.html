@@ -101,8 +101,10 @@
   <nav style="background-color: #fff";  class="navbar navbar-default navbar-expand-md" role="navigation">
     <div class="container">
     
-    <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
+    <a th:href="@{/}">
     
+    <img alt="image" class="rounded-circle" width="60" height="60" th:src="@{/img/Emblem_of_Mozambique.svg.png}"/>
+    </a>
     
       <!--<a class="navbar-brand" th:href="@{/login}">Login</a>-->
       
@@ -112,13 +114,12 @@
         </button>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/}"><i style="font-size: 15pt; color: #899d1b; " class="fas fa-home"></i>Home</a></li>
+        <ul class="nav navbar-nav navbar-left">
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/apresentar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-comments"></i>Apresentar preocupação</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/buscar/preocupacao}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-search-location"></i>Acompanhar preocupação</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/estatistica}"><i style="font-size: 15pt; color: #899d1b;" class="fas fa-chart-bar"></i>Estatísticas</a></li>
           <li><a style="color: #808080;" class="nav-link page-scroll" th:href="@{/ajuda}"><i style="font-size: 15pt; color: #899d1b;" class="far fa-info-circle"></i>Ajuda</a></li>
-          <li style="padding-left: 50px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
+          <li style="padding-left: 70px; color: #fee100;"><a style="background-color: #fee100; padding-top: 40px;color: #808080;" class="navbar-brand nav-link page-scroll" th:href="@{/login}">Login</a></li>
         </ul>
       </div>
     </div>
@@ -188,7 +189,41 @@
 
   
   
-  <div class="col-sm-2">
+
+
+<!--<div class="col-sm-2">
+  
+  
+    <div style=" color: #808080; ">
+  	<h3> <strong>SOBRE MDR</strong></h3>
+  </div>
+    <div style="border: 2px solid #ff0500;">
+  
+  	</div>
+
+      
+    </div>-->
+
+
+<section id="features" style="padding-top: 40px;" class="container services">
+  <div class="row">
+    <div class="col-sm-12">
+	    
+	      <h3 style="margin-left: 0; margin-right: 0;">Este é um sistema criado para responder perguntas, esclarecer questões e resolver
+	      problemas de implementação e reclamações de indíviduos ou grupos interessados e afectados pelas actividades na implementação de
+	       projectos ligados ao Ministério de Economia e Finanças</h3>
+	      
+	      
+	    </div>
+    
+    <div class="col-sm-2">
+    
+      
+    </div>
+  </div>
+</section>
+
+<div class="col-sm-2">
   
   
     <div style=" color: #808080; ">
@@ -211,44 +246,10 @@
     
     </div>
     <div class="col-sm-10">
-	    <img alt="image"th:src="@{/img/Cahora-bassa.jpg}" width="90" height="90" />
+	    <img alt="image"th:src="@{/img/Cahora-bassa.jpg}" width="120" height="120" />
 	    
-	      <h2 style="margin-left: 0; margin-right: 0;">Projecto de Ligações Económicas para Diversificação (PLED)</h2>
+	      <h2 style="margin-left: 0; margin-right: 0;">PLED</h2>
 	      <p><a class="navy-link" href="#" role="button">Mais Informações &raquo;</a></p>
-	    </div>
-    
-    <div class="col-sm-2">
-    
-      
-    </div>
-  </div>
-</section>
-
-
-
-<div class="col-sm-2">
-  
-  
-    <div style=" color: #808080; ">
-  	<h3> <strong>SOBRE MDR</strong></h3>
-  </div>
-    <div style="border: 2px solid #ff0500;">
-  
-  	</div>
-
-      
-    </div>
-
-
-<section id="features" style="padding-top: 40px;" class="container services">
-  <div class="row">
-    <div class="col-sm-12">
-	    
-	      <h3 style="margin-left: 0; margin-right: 0;">Este é um sistema criado para responder perguntas, esclarecer questões e resolver
-	      problemas de implementação e reclamações de indíviduos ou grupos interessados e afectados pelas actividades na implementação de
-	       projectos ligados ao Ministério de Economia e Finanças</h3>
-	      
-	      
 	    </div>
     
     <div class="col-sm-2">
