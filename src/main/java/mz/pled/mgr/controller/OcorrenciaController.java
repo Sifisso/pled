@@ -1,13 +1,16 @@
 package mz.pled.mgr.controller;
 
 import mz.pled.mgr.domain.Ocorrencia;
+import mz.pled.mgr.domain.Resolucao;
 import mz.pled.mgr.domain.User;
 import mz.pled.mgr.domain.UserProvinciaProjecto;
 import mz.pled.mgr.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,6 +24,9 @@ public class OcorrenciaController {
 
     @Autowired
     ProjectoRepository projectoRepository;
+
+    @Autowired
+    AnexoOcorrenciaRepository anexoOcorrenciaRepository;
 
     @Autowired
     ProvinciaProjectoRepository provinciaProjectoRepository;
@@ -38,6 +44,9 @@ public class OcorrenciaController {
     PostoAdminitrativoRepository postoAdminitrativoRepository;
 
     @Autowired
+    ResolucaoRepository resolucaoRepository;
+
+    @Autowired
     CanalEntradaRepository  canalEntradaRepository;
 
     @Autowired
@@ -45,6 +54,9 @@ public class OcorrenciaController {
 
     @Autowired
     TipoOcorrenciaRepository tipoOcorrenciaRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     ActividadeRepository actividadeRepository;
@@ -56,6 +68,30 @@ public class OcorrenciaController {
         model.addAttribute("ocorrencias", ocorrenciaRepository.findAll());
 
         return "ocorrencia/listar";
+    }
+
+    @GetMapping("/resolver/ocorrencia/{id}")
+    public String resolverOcorrencia(@PathVariable("id") Long id, ModelMap model) {
+
+        Ocorrencia ocorrenciaProcesso = ocorrenciaRepository.buscarPorId(id);
+
+
+        model.addAttribute("ocorrencia", ocorrenciaRepository.buscarPorId(id));
+        model.addAttribute("anexos", anexoOcorrenciaRepository.findAllByIdResolucao(id));
+        model.addAttribute("resolucoes", resolucaoRepository.findByOcorrencia(id));
+        model.addAttribute("editarResolucao", resolucaoRepository.ultimaResolucao(id));
+        model.addAttribute("resolver", new Resolucao());
+        model.addAttribute("responsaveis", responsabilidadeRepository.findAll());
+
+        return "ocorrencia/resolucao";
+    }
+
+    @GetMapping("/ocorrencias/validar/{id}")
+    public String validacaoAccao (@PathVariable("id") Long id, ModelMap model) {
+
+        model.addAttribute("ocorrencia", ocorrenciaRepository.buscarPorId(id));
+
+        return "ocorrencia/registarValidacao";
     }
 
     @GetMapping("/view/ocorrencia")
@@ -77,13 +113,16 @@ public class OcorrenciaController {
     }
 
     @PostMapping("/cadastrar/ocorrencia")
-    public String cadastrarUsuarios(Ocorrencia ocorrencia, RedirectAttributes attr){
+    public String cadastrarUsuarios(Ocorrencia ocorrencia, RedirectAttributes attr, Authentication authentication){
 
         try{
 
             int codigo = ThreadLocalRandom.current().nextInt(999, 10000);
 
+            User userlogado = userRepository.findByUsername(authentication.getName());
+
             ocorrencia.setGrmStamp(""+codigo);
+            ocorrencia.setResponsavel(userlogado);
 
             if(ocorrenciaRepository.save(ocorrencia)!=null){
 

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout}" Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div layout:fragment="corpo">
+
+
+    <script type="text/javascript">
+
+$(document).ready(function(){
+$('#comboboxProvincias').on('change',function(){
+
+var provinciaId = $(this).val();
+
+$.ajax({
+type: 'GET',
+url: '/'+provinciaId,
+success: function (result){
+var result = JSON.parse(result);
+var s = '';
+for(var i=0; i< result.length; i++){
+s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+}
+$('#comoboxDistrito').html(s);
+}
+});
+
+
+});
+});
+</script>
+
+    <script type="text/javascript">
+
+$(document).ready(function(){
+$('#comoboxDistrito').on('change',function(){
+
+var distritoId = $(this).val();
+
+// alert(distritoId);
+
+$.ajax({
+type: 'GET',
+url: '/'+distritoId,
+success: function (result){
+var result = JSON.parse(result);
+var s = '';
+for(var i=0; i< result.length; i++){
+s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+}
+$('#comboboxPosto').html(s);
+}
+});
+
+
+});
+});
+</script>
+
+
+    <script type="text/javascript">
+function onChangeStatus(){
+var status = document.getElementById("origem");
+
+if(status.value=="individual"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+
+
+
+
+}else if(status.value=="grupo"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+document.getElementById("nrHomens").style.display="block";
+document.getElementById("nrMulheres").style.display="block";
+document.getElementById("nomeGrupo").style.display="block";
+
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("genero").style.display="none";
+
+
+}else if(status.value=="anonimo"){
+
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+}else{
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+document.getElementById("genero").style.display="none";
+document.getElementById("comunicacao").style.display="none";
+document.getElementById("contacto").style.display="none";
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("endereco").style.display="none";
+document.getElementById("email").style.display="none";
+
+}
+}
+
+function onChangeSim(){
+var estado = document.getElementById("radioSim");
+
+
+if(estado.value=="Sim"){
+
+document.getElementById("comentario").style.display="block";
+document.getElementById("motivo").style.display="none";
+
+document.getElementById("dataresposta").style.display="none";
+document.getElementById("canalresposta").style.display="none";
+
+
+}
+}
+
+function onChangeNao(){
+var estado = document.getElementById("radioNao");
+
+
+if(estado.value=="Não"){
+document.getElementById("comentario").style.display="none";
+document.getElementById("motivo").style.display="block";
+	
+document.getElementById("dataresposta").style.display="block";
+document.getElementById("canalresposta").style.display="block";
+
+}
+
+}
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+$('#categoria').on('change',function(){
+
+var categoriaId = $(this).val();
+
+// alert(distritoId);
+
+$.ajax({
+type: 'GET',
+//url: 'http://portal.fipag.co.mz/grm/posto/'+distritoId,
+//url: 'http://fipag.herokuapp.com/posto/'+distritoId,
+url: 'http://196.22.53.245:8080/fnds/subcategoria/'+categoriaId,
+
+//url: 'http://portal.fipag.co.mz/grm2/posto/'+distritoId,
+
+success: function (result){
+var result = JSON.parse(result);
+var s = '';
+for(var i=0; i< result.length; i++){
+s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+}
+$('#subcategoria').html(s);
+}
+});
+
+
+});
+});
+</script>
+
+    <!-- Conteudo -->
+    <div class="row">
+        <div align="left" class="col-6">
+            <a class="btn btn-success btn-md mb-3" th:href="@{/resolver/ocorrencia/{id} (id=${ocorrencia.id})}" role="button">
+                <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
+                <span>Voltar</span>
+            </a>
+        </div>
+
+        <!-- <div align="right" class="col-6">
+        <a class="btn btn-primary btn-md mb-3" th:href="@{/listar/ocorrencia}" role="button">
+        <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
+        <span>Listar Ocorrências</span>
+        </a>
+        </div> -->
+    </div>
+
+    <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+        <div style="background: #60a18a; color: white">
+            <h2 style=" padding: 10px; margin: 0px;" class="card-title" >Validação da Ocorrência</h2>
+        </div>
+        <br>
+
+        <!-- <div th:replace="fragmentos/alert" class="card-body"> -->
+        <div class="card-body">
+            <form th:action="@{/ocorrencias/validar}"
+                  th:object="${ocorrencia}" method="POST" enctype="multipart/form-data">
+
+                <input type="hidden" th:field="*{grmStamp}" class="form-control" placeholder="Designação...">
+                <input type="hidden" th:field="*{id}" class="form-control" placeholder="Designação...">
+                <input type="hidden" th:field="*{sexo}" class="form-control" placeholder="Designação...">
+                <!-- enctype="multipart/form-data" -->
+
+                <!-- <input type="file" name="files" multiple /> -->
+
+                <div class="row">
+                    <div class="input-icon">
+                        <label class="form-label ml-3">Procede?</label>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-check-inline ">
+                        <label class="form-check-label">
+                            <input onchange="onChangeSim()" id="radioSim" type="radio" value="Sim" class="form-check-input" name="procedencia" checked> Sim
+                        </label>
+                    </div>
+
+                    <div class="form-check-inline mb-2">
+                        <label class="form-check-label">
+                            <input onchange="onChangeNao()" id="radioNao" type="radio" value="Não" class="form-check-input" name="procedencia" > Não
+                        </label>
+                    </div>
+
+                </div>
+                
+                
+                
+                <div class="row">
+                
+                <div class="col-6 col-sm-4">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Alerta</label>
+                            <select class="form-control custom-select form-select" th:field="*{tipoAlerta}" >
+                                <option th:each="p : ${tipoAlertas}"
+                                        th:value="${p.id}" th:if="${p.designacao=='GBV'}" >Violência baseada no gênero</option>
+                                
+                                <option th:each="p : ${tipoAlertas}"
+                                        th:value="${p.id}" th:text="${p.designacao}" th:if="${p.designacao!='GBV'}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="projectoo" class="col-6 col-sm-4">
+                        <div class="form-group">
+                            <label for="projecto" class="form-label">Projecto</label>
+                            <select id="projecto" class="form-control custom-select form-select" th:field="*{projecto}" >
+                                <option value="">Selecione o Projecto...</option>
+                                <option th:each="p : ${projectos}"
+                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-sm-4">
+                        <div class="form-group">
+                            <label for="comboboxProvincias" class="form-label">Província</label>
+                            <select style="background: rgba(245, 66, 66, 0.2)" id="comboboxProvincias" class="form-control custom-select form-select" th:field="*{provincia}" >
+                                <option  th:each="p : ${provincias}"
+                                        th:value="${p.id}" th:text="${p.designacao}" th:if="${p.designacao==ocorrencia.provincia.designacao}" selected="selected">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div style="display: none;">
+                    
+                    
+                    <input style="display: none" type="text" th:field="*{numeroordem}" class="form-control" placeholder="Designação...">
+
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Canal de Utilizado</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="canalEntrada" th:field="*{canalEntrada}"  >
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+		
+		                    <div class="col-6 col-sm-4">
+		                        <div class="form-group">
+		                            <label class="form-label">Distrito</label>
+		                            <select class="form-control custom-select form-select" id="comoboxDistrito" th:field="*{distrito}" >
+		                                <option value="">Selecione o Distrito...</option>
+		                                <option th:each="p : ${distritos}"
+		                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+		                            </select>
+		                        </div>
+		                    </div>
+		
+		                    <div class="col-6 col-sm-4">
+		                        <div class="form-group">
+		                            <label for="comboboxPosto" class="form-label">Posto Administrativo</label>
+		                            <select class="form-control custom-select form-select" id="comboboxPosto" th:field="*{postoAdministrativo}" >
+		                                <option value="">Selecione o Postos Administrativos...</option>
+		                                <option th:each="p : ${postos}"
+		                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+		                            </select>
+		                        </div>
+		                    </div>
+		                    
+		                    <div style="display: none" id="contacto" class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Contacto</label>
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                    <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input type="text" th:field="*{telefone}" class="form-control" placeholder="Designação...">
+                            </div>
+                        </div>
+                    </div>
+		                    
+		                    <div style="display: none" id="endereco" class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Morada</label>
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input type="text" th:field="*{moradaUtente}" class="form-control" placeholder="Designação...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: none" id="email" class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <div class="input-icon">
+                                <span class="input-icon-addon">
+                                <i class="fe fe-edit-2"></i>
+                                </span>
+                                <input type="text" th:field="*{emailUtente}" class="form-control" placeholder="Designação...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: none" id="nomeGrupo" class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Nome Do Grupo</label>
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input type="text" th:field="*{nomeDoRepresentanteDoGrupo}" class="form-control" placeholder="Designação...">
+                            </div>
+                        </div>
+                    </div>
+                    
+		                    
+		                    <div class="row">
+                    <div style="display: none" id="nome1" class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Nome</label>
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input type="text" th:field="*{nomeUtente}" class="form-control" placeholder="Designação...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: none" id="faixaEtaria" class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Faixa Etária</label>
+                            <select class="form-control custom-select" th:field="*{faixaEtaria}" >
+                                <option value=" ">Selecione...</option>
+                                <option value="20 a 30">20 a 30</option>
+                                <option value="30 a 40">31 a 60</option>
+                                <option value="30 a 40">Outra</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div style="display: none" id="nome" class="col-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Descrição do Problema <strong style="color:red">*</strong></label>
+                            <div class="input-icon">
+                                <span class="input-icon-addon">
+                                <i class="fe fe-edit-2"></i>
+                                </span>
+                                <textarea required type="text" th:field="*{descricao}" data-bs-toggle="autosize" class="form-control" placeholder="Descreva o Assunto..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+		                    
+                    </div>
+
+                    <div class="col-6 col-sm-4">
+                        <div class="form-group">
+                            <label for="categoria" class="form-label">Categoria</label>
+                            <select id="categoria" class="form-control custom-select form-select" th:field="*{categoria}" >
+                                <option value="">Selecione a Categoria...</option>
+                                <option th:each="p : ${categorias}"
+                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-sm-4">
+                        <div class="form-group">
+                            <label for="subcategoria" class="form-label">Sub Categoria</label>
+                            <select id="subcategoria" class="form-control custom-select form-select" th:field="*{subcategoria}" >
+                                <option value="">Selecione a Sub Categoria ...</option>
+									<option th:each="p : ${subcategorias}"
+                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-6 col-sm-4">
+                        <div class="form-group">
+                            <label class="form-label">Data da Ocorrência: </label>
+                            <div class="input-icon">
+							<span class="input-icon-addon">
+							<i class="fe fe-calendar"></i>
+							</span>
+                                <input style="background: rgba(245, 66, 66, 0.2) " readonly="readonly" type="text" th:field="*{dataOcorrencia}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-sm-4">
+                        <div class="form-group">
+                            <label for="tipoOcorrencia" class="form-label">Tipo de Ocorrência</label>
+                            <select id="tipoOcorrencia" class="form-control custom-select form-select" th:field="*{tipoOcorrencia}" >
+                                <option th:each="p : ${tipoDeOcorrencias}"
+                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+					<div class="col-12 col-sm-8">
+                    <div class="form-group">
+                        <label class="form-label">Comunidade</label>
+                        <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                    <i class="fe fe-edit-2"></i>
+                                    </span>
+                            <input type="text" th:field="*{comunidade}" class="form-control" placeholder="Escreva a Comunidade...">
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Descrição do Problema </label>
+                            <div class="input-icon">
+                                <span class="input-icon-addon">
+                                <i class="fe fe-edit-2"></i>
+                                </span>
+                                <textarea style="background: rgba(245, 66, 66, 0.2) " disabled="disabled" type="text" th:field="*{assunto}" data-bs-toggle="autosize" class="form-control" placeholder="Descreva o Assunto..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-6 col-sm-12">
+                        <div class="form-group">
+                            <label style="display: none" id="motivo" class="form-label">Motivo <strong style="color:red">*</strong></label>
+                            <label id="comentario" class="form-label">Comentário <strong style="color:red">*</strong></label>
+                            <div class="input-icon">
+								<span class="input-icon-addon">
+								<i class="fe fe-edit-2"></i>
+								</span>
+		                             <textarea required data-bs-toggle="autosize" th:field="*{observacao}" class="form-control" placeholder="Descreva..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Anexo</label>
+                            <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                <input type="file" name="files" class="form-control" multiple>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: none">
+                    <input  onclick="onChangeIndividual()" id="individual" type="radio" th:field="*{origem}" value="Individual">
+                <label for="individual"><span></span>Individual</label>
+
+                <input onclick="onChangeGrupo()" id="grupo" type="radio" th:field="*{origem}" value="Grupo/Comunidade">
+                <label for="grupo"><span></span>Grupo/Comunidade</label>
+
+                <input onclick="onChangeAnonimo()" id="anonimo" type="radio" th:field="*{origem}" value="Anónimo">
+                <label for="anonimo"><span></span>Anónimo</label>
+                    
+                    </div>
+
+                    <div class="col-6 col-sm-6">
+                    <div class="form-group">
+                    <label class="form-label">Descrição</label>
+                            <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                            <div class="input-icon">
+                                <input type="text" onchange="preview()" name="descricao" placeholder="Descricao de Anexos" class="form-control" >
+                            </div>
+                    </div>
+					</div>
+                </div>
+
+
+                <div class="card-footer text-right">
+                    <button type="submit" class="btn btn-success">Validar</button>
+                </div>
+
+
+            </form>
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <!-- Conteudo-->
+</div>
+</body>
+</html>

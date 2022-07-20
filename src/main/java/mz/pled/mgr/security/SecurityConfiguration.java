@@ -48,7 +48,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/distrito/{id}").permitAll()
                 .antMatchers("/posto/{id}").permitAll()
                 .antMatchers("/recuperar/senha").permitAll()
-                .antMatchers("/recuperar/password").permitAll()
+                .antMatchers("/api/distritos/{id}").permitAll()
+                .antMatchers("/api/postos/{id}").permitAll()
+                .antMatchers("/api/actividades/{id}").permitAll()
+                .antMatchers("/api/provincias/{id}").permitAll()
 
                 //Links que podem ser acessados pelos Admins
                 .antMatchers("/home").hasAnyAuthority("ROLE_ADMIN")

@@ -171,7 +171,7 @@ $('#comoboxProjecto').html(s);
 									<div class="col-6 col-sm-6">
 				                        <div class="form-group">
 				                            <label class="form-label">Projecto <strong style="color:red">*</strong></label>
-				                            <select class="form-control custom-select form-select" style="width:90%" name="projecto" id="comoboxProjecto" th:field="*{projecto}" >
+				                            <select class="form-control custom-select form-select" style="width:90%" name="projecto" id="comboboxProjectos" >
 				                                <option value="">Selecione o Projecto...</option>
 				                                <option th:each="p : ${projectos}"
 				                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
@@ -202,10 +202,8 @@ $('#comoboxProjecto').html(s);
                         <div class="col-6 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Provincia <strong style="color:red">*</strong></label>
-                            <select class="form-control custom-select form-select" style="width:90%" name="provincia" id="comoboxProvincia" th:field="*{provinciaProjecto}" >
+                            <select class="form-control custom-select form-select" style="width:90%" name="provincia" id="comboboxProvincias" th:field="*{provinciaProjecto}" >
                                 <option value="">Selecione o Provincia...</option>
-                                <option th:each="p : ${provincias}"
-                                        th:value="${p.provincia.id}" th:text="${p.provincia.designacao}">Maputo</option>
                             </select>
                         </div>
                     </div>
@@ -213,10 +211,8 @@ $('#comoboxProjecto').html(s);
                     <div class="col-6 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Distrito <strong style="color:red">*</strong></label>
-                            <select class="form-control custom-select form-select" name="distrito" id="comoboxDistrito" th:field="*{distrito}" >
+                            <select class="form-control custom-select form-select" name="distrito" id="comboboxDistritos" th:field="*{distrito}" >
                                 <option value="">Selecione o Distrito...</option>
-                                <option th:each="p : ${distritos}"
-                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
                             </select>
                         </div>
                     </div>
@@ -228,11 +224,9 @@ $('#comoboxProjecto').html(s);
 
                             <div class="col-6 col-sm-6">
                         <div class="form-group">
-                            <label for="comboboxPosto" class="form-label">Posto Administrativo</label>
-                            <select class="form-control custom-select form-select" id="comboboxPosto" th:field="*{postoAdministrativo}" >
+                            <label for="comboboxPostos" class="form-label">Posto Administrativo</label>
+                            <select class="form-control custom-select form-select" id="comboboxPostos" th:field="*{postoAdministrativo}" >
                                 <option value="">Selecione o Posto Administrativo...</option>
-                                <option th:each="p : ${postos}"
-                                        th:value="${p.id}" th:text="${p.designacao}">Maputo</option>
                             </select>
                         </div>
                     </div>
@@ -441,7 +435,7 @@ $('#comoboxProjecto').html(s);
     <script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
 
     <!-- Color picker -->
-    <script sth:src="@{/js/plugins/colorpicker/bootstrap-colorpicker.min.js}"></script>
+    <script th:src="@{/js/plugins/colorpicker/bootstrap-colorpicker.min.js}"></script>
 
     <!-- Clock picker -->
     <script th:src="@{/js/plugins/clockpicker/clockpicker.js}"></script>
@@ -465,7 +459,7 @@ $('#comoboxProjecto').html(s);
     <script th:src="@{/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js}"></script>
 
     <!-- Dual Listbox -->
-    <script sth:src="@{/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js}"></script>
+    <script th:src="@{/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js}"></script>
 
 
 
@@ -535,92 +529,6 @@ $('#comoboxProjecto').html(s);
     </script>
    
    
-<script type="text/javascript">
-
-	$(document).ready(function(){
-	$('#comboboxProvincias').on('change',function(){
-	
-	var provinciaId = $(this).val();
-	
-	// alert(provinciaId);
-	
-	$.ajax({
-	type: 'GET',
-	
-	url: 'http://localhost:8080/distrito/'+provinciaId,
-	
-	success: function (result){
-	var result = JSON.parse(result);
-	var s = '';
-	for(var i=0; i< result.length; i++){
-	s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
-	}
-	$('#comoboxDistrito').html(s);
-	}
-	});
-	
-	});
-	});
-</script>
-
-<script type="text/javascript">
-
-$(document).ready(function(){
-$('#comoboxDistrito').on('change',function(){
-
-var distritoId = $(this).val();
-
-// alert(distritoId);
-
-$.ajax({
-type: 'GET',
-
-url: 'http://localhost:8080/posto/'+distritoId,
-
-
-success: function (result){
-var result = JSON.parse(result);
-var s = '';
-for(var i=0; i< result.length; i++){
-s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
-}
-$('#comboboxPosto').html(s);
-}
-});
-
-
-});
-});
-</script>
-
-<script type="text/javascript">
-
-	    $(document).ready(function(){
-	        $('#comoboxDistrito').on('change',function(){
-	
-	          var distritoId = $(this).val();
-	
-	         // alert(distritoId);
-	
-	          $.ajax({
-	          type: 'GET',
-	        url: 'http://localhost:9090/posto/'+distritoId,
-	          
-	           success: function (result){
-	           var result = JSON.parse(result);
-	           var s = '';
-	          for(var i=0; i< result.length; i++){
-	              s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
-	          }
-	        $('#comboboxPosto').html(s);
-	    }
-	});
-	
-	          
-	        });
-	    });
-    
-    </script>
 
 
     <script>
@@ -736,7 +644,7 @@ $('#comboboxPosto').html(s);
                         required: true
                     },
                     distrito:{
-                        required: true
+
                     },
                     comunidade:{
                         required: true
@@ -749,6 +657,115 @@ $('#comboboxPosto').html(s);
             });
         });
     </script>
+
+
+
+<script type="text/javascript">
+
+        $(document).ready(function(){
+        $('#comboboxProjectos').on('change',function(){
+
+        var projectoId = $(this).val();
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/actividades/'+projectoId,
+        url: 'http://localhost:8082/api/actividades/'+projectoId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione a Actividade... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxActividades').html(s);
+        }
+        });
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/provincias/'+projectoId,
+        url: 'http://localhost:8082/api/provincias/'+projectoId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione a Provincia... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxProvincias').html(s);
+        }
+        });
+
+        });
+        });
+
+    </script>
+
+<script type="text/javascript">
+
+        $(document).ready(function(){
+        $('#comboboxProvincias').on('change',function(){
+
+        var provinciaId = $(this).val();
+
+        alert(provinciaId);
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/distritos/'+provinciaId,
+        url: 'http://localhost:8082/api/distritos/'+provinciaId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione o Distrito... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxDistritos').html(s);
+        }
+        });
+
+        });
+        });
+
+    </script>
+
+<script type="text/javascript">
+
+        $(document).ready(function(){
+        $('#comboboxDistritos').on('change',function(){
+
+        var distritoId = $(this).val();
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/distritos/'+distritoId,
+        url: 'http://localhost:8082/api/distritos/'+distritoId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione o Posto... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxPostos').html(s);
+        }
+        });
+
+        });
+        });
+
+    </script>
+
     
     <script>
         $(document).ready(function(){

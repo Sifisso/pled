@@ -139,17 +139,6 @@ public class UserController {
     @PostMapping("/user/projecto/provincia")
     public String userProjectoProvincia(UserProvinciaProjecto userProvinciaProjecto, RedirectAttributes attr, @RequestParam("user") long user){
 
-       // for(long projecto: projectos) {
-
-            //ProvinciaProjecto provinciaProjecto = projectoService.buscarPorId(projecto);
-            //User user1 = userRepository.buscarPorId(user);
-
-           // userProvinciaProjecto.setProvinciaProjecto(provinciaProjecto);
-           // userProvinciaProjecto.setUser(user1);
-           // userProvinciaProjectoRepository.save(userProvinciaProjecto);
-
-        //}
-
         try {
 
             User user1 = userRepository.buscarPorId(user);
@@ -159,7 +148,7 @@ public class UserController {
 
         }catch (Exception ex){
 
-            attr.addFlashAttribute("excessao", "Ocorreu o seguinte erro: "+ex.getMessage());
+            attr.addFlashAttribute("erro", "Ocorreu o seguinte erro: "+ex.getMessage());
         }
 
 

@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.AbstractButton;
 
+import mz.pled.mgr.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,10 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import mz.pled.mgr.domain.CanalEntrada;
 import mz.pled.mgr.domain.Ocorrencia;
 import mz.pled.mgr.domain.Provincia;
-import mz.pled.mgr.repository.OcorrenciaRepository;
-import mz.pled.mgr.repository.PostoAdminitrativoRepository;
-import mz.pled.mgr.repository.ProjectoRepository;
-import mz.pled.mgr.repository.ProvinciaProjectoRepository;
 
 @Controller
 public class IndexController {
@@ -33,8 +30,9 @@ public class IndexController {
 	
 	@Autowired
     private ProjectoRepository projectoRepository;
-	
-	
+
+    @Autowired
+    private CanalEntradaRepository canalEntradaRepository;
 
     @Autowired
     OcorrenciaRepository ocorrenciaRepository;
@@ -146,17 +144,16 @@ public class IndexController {
         try{
 
             int codigo = ThreadLocalRandom.current().nextInt(999, 10000);
+
+            CanalEntrada canal = canalEntradaRepository.canalPlataforma();
             
             String codigoo = String.valueOf(codigo);
 
             ocorrencia.setGrmStamp(codigoo);
-
+            ocorrencia.setCanalEntrada(canal);
 
             if(ocorrenciaRepository.save(ocorrencia)!=null){
 
-                //System.out.println("Preocupação cadastrada com sucesso!");
-
-                //attr.addFlashAttribute("sucesso", "Preocupação cadastrada com sucesso! ");
                 
                 model.addAttribute("ocorrenciaa", ocorrencia.getGrmStamp());
                 

@@ -26,6 +26,10 @@
     <!-- Toastr style -->
     <link th:href="@{/css/plugins/toastr/toastr.min.css}" rel="stylesheet">
 
+    <link th:href="@{/css/plugins/colorpicker/bootstrap-colorpicker.min.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/datapicker/datepicker3.css}" rel="stylesheet">
+    <link th:href="@{/css/plugins/daterangepicker/daterangepicker-bs3.css}" rel="stylesheet">
+
     <!-- Gritter -->
     <link th:href="@{/js/plugins/gritter/jquery.gritter.css}" rel="stylesheet">
 
@@ -63,7 +67,7 @@
         <div >
             <div th:if="${sucesso} != null" >
                 <script th:inline="javascript">
-s
+
                     /*<![CDATA[*/
 
                     var sucesso = /*[[${sucesso}]]*/"";
@@ -178,6 +182,13 @@ s
     <script th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
 
     <script th:src="@{pp/js/jquery.validate.js}"></script>
+
+    <!-- Data picker -->
+    <script th:src="@{/js/plugins/datapicker/bootstrap-datepicker.js}"></script>
+
+
+    <!-- Date range picker -->
+    <script th:src="@{/js/plugins/daterangepicker/daterangepicker.js}"></script>
 
     <div class="row" layout:fragment="js">
 

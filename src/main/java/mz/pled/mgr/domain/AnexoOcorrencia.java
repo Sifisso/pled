@@ -1,24 +1,72 @@
 package mz.pled.mgr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "anexo_ocorrencia")
 public class AnexoOcorrencia extends AbstractEntity{
-	
-	@Column(name = "designacao")
-	private String designacao;
-	
 
-	public String getDesignacao() {
-		return designacao;
+
+	private String docName;
+	private String docType;
+	private String descricao;
+
+
+	@ManyToOne
+	@JoinColumn(name="ocorrencia_id")
+	private Ocorrencia ocorrencia;
+
+	private String fase;
+
+	@Lob
+	private byte[] data;
+
+	public String getDocName() {
+		return docName;
 	}
 
-	public void setDesignacao(String designacao) {
-		this.designacao = designacao;
+	public void setDocName(String docName) {
+		this.docName = docName;
 	}
-	
+
+	public String getDocType() {
+		return docType;
+	}
+
+	public void setDocType(String docType) {
+		this.docType = docType;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Ocorrencia getOcorrencia() {
+		return ocorrencia;
+	}
+
+	public void setOcorrencia(Ocorrencia ocorrencia) {
+		this.ocorrencia = ocorrencia;
+	}
+
+	public String getFase() {
+		return fase;
+	}
+
+	public void setFase(String fase) {
+		this.fase = fase;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
 }

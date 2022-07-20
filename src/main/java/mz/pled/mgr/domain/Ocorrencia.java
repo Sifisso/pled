@@ -74,6 +74,12 @@ public class Ocorrencia extends AbstractEntity{
 
 	@Column(name = "estado")
 	private String estado="Registado";
+
+	@Column(name = "numero_ordem")
+	private int numeroordem=0;
+
+	@Column(name = "observacao")
+	private String observacao;
 	
 	@ManyToOne
 	@JoinColumn(name="posto_id")
@@ -108,16 +114,9 @@ public class Ocorrencia extends AbstractEntity{
 	private Distrito distrito;
 
 	@ManyToOne
-	@JoinColumn(name = "provincia_id")
-	private Provincia provincia;
-
-	@ManyToOne
 	@JoinColumn(name = "responsavel_id")
 	private User responsavel;
 
-	@ManyToOne
-	@JoinColumn(name = "projecto_id")
-	private Projecto projecto;
 
 	public String getComunidade() {
 		return comunidade;
@@ -142,13 +141,6 @@ public class Ocorrencia extends AbstractEntity{
 		this.estado = estado;
 	}
 
-	public Provincia getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(Provincia provincia) {
-		this.provincia = provincia;
-	}
 
 	public Actividade getActividade() {
 		return actividade;
@@ -166,13 +158,6 @@ public class Ocorrencia extends AbstractEntity{
 		this.nomeUtente = nomeUtente;
 	}
 
-	public Projecto getProjecto() {
-		return projecto;
-	}
-
-	public void setProjecto(Projecto projecto) {
-		this.projecto = projecto;
-	}
 
 	public String getNomeDoRepresentanteDoGrupo() {
 		return nomeDoRepresentanteDoGrupo;
@@ -180,6 +165,14 @@ public class Ocorrencia extends AbstractEntity{
 
 	public void setNomeDoRepresentanteDoGrupo(String nomeDoRepresentanteDoGrupo) {
 		this.nomeDoRepresentanteDoGrupo = nomeDoRepresentanteDoGrupo;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	public String getMoradaUtente() {
@@ -336,6 +329,14 @@ public class Ocorrencia extends AbstractEntity{
 
 	public String getEndereco() {
 		return endereco;
+	}
+
+	public int getNumeroordem() {
+		return numeroordem;
+	}
+
+	public void setNumeroordem(int numeroordem) {
+		this.numeroordem = numeroordem;
 	}
 
 	public void setEndereco(String endereco) {
