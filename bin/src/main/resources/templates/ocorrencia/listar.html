@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout}" Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+</head>
+<body>
+
+<div layout:fragment="corpo">
+
+
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Ocorrencias</h5>
+                <div class="ibox-tools">
+                    <h5>
+                      <a th:href="@{/view/ocorrencia}">
+                        <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Cadastrar Ocorrencias</button>
+                      </a>
+                    </h5>
+                </div>
+            </div>
+            <div class="ibox-content">
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                        <thead>
+                        <tr>
+                            <th>Nr</th>
+                            <th>Cadastro</th>
+                            <th>Ocorrência</th>
+                            <th>Provinvia</th>
+                            <th>Projecto</th>
+                            <th>Canal</th>
+                            <th>Responsável</th>
+                            <th>Assunto</th>
+                            <th>Status</th>
+                            <th>Acção</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="gradeX"  th:each="p, index : ${ocorrencias}">
+                            <td th:text="${p.id}"></td>
+                            <td th:text="${#dates.format(p.created, 'dd/MM/yyyy')}" ></td>
+                            <td th:text="${p.dataOcorrencia}" ></td>
+                            <td th:text="${p.provinciaProjecto.provincia.designacao}" ></td>
+                            <td th:text="${p.provinciaProjecto.projecto.designacao}" > </td>
+                            <td th:text="${p.canalEntrada.designacao}"></td>
+                            <td th:if="${p.responsavel != null}" th:text="${p.responsavel.nome}"></td>
+                            <td th:if="${p.responsavel == null}" >
+                                <span>Sem Responsável</span>
+                            </td>
+                            <td >
+                                <a href="#" th:data-whatever="${p.id}" th:data-whatever-descricao="${p.assunto}" data-toggle="modal" data-target="#myModal">Detalhes</a>
+                            </td>
+                            <td align="left" style="text-align: left;">
+
+                                <button style="background: blue; text-align: left; color: #fff; width: 120px;" th:if="${p.resolucao == 'V' && p.procedencia=='Sim'}" type="button" class="btn btn-sucess btn-sm">
+                                    Procedente
+                                    <i style="font-size: 15pt;" aria-hidden="true" class="fa fa-check"></i>
+                                </button>
+
+                                <button style="background: red; color: #fff; width: 120px;" th:if="${p.resolucao == 'V' && p.procedencia=='Não'}" type="button" class="btn btn-sucess btn-sm">
+                                    Improcedente
+                                    <i style="font-size: 15pt;" aria-hidden="true" class="fa fa-ban"></i>
+                                </button>
+
+                                <button style="background: #cc568b; color: #fff; width: 120px;" th:if="${p.resolucao == 'R' }" type="button" class="btn btn-sucess btn-sm">
+                                    Resolvendo
+                                    <i style="font-size: 15pt;" aria-hidden="true" class="fa fa-spinner fa-spin"></i>
+                                </button>
+
+                                <button style="background: #3e8fa3; color: #fff; width: 120px;" th:if="${p.resolucao == 'A' }" type="button" class="btn btn-sucess btn-sm">
+                                    Acompanhando
+                                    <i style="font-size: 15pt;" aria-hidden="true" class="fa fa-spinner fa-spin"></i>
+                                </button>
+
+                                <button style="background: green; color: #fff; width: 120px;" th:if="${p.resolucao == 'T' }" type="button" class="btn btn-sucess btn-sm">
+                                    Resolvido
+                                    <i style="font-size: 15pt;" aria-hidden="true" class="fa fa-check-double"></i>
+                                </button>
+
+                                <button style="background: orange; color: #fff; width: 120px;" th:if="${p.resolucao == 'P'}" type="button" class="btn btn-sucess btn-sm">
+                                    <span th:if="${p.estado == 'Temporario'}">Temporario</span>
+                                    <span th:if="${p.estado == 'Registado'}">Pendente</span>
+
+                                    <i style="font-size: 15pt;" aria-hidden="true" class="fa fa-spinner fa-spin"></i>
+                                </button>
+
+                            </td>
+
+                            <td align="center">
+
+
+                                <a th:if="${p.resolucao == 'P' && p.estado != 'Temporario'}" th:href="@{/ocorrencias/editar/{id} (id=${p.id})}">
+                                    <i style="font-size: 15pt; color: orange" aria-hidden="true" class="fa fa-edit"></i>
+                                </a>
+
+                                <a  th:href="@{/resolver/ocorrencia/{id} (id=${p.id})}">
+                                    <i style="font-size: 15pt; color: blue" aria-hidden="true" class="fa fa-edit"></i>
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Nr</th>
+                            <th>Cadastro</th>
+                            <th>Ocorrência</th>
+                            <th>Provinvia</th>
+                            <th>Projecto</th>
+                            <th>Canal</th>
+                            <th>Responsável</th>
+                            <th>Assunto</th>
+                            <th>Status</th>
+                            <th>Acção</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div >
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-laptop modal-icon"></i>
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $('#myModal').on('show.modal', function (event) {
+        var button = $(event.relatedTarget) // Botão que acionou o modal
+        var nrAcorrencia = button.data('whatever') // Extrai informação dos atributos data-*
+        var assunto = button.data('whatever-descricao')
+        // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
+        // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+        var modal = $(this)
+
+        modal.find('.modal-title').html("Ocorrência N° "+nrAcorrencia)
+        modal.find('.modal-body').html(assunto)
+        })
+    </script>
+
+
+</div>
+
+
+
+</body>
+</html>

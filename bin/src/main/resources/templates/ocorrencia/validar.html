@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout}" Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+
+
+</head>
+<body>
+
+<div layout:fragment="corpo">
+
+
+  <div class="col-lg-12">
+    <div class="ibox ">
+      <div class="ibox-title">
+        <h5>Cadastrar Ocorrencia</h5>
+        <div class="ibox-tools">
+          <h5>
+            <a th:href="@{/listar/ocorrencias}">
+              <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Listar Ocorrencia</button>
+            </a>
+          </h5>
+        </div>
+      </div>
+      <div class="ibox-content">
+        <form th:object="${ocorrencia}" id="form"  th:action="@{/cadastrar/ocorrencia}" method="post">
+
+
+          <div style="background: #60a18a; color: white">
+            <h2 style=" padding: 10px; margin: 0px;" class="card-title" >Dados da Ocorrência</h2>
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <label class="col-form-label">Tipo de Alerta</label>
+              <select class="form-control m-b" style="width:100%" name="nivel" th:field="*{tipoAlerta}"  >
+                <option th:each="p : ${tipoAlertas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+              </select>
+
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Projecto</label>
+              <div class="input-group user">
+                <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                <select class="form-control m-b" style="width:70%" name="projecto" th:field="*{projecto}"  >
+                  <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}" ></option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Actividades</label>
+              <div class="input-group user">
+                <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                <select class="form-control m-b" style="width:70%" name="actividade" th:field="*{actividade}"  >
+                  <option th:each="p : ${actividades}" th:value="${p.id}" th:text="${p.designacao}" ></option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <label class="col-form-label">Provincia</label>
+              <select class="form-control m-b" style="width:100%" name="nivel" th:field="*{provinciaProjecto}"  >
+                <option th:each="p : ${provincias}" th:value="${p.id}" th:text="${p.provincia.designacao}"></option>
+              </select>
+
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Distritos</label>
+              <div class="input-group user">
+                <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                <select class="form-control m-b" style="width:70%" name="distrito" th:field="*{distrito}"  >
+                  <option th:each="p : ${distritos}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Posto Administrativo</label>
+              <div class="input-group user">
+                <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                <select class="form-control m-b" style="width:70%" name="posto" th:field="*{posto}"  >
+                  <option th:each="p : ${postos}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                </select>
+              </div>
+            </div>
+
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <label class="col-form-label">Comunidade</label>
+              <div class="input-group user" >
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" style="width:70%" name="comunidade" th:field="*{comunidade}" placeholder="Comunidade" >
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Categoria</label>
+              <div class="input-group user">
+                <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                <select class="form-control m-b" style="width:70%" name="categoria" th:field="*{categoria}"  >
+                  <option th:each="p : ${categorias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Data da Ocorrencia</label>
+              <div class="input-group user" >
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="date" class="form-control" style="width:70%" name="dataOcorrencia" th:field="*{dataOcorrencia}" placeholder="dataOcorrencia" >
+              </div>
+            </div>
+
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <label class="col-form-label">Canal de Utilizado</label>
+              <div class="input-group user">
+                <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                <select class="form-control m-b" style="width:70%" name="canalEntrada" th:field="*{canalEntrada}"  >
+                  <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Tipo de Ocorrencia</label>
+              <select class="form-control m-b" style="width:100%" name="nivel" th:field="*{tipoOcorrencia}"  >
+                <option th:each="p : ${tipoOcorrencias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+              </select>
+
+            </div>
+
+            <div class="col-md-4" >
+              <label class="col-form-label">Telefone</label>
+              <div class="input-group user" >
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                <input type="number" class="form-control" style="width:70%" name="telefone" th:field="*{telefone}" placeholder="Telefone" >
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+          <div class="row">
+
+            <div class="col-md-4"  >
+              <label class="col-form-label">Email</label>
+              <div class="input-group user" >
+                <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
+                <input type="email" class="form-control" style="width:70%" name="email"  th:field="*{email}"  placeholder="" >
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-form-label">Nivel de Resolucao</label>
+              <div class="input-group user">
+                <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                <select class="form-control m-b" style="width:70%" name="nivelresolucao" th:field="*{nivelresolucao}"  >
+                  <option th:each="p : ${nivelResolucoes}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="col-md-4">
+              <label class="col-form-label">Nome Utente</label>
+              <div class="input-group user" >
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" style="width:70%" name="nomeUtente" th:field="*{nomeUtente}" placeholder="Nome" >
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <label class="col-form-label">Descrição do Problema</label>
+              <div class="input-group user">
+                <textarea type="text" class="form-control" style="width:70%" name="assunto" th:field="*{assunto}" placeholder="Assunto..." />
+              </div>
+            </div>
+
+          </div>
+
+          <div class="hr-line-dashed"></div>
+
+          <div style="background: #60a18a; color: white">
+            <h2 style=" padding: 10px; margin: 0px;" class="card-title" >Dados do Utente</h2>
+          </div>
+          <br>
+
+          <input  onclick="onChangeIndividual()" id="individual" type="radio" th:field="*{origem}" value="Individual">
+          <label for="individual"><span></span>Individual</label>
+
+          <input onclick="onChangeGrupo()" id="grupo" type="radio" th:field="*{origem}" value="Grupo/Comunidade">
+          <label for="grupo"><span></span>Grupo/Comunidade</label>
+
+          <input onclick="onChangeAnonimo()" id="anonimo" type="radio" th:field="*{origem}" value="Anónimo">
+          <label for="anonimo"><span></span>Anónimo</label>
+
+          <br>
+
+          <div class="row">
+            <div style="display: none" id="nome" class="col-6 col-sm-6">
+              <div class="form-group">
+                <label class="form-label">Nome</label>
+                <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                  <input type="text" th:field="*{nomeUtente}" class="form-control" placeholder="Designação...">
+                </div>
+              </div>
+            </div>
+
+            <div style="display: none" id="nomeGrupo" class="col-6 col-sm-6">
+              <div class="form-group">
+                <label class="form-label">Nome Do Grupo</label>
+                <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                  <input type="text" th:field="*{nomeDoRepresentanteDoGrupo}" class="form-control" placeholder="Designação...">
+                </div>
+              </div>
+            </div>
+
+            <div style="display: none" id="endereco" class="col-6 col-sm-6">
+              <div class="form-group">
+                <label class="form-label">Morada</label>
+                <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                  <input type="text" th:field="*{moradaUtente}" class="form-control" placeholder="Designação...">
+                </div>
+              </div>
+            </div>
+
+            <div  style="display: none" id="genero" class="col-6 col-sm-6">
+              <div class="form-group">
+                <label class="form-label">Sexo</label>
+                <select class="form-control custom-select" th:field="*{sexo}" >
+                  <option value=" ">Selecione...</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Feminino</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: none" id="faixaEtaria" class="col-6 col-sm-6">
+              <div class="form-group">
+                <label class="form-label">Faixa Etária</label>
+                <select class="form-control custom-select" th:field="*{faixaEtaria}" >
+                  <option value=" ">Selecione...</option>
+                  <option value="20 a 30">20 a 30</option>
+                  <option value="30 a 40">31 a 60</option>
+                  <option value="30 a 40">Outra</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div style="background: #60a18a; color: white">
+            <h2 style=" padding: 10px; margin: 0px;" class="card-title" >Dados dos Anexos</h2>
+          </div>
+
+          <br>
+
+          <div class="row">
+
+            <div class="col-6 col-sm-6">
+              <div class="form-group">
+                <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                  <input type="file" name="files" class="form-control" multiple>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-6">
+              <div class="form-group">
+                <div class="input-icon">
+                  <input type="text" onchange="preview()" name="descricaoAnx" placeholder="Descricao de Anexos" class="form-control" >
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="hr-line-dashed"></div>
+          <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-5">
+              <button class="btn btn-primary btn-sm" type="submit" >
+                <i class="fa fa-save"></i> Gravar  Ocorrência
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row" layout:fragment="js">
+
+  <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#form').validate({
+
+                rules:{
+
+                    nome:{
+                        required: true,
+                        maxlength: 200,
+                        minlength: 2
+                    },
+                    telefone:{
+                        required: true,
+                        maxlength: 9,
+                        minlength: 9
+                    },
+                    username:{
+                        required: true
+                    },
+                    email:{
+                        required: true,
+                        email: true
+                    }
+
+
+                }
+
+            });
+        });
+    </script>
+
+</div>
+
+</body>
+</html>
+l>

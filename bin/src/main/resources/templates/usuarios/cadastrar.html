@@ -24,24 +24,24 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form th:object="${user}"  th:action="@{/cadastrar/usuarios}" method="post">
+                    <form th:object="${user}" id="form"  th:action="@{/cadastrar/usuarios}" method="post">
 
 
                         <div class="row">
 
-                            <div class="col">
+                            <div class="col-md-6">
                                 <label class="col-form-label">Nome</label>
-                                <div class="input-group user">
+                                <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" name="nome" th:field="*{nome}" placeholder="Nome" >
+                                    <input type="text" class="form-control" style="width:90%" name="nome" th:field="*{nome}" placeholder="Nome" >
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-md-6" >
                                 <label class="col-form-label">Telefone</label>
-                                <div class="input-group user">
+                                <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                    <input type="number" class="form-control" name="telefone" th:field="*{telefone}" placeholder="" >
+                                    <input type="number" class="form-control" style="width:90%" name="telefone" th:field="*{telefone}" placeholder="" >
                                 </div>
                             </div>
 
@@ -49,19 +49,19 @@
 
                         <div class="row">
 
-                            <div class="col">
+                            <div class="col-md-6"  >
                                 <label class="col-form-label">Utilizador</label>
-                                <div class="input-group user">
+                                <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                    <input type="text" class="form-control" name="utilizador" th:field="*{username}" placeholder="" >
+                                    <input type="text" class="form-control" style="width:90%"  name="username" th:field="*{username}" placeholder="" >
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-md-6"  >
                                 <label class="col-form-label">Email</label>
-                                <div class="input-group user">
+                                <div class="input-group user" >
                                     <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
-                                    <input type="email" class="form-control" name="email" th:field="*{email}"  placeholder="" >
+                                    <input type="email" class="form-control" style="width:90%" name="email"  th:field="*{email}"  placeholder="" >
                                 </div>
                             </div>
 
@@ -69,19 +69,19 @@
 
                         <div class="row">
 
-                            <div class="col">
+                            <div class="col-md-6">
                                 <label class="col-form-label">Nivel de Responsabilidade</label>
                                 <div class="input-group user">
                                     <span class="input-group-addon"><i class="fa fa-signal"></i></span>
-                                    <select class="form-control m-b" name="nivel" th:field="*{nivel}"  >
+                                    <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{nivel}"  >
                                         <option th:each="p : ${niveis}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-md-6">
                                 <label class="col-form-label">Perfil</label>
-                                <select class="form-control m-b" name="nivel" th:field="*{roles}"  >
+                                <select class="form-control m-b" style="width:90%" name="nivel" th:field="*{roles}"  >
                                     <option th:each="p : ${perfils}" th:value="${p.id}" th:text="${p.designacao}"></option>
                                 </select>
 
@@ -104,6 +104,41 @@
             </div>
         </div>
 
+</div>
+
+<div class="row" layout:fragment="js">
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#form').validate({
+
+                rules:{
+
+                    nome:{
+                        required: true,
+                        maxlength: 200,
+                        minlength: 2
+                    },
+                    telefone:{
+                        required: true,
+                        maxlength: 9,
+                        minlength: 9
+                    },
+                    username:{
+                        required: true
+                    },
+                    email:{
+                        required: true,
+                        email: true
+                    }
+
+
+                }
+
+            });
+        });
+    </script>
 
 </div>
 

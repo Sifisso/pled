@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt" layout:decorate="~{layout}" Xmlns:th="http://www.thymeleaf.org"
+      xmlns:Xmlns="http://www.w3.org/1999/xhtml"
+      Xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+    <script type="text/javascript">
+function onChangeStatus(){
+var status = document.getElementById("origem");
+
+if(status.value=="individual"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+
+
+
+
+}else if(status.value=="grupo"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+document.getElementById("nrHomens").style.display="block";
+document.getElementById("nrMulheres").style.display="block";
+document.getElementById("nomeGrupo").style.display="block";
+
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("genero").style.display="none";
+
+
+}else if(status.value=="anonimo"){
+
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+}else{
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+document.getElementById("genero").style.display="none";
+document.getElementById("comunicacao").style.display="none";
+document.getElementById("contacto").style.display="none";
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("endereco").style.display="none";
+document.getElementById("email").style.display="none";
+
+}
+}
+
+
+function onChangeProjecto(){
+var estado = document.getElementById("radioProjecto");
+
+
+if(estado.value=="projecto"){
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("empreiteiroo").style.display="none";
+
+}else{
+document.getElementById("projectoo").style.display="none";
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+}
+
+function onChangeOperacao(){
+var estado = document.getElementById("radioOperacao");
+
+
+if(estado.value=="operacao"){
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("projectoo").style.display="block";
+}else{
+document.getElementById("empreiteiroo").style.display="none";
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+
+}
+
+</script>
+
+<script type="text/javascript">
+function onChangeStatus(){
+var status = document.getElementById("origem");
+
+if(status.value=="individual"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+
+
+
+
+}else if(status.value=="grupo"){
+
+document.getElementById("nome").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+document.getElementById("nrHomens").style.display="block";
+document.getElementById("nrMulheres").style.display="block";
+document.getElementById("nomeGrupo").style.display="block";
+
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("genero").style.display="none";
+
+
+}else if(status.value=="anonimo"){
+
+document.getElementById("genero").style.display="block";
+document.getElementById("comunicacao").style.display="block";
+document.getElementById("contacto").style.display="block";
+document.getElementById("faixaEtaria").style.display="block";
+document.getElementById("endereco").style.display="block";
+document.getElementById("email").style.display="block";
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+}else{
+
+document.getElementById("nrHomens").style.display="none";
+document.getElementById("nrMulheres").style.display="none";
+document.getElementById("nomeGrupo").style.display="none";
+document.getElementById("nome").style.display="none";
+document.getElementById("genero").style.display="none";
+document.getElementById("comunicacao").style.display="none";
+document.getElementById("contacto").style.display="none";
+document.getElementById("faixaEtaria").style.display="none";
+document.getElementById("endereco").style.display="none";
+document.getElementById("email").style.display="none";
+
+}
+}
+
+
+function onChangeProjecto(){
+var estado = document.getElementById("radioProjecto");
+
+
+if(estado.value=="projecto"){
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("empreiteiroo").style.display="none";
+
+}else{
+document.getElementById("projectoo").style.display="none";
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+}
+
+function onChangeOperacao(){
+var estado = document.getElementById("radioOperacao");
+
+
+if(estado.value=="operacao"){
+document.getElementById("empreiteiroo").style.display="block";
+document.getElementById("cidadee").style.display="block";
+document.getElementById("projectoo").style.display="block";
+}else{
+document.getElementById("empreiteiroo").style.display="none";
+document.getElementById("projectoo").style.display="block";
+document.getElementById("cidadee").style.display="none";
+}
+
+}
+
+</script>
+
+<script type="text/javascript">
+
+
+	function onChangeIndividual(){
+		var estado = document.getElementById("individual");
+
+
+		if(estado.value=="Individual"){
+
+  			document.getElementById("nome").style.display="block";
+  			document.getElementById("faixaEtaria").style.display="block";
+  			document.getElementById("genero").style.display="block";
+
+  			document.getElementById("nomeGrupo").style.display="none";
+
+  			document.getElementById("nomereplabel").style.display="none";
+  			document.getElementById("nomelabel").style.display="block";
+
+  		}
+	}
+
+	function onChangeGrupo(){
+		var estado = document.getElementById("grupo");
+
+		if(estado.value=="Grupo/Comunidade"){
+
+			document.getElementById("faixaEtaria").style.display="block";
+  			document.getElementById("nomeGrupo").style.display="block";
+  			document.getElementById("nome").style.display="block";
+  			document.getElementById("genero").style.display="block";
+
+  			document.getElementById("nomelabel").style.display="none";
+  			document.getElementById("nomereplabel").style.display="block";
+
+
+  		}
+	}
+
+	function onChangeAnonimo(){
+
+		var estado = document.getElementById("anonimo");
+
+		if(estado.value=="Anónimo"){
+
+  			document.getElementById("genero").style.display="block";
+  			document.getElementById("faixaEtaria").style.display="block";
+
+  			document.getElementById("nome").style.display="none";
+  			document.getElementById("nomeGrupo").style.display="none";
+  		}
+
+	}
+</script>
+
+
+</head>
+<body>
+
+<div layout:fragment="corpo">
+
+
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Cadastrar Ocorrencia</h5>
+                    <div class="ibox-tools">
+                        <h5>
+                            <a th:href="@{/listar/ocorrencias}">
+                                <button class="btn btn-primary " type="button"><i class="fa fa-edit"></i>Listar Ocorrencia</button>
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form th:object="${ocorrencia}" id="form"  th:action="@{/cadastrar/ocorrencia}" method="post">
+
+
+                        <div style="background: #899d1b; color: white">
+                            <h4 style=" padding: 5px; margin: 0px;" class="card-title" >Dados da Ocorrência</h4>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Tipo de Alerta <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="tipoAlerta" th:field="*{tipoAlerta}"  >
+                                        <option th:each="p : ${tipoAlertas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Projecto <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" id="comboboxProjectos" name="projecto"   >
+                                        <option value="" >Seleciona o Projecto</option>
+                                        <option th:each="p : ${projectos}" th:value="${p.id}" th:text="${p.designacao}" ></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Actividades <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" id="comboboxActividades" name="actividade" th:field="*{actividade}"  >
+                                        <option value="" >Seleciona a Actividade</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Provincia <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" id="comboboxProvincias" name="provinciaProjecto" th:field="*{provinciaProjecto}"  >
+                                        <option value="" >Seleciona a Provincia</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Distritos</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" id="comboboxDistritos" style="width:70%" name="distrito" th:field="*{distrito}"  >
+                                        <option value="" >Seleciona o Distrito</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Posto Administrativo</label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" id="comboboxPostos" name="posto" th:field="*{postoAdministrativo}"  >
+                                        <option value="" >Seleciona o Posto</option>
+                                        <option th:each="p : ${postos}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Comunidade</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" style="width:70%" name="comunidade" th:field="*{comunidade}" placeholder="Comunidade" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Categoria <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="categoria" th:field="*{categoria}"  >
+                                        <option value="" >Seleciona o Categoria</option>
+                                        <option th:each="p : ${categorias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group" id="data_2">
+                                    <label class="font-normal">Data da Ocorrência <strong style="color: red;">*</strong> </label>
+                                    <div class="input-group date">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="date" style="width:70%" name="dataOcorrencia" th:field="*{dataOcorrencia}"  class="form-control" >
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Canal de Utilizado <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="canalEntrada" th:field="*{canalEntrada}"  >
+                                        <option value="" >Seleciona o Canal de Entrada</option>
+                                        <option th:each="p : ${canaisEntradas}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Tipo de Ocorrencia <strong style="color: red;">*</strong></label>
+                                <select class="form-control m-b" style="width:100%" name="tipoOcorrencia" th:field="*{tipoOcorrencia}"  >
+                                    <option value="" >Seleciona o Tipo de Ocorrencia</option>
+                                    <option th:each="p : ${tipoOcorrencias}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-4" >
+                                <label class="col-form-label">Telefone</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input type="number" class="form-control" style="width:70%" name="telefone" th:field="*{telefone}" placeholder="Telefone" >
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-4"  >
+                                <label class="col-form-label">Email</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
+                                    <input type="email" class="form-control" style="width:70%" name="email"  th:field="*{email}"  placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Nivel de Resolucao <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <span class="input-group-addon"><i class="fa fa-signal"></i></span>
+                                    <select class="form-control m-b" style="width:70%" name="nivelresolucao" th:field="*{nivelresolucao}"  >
+                                        <option th:each="p : ${nivelResolucoes}" th:value="${p.id}" th:text="${p.designacao}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label class="col-form-label">Nome Utente</label>
+                                <div class="input-group user" >
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" style="width:70%" name="nomeUtente" th:field="*{nomeUtente}" placeholder="Nome" >
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <label class="col-form-label">Descrição do Problema <strong style="color: red;">*</strong></label>
+                                <div class="input-group user">
+                                    <textarea type="text" class="form-control" style="width:100%" name="assunto" th:field="*{assunto}" placeholder="Assunto..." />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div style="background: #899d1b; color: white">
+                            <h4 style=" padding: 5px; margin: 0px;" class="card-title" >Dados do Utente</h4>
+                        </div>
+                        <br>
+
+                        <input  onclick="onChangeIndividual()" id="individual" type="radio" th:field="*{origem}" value="Individual">
+                        <label for="individual"><span></span>Individual</label>
+
+                        <input onclick="onChangeGrupo()" id="grupo" type="radio" th:field="*{origem}" value="Grupo/Comunidade">
+                        <label for="grupo"><span></span>Grupo/Comunidade</label>
+
+                        <input onclick="onChangeAnonimo()" id="anonimo" type="radio" th:field="*{origem}" value="Anónimo">
+                        <label for="anonimo"><span></span>Anónimo</label>
+
+                        <br>
+
+                        <div class="row">
+                            <div style="display: none" id="nome" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Nome</label>
+                                    <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                        <input type="text" th:field="*{nomeUtente}" class="form-control" placeholder="Designação...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: none" id="nomeGrupo" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Nome Do Grupo</label>
+                                    <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                        <input type="text" th:field="*{nomeDoRepresentanteDoGrupo}" class="form-control" placeholder="Designação...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: none" id="endereco" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Morada</label>
+                                    <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                        <input type="text" th:field="*{moradaUtente}" class="form-control" placeholder="Designação...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div  style="display: none" id="genero" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Sexo</label>
+                                    <select class="form-control custom-select" th:field="*{sexo}" >
+                                        <option value=" ">Selecione...</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Feminino</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="display: none" id="faixaEtaria" class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Faixa Etária</label>
+                                    <select class="form-control custom-select" th:field="*{faixaEtaria}" >
+                                        <option value=" ">Selecione...</option>
+                                        <option value="20 a 30">20 a 30</option>
+                                        <option value="30 a 40">31 a 60</option>
+                                        <option value="30 a 40">Outra</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div style="background: #899d1b; color: white">
+                            <h4 style=" padding: 5px; margin: 0px;" class="card-title" >Dados dos Anexos</h4>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+
+                                <div class="col-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                      <i class="fe fe-edit-2"></i>
+                                    </span>
+                                            <input type="file" name="files" class="form-control" multiple>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-icon">
+                                            <input type="text" onchange="preview()" name="descricaoAnx" placeholder="Descricao de Anexos" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5">
+                                  <button class="btn btn-primary btn-sm" style="background: #899d1b; color: white" type="submit" >
+                                      <i class="fa fa-save"></i> Gravar  Ocorrência
+                                  </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+<div class="row" layout:fragment="js">
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+        $('#comboboxProjectos').on('change',function(){
+
+        var projectoId = $(this).val();
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/actividades/'+projectoId,
+        url: 'http://localhost:8082/api/actividades/'+projectoId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione a Actividade... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxActividades').html(s);
+        }
+        });
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/provincias/'+projectoId,
+        url: 'http://localhost:8082/api/provincias/'+projectoId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione a Provincia... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxProvincias').html(s);
+        }
+        });
+
+        });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+        $('#comboboxProvincias').on('change',function(){
+
+        var provinciaId = $(this).val();
+
+        alert(provinciaId);
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/distritos/'+provinciaId,
+        url: 'http://localhost:8082/api/distritos/'+provinciaId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione o Distrito... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxDistritos').html(s);
+        }
+        });
+
+        });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+        $('#comboboxDistritos').on('change',function(){
+
+        var distritoId = $(this).val();
+
+        $.ajax({
+        type: 'GET',
+
+        // url: 'http://38.242.139.53:8080/api/distritos/'+distritoId,
+        url: 'http://localhost:8082/api/distritos/'+distritoId,
+
+        success: function (result){
+        var result = JSON.parse(result);
+        var s = "<option value=''>Selecione o Posto... </option>";
+        for(var i=0; i< result.length; i++){
+        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        }
+
+        $('#comboboxPostos').html(s);
+        }
+        });
+
+        });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#form').validate({
+
+                rules:{
+
+                    nome:{
+                        maxlength: 200,
+                        minlength: 2
+                    },
+                    telefone:{
+                        maxlength: 9,
+                        minlength: 9
+                    },
+                    username:{
+                        required: true
+                    },
+                    email:{
+                        email: true
+                    },
+                    tipoAlerta:{
+                       required: true
+                    },
+                    projecto:{
+                      required: true
+                    },
+                    actividade:{
+                      required: true
+                    },
+                    categoria:{
+                     required: true
+                    },
+                    dataOcorrencia:{
+                     required: true,
+                     date: true
+                    },
+                    canalEntrada:{
+                      required: true,
+                    },
+                    tipoOcorrencia:{
+                      required: true,
+                    },
+                    nivelresolucao:{
+                      required: true,
+                    },
+                    provinciaProjecto:{
+                      required: true,
+                    },
+                    assunto:{
+                      required: true
+                    }
+
+
+                }
+
+            });
+        });
+    </script>
+
+
+</div>
+
+</body>
+</html>

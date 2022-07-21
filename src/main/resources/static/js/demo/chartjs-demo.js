@@ -1,21 +1,26 @@
 $(function () {
 
-    /*var lineData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+    var lineData = {
+        labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho"],
         datasets: [
 
             {
-                label: "Data 1",
-                backgroundColor: 'rgba(26,179,148,0.5)',
+                label: "Resolvidas",
+                backgroundColor: '#899d1b',
                 borderColor: "rgba(26,179,148,0.7)",
                 pointBackgroundColor: "rgba(26,179,148,1)",
                 pointBorderColor: "#fff",
                 data: [28, 48, 40, 19, 86, 27, 90]
             },{
-                label: "Data 2",
-                backgroundColor: 'rgba(220, 220, 220, 0.5)',
+                label: "Em Atendimento",
+                backgroundColor: '#fee100',
                 pointBorderColor: "#fff",
                 data: [65, 59, 80, 81, 56, 55, 40]
+            },{
+                label: "Não Resolvidas",
+                backgroundColor: '#EF5350',
+                pointBorderColor: "#fff",
+                data: [34, 76, 13, 87, 63, 90, 59]
             }
         ]
     };
@@ -26,9 +31,9 @@ $(function () {
 
 
     var ctx = document.getElementById("lineChart").getContext("2d");
-    new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});*/
+    new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
 
-    var barData = {
+    /*var barData = {
         labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
         datasets: [
             {
@@ -60,7 +65,7 @@ $(function () {
 
 
     var ctx2 = document.getElementById("barChart").getContext("2d");
-    new Chart(ctx2, {type: 'bar', data: barData, options:barOptions});
+    new Chart(ctx2, {type: 'bar', data: barData, options:barOptions});*/
     
     
     

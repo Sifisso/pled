@@ -129,13 +129,29 @@ $('#comoboxProjecto').html(s);
 
                             
 						<div style="margin-top: 7%; width: 80%; margin-left: auto; margin-right: auto;" class="ibox-content">
-						
-						<h2>
-                                Dados/Estágio da preocupação
+						<div >
+						<h2 style="font-weight: bolder;">
+                                Estágio da preocupação
                             </h2>
                             
+                            </div>
                             
-                    <div class="col-6 col-sm-6">
+                            <div style="border: 2px solid #ff0500;">
+  
+  							</div>
+  							
+  							<div style="background: #899d1b;">
+                            
+                            <h3 style="color: rgba(255,255,255,0.8)">
+                                Dados da preocupação
+                            </h3>
+                            
+  							</div>
+                            
+                            
+                            
+                 <div style="font-size: 13pt;" class="row">           
+                <div class="col-6 col-sm-6">
 				<div class="form-group">
 					  <span style="font-weight: bolder;">Código de registo: </span>	
 					  <span th:text="${ocorrencia.grmStamp}"></span>
@@ -148,6 +164,77 @@ $('#comoboxProjecto').html(s);
                     <span th:text="${ocorrencia.dataOcorrencia}"></span>
 				</div>
 			</div>
+			
+                 </div>
+                 
+                 <div  style="font-size: 13pt;" class="row"> 
+			
+			
+			<div class="col-6 col-sm-6">
+				<div class="form-group">
+				  <span style="font-weight: bolder;">Projecto: </span>
+                    <span th:text="${ocorrencia.provinciaProjecto.projecto.designacao}"></span>
+				</div>
+			</div>
+			
+			
+			<div class="col-6 col-sm-6">
+				<div class="form-group">
+				  <span style="font-weight: bolder;">Província: </span>
+                    <span th:text="${ocorrencia.provinciaProjecto.provincia.designacao}"></span>
+				</div>
+			</div>
+			
+                 </div>
+                 
+                 
+                 <div style="background: #899d1b;">
+                            
+                            <h3 style="color: rgba(255,255,255,0.8);">
+                                Dados do Utente
+                            </h3>
+                            
+                            </div>
+                            
+                            
+                            <div style="font-size: 13pt;" class="row">           
+                <div class="col-6 col-sm-6">
+				<div class="form-group">
+					  <span style="font-weight: bolder;">Nome: </span>	
+					  <span th:text="${ocorrencia.nome}"></span>
+				 </div>
+			</div>
+			
+			<div class="col-6 col-sm-6">
+				<div class="form-group">
+				  <span style="font-weight: bolder;">Telefone: </span>
+                    <span th:text="${ocorrencia.telefone}"></span>
+				</div>
+			</div>
+			
+                 </div>
+                 
+                 
+                 <div style="font-size: 13pt;" class="row">           
+			
+			<div class="col-6 col-sm-6">
+				<div class="form-group">
+				  <span style="font-weight: bolder;">Email: </span>
+                    <span th:text="${ocorrencia.email}"></span>
+				</div>
+			</div>
+			
+			
+			<div class="col-6 col-sm-6">
+				<div class="form-group">
+				  <span style="font-weight: bolder;">Assunto: </span>
+                    <span th:text="${ocorrencia.assunto}"></span>
+				</div>
+			</div>
+			
+                 </div>
+			
+			
                 </div>
                 
                <!-- th:if="${ocorrencia != null && ocorrencia.tipoAlerta != null && ocorrencia.tipoAlerta.designacao != null}"-->
