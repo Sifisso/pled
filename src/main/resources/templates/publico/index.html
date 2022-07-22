@@ -37,14 +37,19 @@
                 <script th:inline="javascript">
 
                     /*<![CDATA[*/
+                    
+                    
+                    var messagem = /*[[${ocorrenciaa.grmStamp}]]*/"";
 
                     var sucesso = /*[[${sucesso}]]*/"";
 
                     /*]]>*/
 
                     swal({
-                      title: "Atenção!",
-                      text: ""+sucesso,
+                      //title: "Atenção!",
+                      title: " "+messagem,
+                      text: ""+sucesso+ " NOTA: Anote o código acima para o acompanhamento!",
+                      //html: ""+sucesso + " <br> "+" NOTA: Anote o seu código para o acompanhamento: <br>"+"<span style=color:red; font-weight:bolder>"+messagem+"</span>",
                       icon: "success",
                       button: "Ok!",
                     });

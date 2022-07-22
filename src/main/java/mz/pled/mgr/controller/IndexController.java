@@ -1,11 +1,7 @@
 package mz.pled.mgr.controller;
 
-import java.awt.Font;
 import java.util.concurrent.ThreadLocalRandom;
 
-import javax.swing.AbstractButton;
-
-import mz.pled.mgr.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,12 +14,26 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import mz.pled.mgr.domain.CanalEntrada;
 import mz.pled.mgr.domain.Ocorrencia;
 import mz.pled.mgr.domain.Provincia;
+import mz.pled.mgr.repository.CanalEntradaRepository;
+import mz.pled.mgr.repository.OcorrenciaRepository;
+import mz.pled.mgr.repository.PostoAdminitrativoRepository;
+import mz.pled.mgr.repository.ProjectoRepository;
+import mz.pled.mgr.repository.ProvinciaProjectoRepository;
+import mz.pled.mgr.service.EmailService;
+import mz.pled.mgr.service.SMSService;
 
 @Controller
 public class IndexController {
 	
 	@Autowired
     private ProvinciaProjectoRepository provinciaProjectoRepository;
+	
+	@Autowired
+	private SMSService smsService;
+	
+	
+	@Autowired
+	private EmailService emailService;
 	
 	@Autowired
     private PostoAdminitrativoRepository PostoadminitrativoRepository;
@@ -148,6 +158,33 @@ public class IndexController {
             CanalEntrada canal = canalEntradaRepository.canalPlataforma();
             
             String codigoo = String.valueOf(codigo);
+            
+            
+            String contacto = ocorrencia.getTelefone().isEmpty() ? null : ocorrencia.getTelefone();
+			String email = ocorrencia.getEmail().isEmpty() ? null : ocorrencia.getEmail();
+			
+			
+			if(contacto!=null){
+
+				String mensagem = "A sua preocupação foi submetido com sucesso, o código para acompanhamento é: " +codigo;
+				smsService.sendSMS("+258"+ocorrencia.getTelefone(),mensagem);
+
+			}
+			
+			
+			if(email!=null){
+
+				String descricao ="Caro Utente, a sua preocupação foi submetida com sucesso.\n" +
+						"NOTA: Anote o seu código para o acompanhamento\n" +codigo;
+
+				String emaildestino = ocorrencia.getEmail();
+				String nome = "A sua preocupação foi submetido com sucesso";
+
+				String assunto = "Confirmação de código de acesso - FNDS";
+
+				emailService.enviarEmail(descricao,nome,emaildestino,assunto);
+			}
+			
 
             ocorrencia.setGrmStamp(codigoo);
             ocorrencia.setCanalEntrada(canal);
@@ -157,8 +194,7 @@ public class IndexController {
                 
                 model.addAttribute("ocorrenciaa", ocorrencia.getGrmStamp());
                 
-                attr.addFlashAttribute("sucesso", "Preocupação submetida com sucesso." +" Anote "
-                		+ "o código asseguir para o acompnhamento: "+ocorrencia.getGrmStamp());
+                attr.addFlashAttribute("sucesso", "Preocupação submetida com sucesso.");
 
     			attr.addFlashAttribute("ocorrenciaa", ocorrenciaRepository.buscarPorId(ocorrencia.getId()));
 
