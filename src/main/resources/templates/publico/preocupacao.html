@@ -694,7 +694,7 @@ $('#comoboxProjecto').html(s);
         var result = JSON.parse(result);
         var s = "<option value=''>Selecione a Provincia... </option>";
         for(var i=0; i< result.length; i++){
-        s+='<option value="'+result[i].id+'">'+result[i].designacao+'</option>';
+        s+='<option value="'+result[i].id+'">'+result[i].provincia.designacao+'</option>';
         }
 
         $('#comboboxProvincias').html(s);
